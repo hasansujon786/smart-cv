@@ -1,14 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import { Box, Text } from 'native-base'
 import GradientHeader from '../components/GradientHeader'
-
-function Home() {
-  return (
-    <Box bg='rose.50'>
-      <Text>home</Text>
-    </Box>
-  )
-}
+import HomeNavigator from './HomeNavigator'
 
 const Stack = createStackNavigator()
 
@@ -19,7 +11,7 @@ function RootNavigation() {
         header: (props) => <GradientHeader {...props} />,
       }}
     >
-      <Stack.Screen name='Home' component={Home} />
+      <Stack.Screen name='Home' component={HomeNavigator} options={{ title: 'Smart CV', headerShown: false }} />
     </Stack.Navigator>
   )
 }

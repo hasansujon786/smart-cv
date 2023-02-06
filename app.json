@@ -32,6 +32,15 @@
       "eas": {
         "projectId": "cf1a196f-9fcd-410a-baa1-d16de06a0323"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow $(PRODUCT_NAME) to access your gallery",
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera"
+        }
+      ]
+    ]
   }
 }
