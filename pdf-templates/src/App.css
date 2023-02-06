@@ -1,0 +1,27 @@
+/*! debug.css | MIT License | zaydek.github.com/debug.css */
+.debug *:not(path):not(g) {
+  color: hsla(210, 100%, 100%, 0.9) !important;
+  background: hsla(210, 100%, 50%, 0.5) !important;
+  outline: solid 0.25rem hsla(210, 100%, 100%, 0.5) !important;
+
+  box-shadow: none !important;
+}
+.App_jsx {
+  --custom-color: tomato;
+}
+.paper {
+  width: 595px;
+  min-height: 842px;
+  height: 842px;
+  /* height: 100%; */
+}
+.paper > * {
+  width: 100%;
+  height: 100%;
+}
+
+.g-center {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}

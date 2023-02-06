@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.aspect-portait {
+  aspect-ratio: 3 / 4;
+}
