@@ -1,7 +1,14 @@
 import { createStackNavigator } from '@react-navigation/stack'
+import { Box, Text } from 'native-base'
 import GradientHeader from '../components/GradientHeader'
 
-import Home from '../screens/Home'
+function Home() {
+  return (
+    <Box bg='rose.50'>
+      <Text>home</Text>
+    </Box>
+  )
+}
 
 const Stack = createStackNavigator()
 

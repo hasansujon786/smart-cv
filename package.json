@@ -12,6 +12,7 @@
     "eas:build-pre": "eas build --profile preview --platform android"
   },
   "dependencies": {
+    "@bildau/rn-pdf-reader": "^4.2.7",
     "@react-native-async-storage/async-storage": "~1.17.3",
     "@react-navigation/drawer": "^6.5.8",
     "@react-navigation/material-top-tabs": "^6.5.3",
@@ -23,14 +24,20 @@
     "expo-status-bar": "~1.4.2",
     "native-base": "^3.4.25",
     "react": "18.1.0",
+    "react-dom": "18.1.0",
     "react-native": "0.70.5",
+    "react-native-color-picker": "^0.6.0",
     "react-native-gesture-handler": "~2.8.0",
     "react-native-pager-view": "6.0.1",
     "react-native-reanimated": "~2.12.0",
     "react-native-safe-area-context": "4.4.1",
     "react-native-screens": "~3.18.0",
     "react-native-svg": "13.4.0",
-    "react-native-tab-view": "^3.3.4"
+    "react-native-tab-view": "^3.3.4",
+    "react-native-webview": "11.23.1",
+    "rn-fetch-blob": "^0.12.0",
+    "underscore": "^1.13.6",
+    "zustand": "^4.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
