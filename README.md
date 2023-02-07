@@ -7,8 +7,6 @@ npx expo install styled-components styled-system
 "expo-updates": "~0.11.7",
 
 
-npx expo uninstall expo-ads-admob 
-
 
 react-native-web
 
@@ -39,5 +37,6 @@ underscore
 npx expo uninstall @react-native-community/netinfo
 expo-image-manipulator ?
 expo-image-picker
+expo-ads-admob
 
-npx expo install expo-intent-launcher expo-print
+expo-intent-launcher expo-print

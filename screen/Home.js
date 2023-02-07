@@ -5,7 +5,7 @@ import { getNewId } from '../util'
 import Icon from '../components/Icon'
 import { themeColors } from '../constant/globalStyles'
 import { useSettingStore } from '../store/setting'
-// import { InterstitialAdContext } from '../services'
+import { InterstitialAdContext } from '../services'
 
 const { width } = Dimensions.get('screen')
 const CIRCLE_WIDTH = width * 0.6
@@ -16,19 +16,19 @@ const Home = ({ navigation }) => {
     restoreSetting()
   }, [])
 
-  // const interstitialAd = useContext(InterstitialAdContext)
+  const interstitialAd = useContext(InterstitialAdContext)
   const onCreateCv = async () => {
-    // TODO: <06.02.23> implement add here
-    // if ((await interstitialAd.isAdReady()) && (await interstitialAd.isReadyToShow())) {
-    //   await interstitialAd.showAdIfLoaded()
-    // }
+    if ((await interstitialAd.isAdReady()) && (await interstitialAd.isReadyToShow())) {
+      await interstitialAd.showAdIfLoaded()
+      return
+    }
     navigation.navigate('CreateProfile', { profileId: getNewId() })
   }
 
   const gotoProfile = async () => {
-    // if ((await interstitialAd.isAdReady()) && (await interstitialAd.isReadyToShow())) {
-    //   await interstitialAd.showAdIfLoaded()
-    // }
+    if ((await interstitialAd.isAdReady()) && (await interstitialAd.isReadyToShow())) {
+      await interstitialAd.showAdIfLoaded()
+    }
     navigation.navigate('Profiles')
   }
 
