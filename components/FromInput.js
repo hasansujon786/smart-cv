@@ -1,26 +1,15 @@
+import { FormControl, Input, TextArea } from 'native-base'
 import React from 'react'
-import { Input, TextArea, FormControl } from 'native-base'
 
+// TODO: <11.02.23> add next button
+// Input - Black selection color by default : https://github.com/GeekyAnts/NativeBase/issues/5420
 const FromInput = ({ label, renderTextArea, placeholder, input, ...props }) => {
+  const InputComp = renderTextArea ? TextArea : Input
   return (
-    <FormControl {...props}>
+    <FormControl minHeight={renderTextArea ? 300 : 20} {...props}>
       {label && <FormControl.Label>{label}</FormControl.Label>}
-      {!renderTextArea && (
-        <Input
-          {...input}
-          rounded={12}
-          placeholder={placeholder}
-          _focus={{ borderColor: 'purple.400' }}
-        />
-      )}
-      {renderTextArea && (
-        <TextArea
-          {...input}
-          rounded={12}
-          totalLines={6}
-          _focus={{ borderColor: 'purple.400' }}
-        />
-      )}
+
+      <InputComp {...input} rounded={12} placeholder={placeholder} flex={1} py={3} lineHeight='md' fontSize='sm' />
       {/* <FormControl.HelperText borderLeftWidth={1} mt={1} px={1} pl={2} borderColor='muted.400'> */}
       {/*   We'll keep this between us. */}
       {/* </FormControl.HelperText> */}

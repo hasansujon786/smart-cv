@@ -23,9 +23,9 @@ const AdditionalInformation = ({ route, navigation }) => {
   return (
     <Box flex={1} _light={{ bg: themeColors.light.bg }} _dark={{ bg: themeColors.dark.bgDark }}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
-        <Stack space={4} mt={4} px={4}>
+        <Box px={4} mt={4}>
           <FromInput renderTextArea label='Additional Info' input={inputData} />
-        </Stack>
+        </Box>
 
         <Button.Group mt={8} px={4} space={3} justifyContent='center' size='lg'>
           <Button width={200} onPress={saveProfile} variant='primary'>

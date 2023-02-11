@@ -6,7 +6,22 @@ import { globalColors, globalStyles } from './constant/globalStyles'
 export const theme = extendTheme({
   useSystemColorMode: false,
   initialColorMode: 'light',
+  colors: {
+    unset: undefined,
+    'deep-purple': globalColors.primary,
+  },
   components: {
+    Input: {
+      baseStyle: {
+        _focus: {
+          borderColor: 'deep-purple',
+          _android: {
+            bg: 'purple.500:alpha.5',
+            selectionColor: 'unset',
+          },
+        },
+      },
+    },
     Button: {
       baseStyle: {
         rounded: 'full',

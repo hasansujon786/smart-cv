@@ -17,6 +17,7 @@ export const HeaderBackBtn = ({ headerTintColor, backAction }) => {
 const HEADER_HEIGHT = 80
 const MARGIN_TOP = 20
 
+// TODO: <11.02.23> add save button on header
 const GradientHeader = (props) => {
   const { options, navigation, route, headerLeft: HeaderLeft } = props
   const showBack = navigation.canGoBack()

@@ -110,15 +110,6 @@ export const dummyProfile = {
     { id: '2', name: 'Hindi', level: 5 },
   ],
   objective: 'I seek challenging opportunities where I can fully use my skills for the success of the organization.',
-  additionalInformation: `Coordinate communications, track and follow up on
-  requests and identify those of importance which require immediate attention.
-  Coordinate communications, track and follow up on requests and identify those of
-  importance which require immediate attention. Coordinate communications, track
-  and follow up on requests and identify those of importance which require
-  immediate attention. Coordinate communications, track and follow up on requests
-  and identify those of importance which require immediate attention. Coordinate
-  communications, track and follow up on requests and identify those of importance
-  which require immediate attention. Coordinate communications, track and follow
-  up on requests and identify those of importance which require immediate
-  attention.`,
+  additionalInformation:
+    'Coordinate communications, track and follow up on requests and identify those of importance which require immediate attention. Coordinate communications, track and follow up on requests and identify those of importance which require immediate attention. Coordinate communications, track and follow up on requests and identify those of importance which require immediate attention. Coordinate communications, track and follow up on requests and identify those of importance which require immediate attention. Coordinate communications, track and follow up on requests and identify those of importance which require immediate attention. Coordinate communications, track and follow up on requests and identify those of importance which require immediate attention.',
 }
