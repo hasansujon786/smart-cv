@@ -22,6 +22,11 @@ export const theme = extendTheme({
         },
       },
     },
+    IconButton: {
+      baseStyle: {
+        rounded: 'full',
+      },
+    },
     Button: {
       baseStyle: {
         rounded: 'full',

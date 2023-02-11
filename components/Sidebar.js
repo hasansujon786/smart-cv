@@ -1,9 +1,9 @@
-import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer'
-import { useColorMode, useColorModeValue, Box, Text, Stack, HStack, Switch } from 'native-base'
-import { TouchableNativeFeedback, Linking, Share } from 'react-native'
+import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer'
+import { Box, HStack, Stack, Switch, Text, useColorMode, useColorModeValue } from 'native-base'
 import React, { useEffect, useState } from 'react'
-import AboutPopup from './AboutPopup'
+import { Linking, Share, TouchableNativeFeedback } from 'react-native'
 import Icon from '../components/Icon'
+import AboutPopup from './AboutPopup'
 
 import { PLAY_STORE_ALL_APPS, PLAY_STORE_APP_LINK, themeColors } from '../constant'
 
@@ -45,25 +45,25 @@ const Sidebar = (props) => {
         <DrawerItemList {...props} />
         <DrawerItem
           inactiveTintColor={drawerInactiveTintColor}
-          icon={(props) => <Icon {...props} name='share-social-outline' size='sm' />}
+          icon={(props) => <Icon {...props} name='share-social-outline' size='md' />}
           label='Share the app'
           onPress={onShare}
         />
         <DrawerItem
           inactiveTintColor={drawerInactiveTintColor}
-          icon={(props) => <Icon {...props} name='star-outline' size='sm' />}
+          icon={(props) => <Icon {...props} name='star-outline' size='md' />}
           label='Rate the app'
           onPress={() => Linking.openURL(PLAY_STORE_APP_LINK)}
         />
         <DrawerItem
           inactiveTintColor={drawerInactiveTintColor}
-          icon={(props) => <Icon {...props} name='information-circle-outline' size='sm' />}
+          icon={(props) => <Icon {...props} name='information-circle-outline' size='md' />}
           label='About'
           onPress={() => setAboutModalVisible(true)}
         />
         <DrawerItem
           inactiveTintColor={drawerInactiveTintColor}
-          icon={(props) => <Icon {...props} name='apps-outline' size='sm' />}
+          icon={(props) => <Icon {...props} name='apps-outline' size='md' />}
           label='More apps'
           onPress={() => Linking.openURL(PLAY_STORE_ALL_APPS)}
         />
@@ -73,7 +73,7 @@ const Sidebar = (props) => {
         <HStack pr={2}>
           <TouchableNativeFeedback onPress={toggleDarkMode}>
             <HStack space={6} flex={1} alignItems='center' pl={5} py={4} roundedRight='md'>
-              <Icon name={useColorModeValue('moon-outline', 'moon')} size='sm' color={drawerInactiveTintColor} />
+              <Icon name={useColorModeValue('moon-outline', 'moon')} size='md' color={drawerInactiveTintColor} />
               <Text fontSize='sm' color={drawerInactiveTintColor}>
                 Dark Mode
               </Text>

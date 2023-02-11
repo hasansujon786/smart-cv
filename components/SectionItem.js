@@ -14,7 +14,7 @@ const SectionItem = ({ onSelect, text, icon }) => {
         _dark={{ bg: themeColors.dark.bg }}
       >
         <HStack alignItems='center' justifyContent='space-between'>
-          <Icon color={globalColors.primary} size='sm' name={icon} />
+          <Icon color={globalColors.primary} size='md' name={icon} />
           <Heading ml={3} fontWeight='normal' size='sm'>{text}</Heading>
           <Box flex={1} />
           <Icon color='gray.200' size='sm' name='chevron-forward' _dark={{ color: 'gray.500' }} />

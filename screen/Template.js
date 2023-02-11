@@ -130,7 +130,7 @@ const Template = ({ route, navigation }) => {
           <IconButton
             onPress={() => setIsToolBoxVisible((v) => !v)}
             size='lg'
-            icon={<Icon color='white' name='options-outline' size='sm' />}
+            icon={<Icon color='white' name='options-outline' />}
           />
         </HStack>
       </Box>
@@ -140,7 +140,7 @@ const Template = ({ route, navigation }) => {
           isLoading={isDownloading}
           isLoadingText='Downloading'
           isDisabled={isDownloading}
-          startIcon={<Icon color='white' name='download-outline' size='sm' />}
+          startIcon={<Icon color='white' name='download-outline' />}
           onPress={downloadPdf}
           width={260}
           size='lg'

@@ -18,7 +18,7 @@ const CreateProfileControl = ({ setMainData, profileId, sectionKey, mainData, na
         onPress={() => setMainData((prevArr) => [...prevArr, { id: getNewId() }])}
         variant='secondary'
         flex={1}
-        startIcon={<Icon size='sm' name='add-outline' />}
+        startIcon={<Icon color='deep-purple' name='add-outline' />}
       >
         Add
       </Button>

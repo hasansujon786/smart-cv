@@ -17,15 +17,7 @@ const ProfileCard = ({ index, profile, deleteById, onView, onEdit, onDemoView, .
       {...props}
     >
       <HStack justifyContent='space-between'>
-        <Center
-          ml={2}
-          mt={1}
-          rounded='full'
-          width={9}
-          height={9}
-          bg='gray.100'
-          _dark={{ bg: themeColors.dark.bgDark }}
-        >
+        <Center ml={2} mt={1} rounded='full' width={9} height={9} bg='gray.100' _dark={{ bg: themeColors.dark.bgDark }}>
           <Text fontSize='xs' fontWeight='bold' color='gray.400'>
             {index + 1}
           </Text>
@@ -35,10 +27,11 @@ const ProfileCard = ({ index, profile, deleteById, onView, onEdit, onDemoView, .
             placement='left'
             trigger={(triggerProps) => (
               <IconButton
+                size='sm'
                 colorScheme='light'
                 {...triggerProps}
-                icon={<Icon size='sm' color='gray.400' name='ellipsis-vertical-outline' />}
-                />
+                icon={<Icon size='md' color='gray.400' name='ellipsis-vertical-outline' />}
+              />
             )}
           >
             <Menu.Item onPress={() => deleteById(profile.id)}>Delete</Menu.Item>
@@ -57,10 +50,20 @@ const ProfileCard = ({ index, profile, deleteById, onView, onEdit, onDemoView, .
       </Stack>
 
       <Button.Group px={4} colorScheme='purple'>
-        <Button onPress={onEdit} variant='secondary' flex={1} startIcon={<Icon size='xs' name='create-outline' />}>
+        <Button
+          onPress={onEdit}
+          variant='secondary'
+          flex={1}
+          startIcon={<Icon size='sm' color='deep-purple' name='create-outline' />}
+        >
           Edit
         </Button>
-        <Button onPress={onView} variant='secondary' flex={1} startIcon={<Icon size='xs' name='eye-outline' />}>
+        <Button
+          onPress={onView}
+          variant='secondary'
+          flex={1}
+          startIcon={<Icon size='sm' color='deep-purple' name='eye-outline' />}
+        >
           View CV
         </Button>
       </Button.Group>

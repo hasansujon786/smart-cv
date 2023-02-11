@@ -143,7 +143,7 @@ const CreateProfile = ({ navigation, route }) => {
       {profile && (
         <TouchableHighlight onPress={onViewCv}>
           <Center flexDirection='row' py={3} bg={{ linearGradient }}>
-            <Icon size='sm' color='white' name='eye-outline' />
+            <Icon color='white' name='eye-outline' />
             <Text color='white' ml={2} fontSize='lg'>
               View CV
             </Text>
