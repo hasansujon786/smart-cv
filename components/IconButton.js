@@ -9,7 +9,7 @@ const IconBtn = ({ size = 'md', variant = 'solid', colorScheme = 'dark', icon, .
       variant={variant}
       bg={bg}
       colorScheme={colorScheme}
-      rounded='pill'
+      rounded='full'
       size={size}
       icon={icon}
       {...props}

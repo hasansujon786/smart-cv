@@ -2,8 +2,7 @@ import React, { useCallback, useContext, useEffect, useRef, useState } from 'rea
 import { Dimensions, TouchableOpacity, Linking, Alert, BackHandler } from 'react-native'
 import { Box, Button, HStack, useColorModeValue } from 'native-base'
 
-import GradientHeader from '../components/GradientHeader'
-import HeaderBtnBack from '../components/HeaderBtnBack'
+import GradientHeader, { HeaderBackBtn } from '../components/GradientHeader'
 import TemplateLoader from '../components/TemplateLoader'
 import Icon from '../components/Icon'
 import IconButton from '../components/IconButton'
@@ -73,7 +72,8 @@ const Template = ({ route, navigation }) => {
   }
 
   const { isPageReady } = useLazyScreenLoader()
-  // fix for crush issue
+  // it's a hot fix for crush issue.
+  // TODO: get a better way to do this.
   React.useEffect(() => {
     const backAction = () => {
       if (isPdfLoading) {
@@ -90,7 +90,7 @@ const Template = ({ route, navigation }) => {
     if (isPageReady) {
       navigation.setOptions({
         header: (props) => (
-          <GradientHeader {...props} headerLeft={(props) => <HeaderBtnBack backAction={backAction} {...props} />} />
+          <GradientHeader {...props} headerLeft={(props) => <HeaderBackBtn backAction={backAction} {...props} />} />
         ),
       })
     }

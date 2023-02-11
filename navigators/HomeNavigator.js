@@ -15,6 +15,7 @@ const MenuIcon = ({ navigation, headerTintColor }) => {
   return (
     <IconButton
       colorScheme='light'
+      rounded='full'
       size='lg'
       onPress={() => navigation.openDrawer()}
       icon={<Icon color={headerTintColor} name='menu-outline' size={7} />}

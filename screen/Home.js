@@ -3,7 +3,7 @@ import { Box, Button, Center, Image } from 'native-base'
 import { Dimensions } from 'react-native'
 import { getNewId } from '../util'
 import Icon from '../components/Icon'
-import { themeColors } from '../constant/globalStyles'
+import { globalColors, themeColors } from '../constant/globalStyles'
 import { useSettingStore } from '../store/setting'
 import { InterstitialAdContext } from '../services'
 
@@ -49,10 +49,18 @@ const Home = ({ navigation }) => {
       </Center>
       <Center pb={10}>
         <Button.Group space={3} direction='column' width={260} size='lg'>
-          <Button startIcon={<Icon size='sm' name='create-outline' />} variant='primary' onPress={onCreateCv}>
+          <Button
+            startIcon={<Icon color='white' name='create-outline' />}
+            variant='primary'
+            onPress={onCreateCv}
+          >
             Create CV
           </Button>
-          <Button startIcon={<Icon size='sm' name='person-outline' />} variant='secondary' onPress={gotoProfile}>
+          <Button
+            startIcon={<Icon color={globalColors.primary} name='person-outline' />}
+            variant='secondary'
+            onPress={gotoProfile}
+          >
             Saved Profiles
           </Button>
         </Button.Group>

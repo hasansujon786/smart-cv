@@ -9,7 +9,7 @@ export const theme = extendTheme({
   components: {
     Button: {
       baseStyle: {
-        rounded: 'pill',
+        rounded: 'full',
       },
       variants: {
         primary: () => {
