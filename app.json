@@ -23,10 +23,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.thinknxtmedia.smartcv",
-      "config": {
-        "googleMobileAdsAppId": "ca-app-pub-3940256099942544~3347511713"
-      }
+      "package": "com.thinknxtmedia.smartcv"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -43,13 +40,10 @@
           "photosPermission": "Allow $(PRODUCT_NAME) to access your gallery",
           "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera"
         }
-      ],
-      [
-        "expo-ads-admob",
-        {
-          "userTrackingPermission": "This identifier will be used to deliver personalized ads to you."
-        }
       ]
     ]
+  },
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-6087352659408292~6631001734"
   }
 }

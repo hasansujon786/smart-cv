@@ -40,3 +40,11 @@ expo-image-picker
 expo-ads-admob
 
 expo-intent-launcher expo-print
+
+
+
+old "projectId": "cf1a196f-9fcd-410a-baa1-d16de06a0323"
+new "projectId": "60e69d7d-bf68-470c-8457-38f8f6ab67a0"
+
+
+https://stackoverflow.com/questions/71592608/expo-build-eas-local-sdk-location-not-found

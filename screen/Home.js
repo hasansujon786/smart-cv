@@ -18,17 +18,12 @@ const Home = ({ navigation }) => {
 
   const interstitialAd = useContext(InterstitialAdContext)
   const onCreateCv = async () => {
-    if ((await interstitialAd.isAdReady()) && (await interstitialAd.isReadyToShow())) {
-      await interstitialAd.showAdIfLoaded()
-      return
-    }
+    interstitialAd.showAdIfLoaded()
     navigation.navigate('CreateProfile', { profileId: getNewId() })
   }
 
   const gotoProfile = async () => {
-    if ((await interstitialAd.isAdReady()) && (await interstitialAd.isReadyToShow())) {
-      await interstitialAd.showAdIfLoaded()
-    }
+    interstitialAd.showAdIfLoaded()
     navigation.navigate('Profiles')
   }
 
@@ -49,11 +44,7 @@ const Home = ({ navigation }) => {
       </Center>
       <Center pb={10}>
         <Button.Group space={3} direction='column' width={260} size='lg'>
-          <Button
-            startIcon={<Icon color='white' name='create-outline' />}
-            variant='primary'
-            onPress={onCreateCv}
-          >
+          <Button startIcon={<Icon color='white' name='create-outline' />} variant='primary' onPress={onCreateCv}>
             Create CV
           </Button>
           <Button

@@ -4,7 +4,7 @@ import { NativeBaseProvider } from 'native-base'
 import React from 'react'
 import 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import AdBannerBottom from './components/AdBannerBottom'
+// import AdBannerBottom from './components/AdBannerBottom'
 import { NetINfoProvider } from './features'
 import { InterstitialAdProvider } from './services'
 
@@ -20,7 +20,7 @@ export default function App() {
             <NavigationContainer>
               <RootNavigation />
               <StatusBar style='light' />
-              <AdBannerBottom />
+              {/* <AdBannerBottom /> */}
             </NavigationContainer>
           </NativeBaseProvider>
         </InterstitialAdProvider>
