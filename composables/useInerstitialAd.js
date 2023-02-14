@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { AdEventType, InterstitialAd, TestIds } from 'react-native-google-mobile-ads'
 import { UNIT_IDS } from '../constant'
 import { NetINfoContext } from '../features'
-import { devlog } from '../util'
+import { useDevLog } from '../util'
 
 // const APP_ALLOWED_TO_SHOW_ADD = !__DEV__
 
@@ -12,37 +12,43 @@ const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
   keywords: ['fashion', 'clothing'],
 })
 
-const useInterstitialAd = (intervel = 1000 * 60) => {
+const useInterstitialAd = (adIntervel = 1000 * 60 * 3) => {
+  const { devlog } = useDevLog()
   const netinfo = useContext(NetINfoContext)
-  const [shouldShowAdd, setShouldShowAdd] = useState(true)
+  // TODO: <14.02.23> may timestamp should be a good way
+  const [allowedToShowAd, setAllowedToShowAd] = useState(true)
 
   // initEvents
   useEffect(() => {
-    const eventOpened = interstitial.addAdEventListener(AdEventType.OPENED, () => {
-      console.log('OPENED')
-      setTimeout(() => downloadAd('from open'), 3000)
+    const eventClosed = interstitial.addAdEventListener(AdEventType.CLOSED, () => {
+      devlog('interstitial CLOSED ')
+      setTimeout(() => {
+        devlog('========= App is now allowed to show ad =========')
+        setAllowedToShowAd(true)
+        downloadAd('from adIntervel')
+      }, adIntervel)
     })
 
-    downloadAd('from init') // load interstitial straight away
+    // load interstitial straight away
+    downloadAd('from init')
 
     // only run this on dev
     const eventLoaded = __DEV__
-      ? interstitial.addAdEventListener(AdEventType.LOADED, () => console.log('LOADED'))
+      ? interstitial.addAdEventListener(AdEventType.LOADED, () => devlog('interstitial LOADED ' + isAllowedToShow()))
       : null
     return () => {
       // Unsubscribe from events on unmount
-      eventOpened()
+      eventClosed()
       eventLoaded && eventLoaded()
     }
   }, [])
 
   useEffect(() => {
-    console.log('netinfo.isOnline changed', netinfo.isOnline)
     downloadAd('from netinfo')
-  }, [netinfo.isOnline, shouldShowAdd])
+  }, [netinfo.isOnline])
 
   const downloadAd = (logMsg) => {
-    devlog(logMsg)
+    devlog('downloadAd ran ' + logMsg)
     try {
       if (!isAdReady()) {
         devlog('Downloading interstitial')
@@ -51,24 +57,31 @@ const useInterstitialAd = (intervel = 1000 * 60) => {
         devlog('Already interstitial downloaded')
       }
     } catch (error) {
-      devlog('ERROR on interstitial downloadAd', error)
+      console.log(error)
+      devlog('ERROR on interstitial downloadAd')
     }
   }
 
   const showAdIfLoaded = () => {
-    let adLoaded = interstitial.loaded
-    if (!adLoaded) {
-      downloadAd('showAdIfLoaded')
+    if (!interstitial.loaded) {
+      downloadAd('from showAdIfLoaded')
       return false
     }
+
+    if (!allowedToShowAd) {
+      devlog('You have to wail little longer to see next ad')
+      return false
+    }
+
     interstitial.show()
+    setAllowedToShowAd(false)
     return true
   }
 
   const isAdReady = () => interstitial.loaded
-  const isReadyToShow = () => shouldShowAdd
+  const isAllowedToShow = () => allowedToShowAd
 
-  return { showAdIfLoaded, isAdReady, isReadyToShow, downloadAd }
+  return { showAdIfLoaded, isAdReady, downloadAd, isAllowedToShow }
 }
 
 export default useInterstitialAd

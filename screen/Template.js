@@ -19,6 +19,7 @@ import { InterstitialAdContext } from '../services'
 const { width, height } = Dimensions.get('screen')
 const PDF_VIEW_WIDHT = height > 640 ? width * 0.9 : width * 0.7
 
+// FIXME: <14.02.23> Model overlay is not getting closed
 const Template = ({ route, navigation }) => {
   const appIsMounted = useRef(true)
   const pageSize = useSettingStore(useCallback((state) => state.pageSize))
@@ -61,14 +62,12 @@ const Template = ({ route, navigation }) => {
   }
 
   const interstitialAd = useContext(InterstitialAdContext)
-  const onViewDownload = async () => {
+  const onViewDownload = () => {
     let adHasShowed = false
-    if ((await interstitialAd.isAdReady()) && (await interstitialAd.isReadyToShow())) {
-      adHasShowed = await interstitialAd.showAdIfLoaded()
-    }
-    if (!adHasShowed) {
-      promptToViewDownloadedPdf(savedPdfUri)
-    }
+    adHasShowed = interstitialAd.showAdIfLoaded()
+    if (adHasShowed) return
+
+    promptToViewDownloadedPdf(savedPdfUri)
   }
 
   const { isPageReady } = useLazyScreenLoader()

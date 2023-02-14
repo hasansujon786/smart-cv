@@ -91,10 +91,8 @@ const CreateProfile = ({ navigation, route }) => {
   const [sectionList, setSectionList] = useState(defaultSectionList)
 
   const interstitialAd = useContext(InterstitialAdContext)
-  const onViewCv = async () => {
-    if (await interstitialAd.isAdReady()) {
-      await interstitialAd.showAdIfLoaded()
-    }
+  const onViewCv = () => {
+    interstitialAd.showAdIfLoaded()
     navigation.navigate('SelectTemplate', { profile })
   }
 

@@ -56,10 +56,11 @@ const THUMBNAIL_WIDTH = (width - 36) / 2
 const SelectTemplate = ({ navigation, profile, list }) => {
   const interstitialAd = useContext(InterstitialAdContext)
 
-  const onViewCv = async (selectedTemplateId, themes, defaultOptions) => {
-    if ((await interstitialAd.isAdReady()) && (await interstitialAd.isReadyToShow())) {
-      await interstitialAd.showAdIfLoaded()
-    }
+  const onViewCv = (selectedTemplateId, themes, defaultOptions) => {
+    let adHasShowed = false
+    adHasShowed = interstitialAd.showAdIfLoaded()
+    if (adHasShowed) return
+
     navigation.navigate('Template', { profile, selectedTemplateId, themes, defaultOptions })
   }
 

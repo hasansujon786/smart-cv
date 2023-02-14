@@ -17,12 +17,12 @@ const Home = ({ navigation }) => {
   }, [])
 
   const interstitialAd = useContext(InterstitialAdContext)
-  const onCreateCv = async () => {
+  const onCreateCv = () => {
     interstitialAd.showAdIfLoaded()
     navigation.navigate('CreateProfile', { profileId: getNewId() })
   }
 
-  const gotoProfile = async () => {
+  const gotoProfile = () => {
     interstitialAd.showAdIfLoaded()
     navigation.navigate('Profiles')
   }
