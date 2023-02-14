@@ -1,19 +1,23 @@
-import React, { useState } from 'react'
-import { AdMobBanner } from 'expo-ads-admob'
 import { Box } from 'native-base'
-import { BANNERS_ADS_TYPES, UNIT_IDS } from '../constant'
+import React, { useState } from 'react'
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads'
+import { UNIT_IDS } from '../constant'
+
+const adUnitId = __DEV__ ? TestIds.BANNER : UNIT_IDS.banner
 
 const AdBannerBottom = () => {
   const [height, setHeight] = useState(0)
 
   return (
     <Box height={height} backgroundColor='#fff'>
-      <AdMobBanner
-        servePersonalizedAds
-        bannerSize={BANNERS_ADS_TYPES.smartBannerPortrait}
-        adUnitID={UNIT_IDS.banner}
-        onAdViewDidReceiveAd={() => setHeight(null)}
-        onDidFailToReceiveAdWithError={(_) => setHeight(0)}
+      <BannerAd
+        unitId={adUnitId}
+        size={BannerAdSize.FULL_BANNER}
+        requestOptions={{
+          requestNonPersonalizedAdsOnly: true,
+        }}
+        onAdLoaded={() => setHeight(null)}
+        onAdFailedToLoad={(_) => setHeight(0)}
       />
     </Box>
   )
