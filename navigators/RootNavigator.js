@@ -20,6 +20,8 @@ import AdditionalInformation from '../screen/CreateProfile/AdditionalInformation
 import References from '../screen/CreateProfile/References'
 import Projects from '../screen/CreateProfile/Projects'
 import ZoomView from '../screen/ZoomView'
+import Playground from '../screen/Playground'
+import LogScreen from '../screen/LogScreen'
 
 const Stack = createStackNavigator()
 
@@ -30,6 +32,8 @@ const RootNavigator = () => {
         header: props => <GradientHeader {...props} />
       }}
     >
+      {/* <Stack.Screen name='Play' component={Playground} options={{ title: 'Playground' }} /> */}
+      {/* <Stack.Screen name='Logs' component={LogScreen}  /> */}
       <Stack.Screen name='Home' component={HomeNavigator} options={{ title: 'Smart CV', headerShown: false }} />
 
       <Stack.Screen name='Profiles' component={Profiles} options={{ title: 'Choose Profile' }} />
