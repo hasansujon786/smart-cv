@@ -1,4 +1,4 @@
-export { default as useInterstitialAd } from './useInerstitialAd'
+export { default as useInterstitialAd } from './useInterstitialAd'
 export { default as useInput, useLevelInput } from './useInput'
 export { default as useImagePicker } from './useImagePicker'
 export * from './useLazyScreenLoader'

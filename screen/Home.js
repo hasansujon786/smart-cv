@@ -18,7 +18,6 @@ const Home = ({ navigation }) => {
 
   const interstitialAd = useContext(InterstitialAdContext)
   const onCreateCv = () => {
-    interstitialAd.showAdIfLoaded()
     navigation.navigate('CreateProfile', { profileId: getNewId() })
   }
 

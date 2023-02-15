@@ -5,6 +5,7 @@ import { NetINfoContext } from '../features'
 import { useDevLog } from '../util'
 
 // const APP_ALLOWED_TO_SHOW_ADD = !__DEV__
+// useInerstitialAd
 
 const adUnitId = __DEV__ ? TestIds.INTERSTITIAL : UNIT_IDS.interstitial
 const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
