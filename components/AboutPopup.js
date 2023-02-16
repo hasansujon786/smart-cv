@@ -4,7 +4,7 @@ import { globalColors, APP_VERSION_NAME } from '../constant'
 
 const AboutPopup = ({ isOpen, onClose }) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={() => onClose(false)}>
       <Modal.Content>
         <Modal.Header _text={{ color: globalColors.primary }}>Smart CV</Modal.Header>
         <Text>&copy; Think nXt Media 2021</Text>

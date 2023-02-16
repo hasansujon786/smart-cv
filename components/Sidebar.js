@@ -84,7 +84,7 @@ const Sidebar = (props) => {
         </HStack>
       </Stack>
 
-      <AboutPopup isOpen={aboutModalVisible} onClose={() => setAboutModalVisible(false)} />
+      <AboutPopup isOpen={aboutModalVisible} onClose={setAboutModalVisible} />
     </Box>
   )
 }

@@ -48,3 +48,9 @@ new "projectId": "60e69d7d-bf68-470c-8457-38f8f6ab67a0"
 
 
 https://stackoverflow.com/questions/71592608/expo-build-eas-local-sdk-location-not-found
+
+// FIXME: <15.02.23> Perfomance issue, Slow to render Template
+VirtualizedList: You have a large list that is slow to update - make sure your
+renderItem function renders components that follow React performance best
+practices like PureComponent, shouldComponentUpdate, etc. {"contentLength":
+2418, "dt": 515, "prevDt": 2032}

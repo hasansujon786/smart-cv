@@ -4,8 +4,7 @@ import { UNIT_IDS } from '../constant'
 import { NetINfoContext } from '../features'
 import { useDevLog } from '../util'
 
-// const APP_ALLOWED_TO_SHOW_ADD = !__DEV__
-// useInerstitialAd
+const APP_ALLOWED_TO_SHOW_ADD = !__DEV__
 
 const adUnitId = __DEV__ ? TestIds.INTERSTITIAL : UNIT_IDS.interstitial
 const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
@@ -69,7 +68,7 @@ const useInterstitialAd = (adIntervel = 1000 * 60 * 3) => {
       return false
     }
 
-    if (!allowedToShowAd) {
+    if (!isAllowedToShow()) {
       devlog('You have to wail little longer to see next ad')
       return false
     }
@@ -80,7 +79,7 @@ const useInterstitialAd = (adIntervel = 1000 * 60 * 3) => {
   }
 
   const isAdReady = () => interstitial.loaded
-  const isAllowedToShow = () => allowedToShowAd
+  const isAllowedToShow = () => allowedToShowAd && APP_ALLOWED_TO_SHOW_ADD
 
   return { showAdIfLoaded, isAdReady, downloadAd, isAllowedToShow }
 }

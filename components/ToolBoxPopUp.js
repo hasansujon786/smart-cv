@@ -29,7 +29,7 @@ const ToolBoxPopUp = ({ isOpen, onClose, onApply, defaultOptions }) => {
   }
   return (
     <Box>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={() => onClose(false)}>
         <Modal.Content>
           <Modal.CloseButton colorScheme='red' />
           <Modal.Header _text={{ color: globalColors.primary }}>Settings</Modal.Header>
