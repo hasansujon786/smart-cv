@@ -23,8 +23,11 @@ const PersonalDetails = ({ route, navigation }) => {
 
   const pickImage = useImagePicker(
     (result) => {
-      setProfileImage(result.uri)
-      encondProfileImg(result.uri)
+      const { uri } = result?.assets[0]
+      if (uri !== null) {
+        setProfileImage(uri)
+        encondProfileImg(uri)
+      }
     },
     { aspect: [1, 1] }
   )

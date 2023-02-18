@@ -21,7 +21,7 @@ const useImagePicker = (callback, config = {}) => {
         ...config,
       })
 
-      if (!result.cancelled && callback) {
+      if (!result.canceled && callback) {
         callback(result)
       }
     } else {

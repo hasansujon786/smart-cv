@@ -19,7 +19,6 @@ import { InterstitialAdContext } from '../services'
 const { width, height } = Dimensions.get('screen')
 const PDF_VIEW_WIDHT = height > 640 ? width * 0.9 : width * 0.7
 
-// FIXME: <14.02.23> Model overlay is not getting closed
 const Template = ({ route, navigation }) => {
   const appIsMounted = useRef(true)
   const pageSize = useSettingStore(useCallback((state) => state.pageSize))
@@ -72,7 +71,7 @@ const Template = ({ route, navigation }) => {
 
   const { isPageReady } = useLazyScreenLoader()
   // it's a hot fix for crush issue.
-  // TODO: get a better way to do this.
+  // INFO: get a better way to do this.
   React.useEffect(() => {
     const backAction = () => {
       if (isPdfLoading) {
