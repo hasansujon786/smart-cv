@@ -17,28 +17,6 @@ import SimpleList from './shared/SimpleList'
 import { CommonTile } from './Q'
 import InfoRow from './shared/InfoRow'
 
-const RatingList = ({ items }) => {
-  return (
-    <div className='space-y-1 mt-2'>
-      {items.map((item, i) => (
-        <div key={i} className='flex items-end justify-between'>
-          <p className='text-xs font-semibold text-neutral'>{item.name}</p>
-          <div className='flex gap-1'>
-            {Array.from({ length: 5 }, (_, k) => k + 1).map((x) => (
-              <div
-                key={x}
-                className={`h-2 w-2 rounded-full border-primary ${
-                  x > item.level ? 'border-2 opacity-60' : 'bg-primary'
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  )
-}
-
 const Header = ({ children }) => (
   <div className=''>
     <h2 className='heading text-neutral font-semibold'>{children}</h2>
@@ -93,7 +71,7 @@ const TemplateP = ({ profile }) => {
           {(title, items) => (
             <div>
               <Header>{title}</Header>
-              <RatingList items={items} />
+              <SimpleList col='grid-cols-1 mt-1' items={items} />
             </div>
           )}
         </Skills>
@@ -102,7 +80,7 @@ const TemplateP = ({ profile }) => {
           {(title, items) => (
             <div>
               <Header>{title}</Header>
-              <RatingList items={items} />
+              <SimpleList col='grid-cols-1 mt-1' items={items} />
             </div>
           )}
         </Languages>
@@ -153,7 +131,6 @@ const TemplateP = ({ profile }) => {
             </section>
           )}
         </Education>
-
 
         <Experience experiences={profile.experiences}>
           {(title, experiences) => (

@@ -9,6 +9,7 @@ const Loaderbar = () => {
       px={8}
       justifyContent='space-between'
       position='absolute'
+      _dark={{ bg: 'gray.500' }}
       bg='white'
       top={0}
       bottom={0}
@@ -28,7 +29,7 @@ const ThemeSelectorBottomBar = ({ onSelect, themes, onShowPicker, isLoading }) =
       <HStack
         space={2}
         py={2}
-        px={8}
+        px={6}
         justifyContent='space-between'
         _light={{ bg: themeColors.light.bg }}
         _dark={{ bg: themeColors.dark.bg }}
