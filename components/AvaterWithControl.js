@@ -20,7 +20,6 @@ const IconB = (props) => {
   )
 }
 
-// TODO: <12.02.23> update Image picker api
 const AvaterWithControl = ({ uri, onPick, onRemove }) => {
   return (
     <Box>

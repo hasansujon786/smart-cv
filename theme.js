@@ -11,6 +11,7 @@ export const theme = extendTheme({
     'deep-purple': globalColors.primary,
   },
   components: {
+    // Input - Black selection color by default : https://github.com/GeekyAnts/NativeBase/issues/5420
     Input: {
       baseStyle: {
         _focus: {
@@ -18,6 +19,15 @@ export const theme = extendTheme({
           _android: {
             bg: 'purple.500:alpha.5',
             selectionColor: 'unset',
+          },
+        },
+        _dark: {
+          _focus: {
+            borderColor: 'deep-purple',
+            _android: {
+              bg: 'purple.500:alpha.5',
+              selectionColor: 'unset',
+            },
           },
         },
       },

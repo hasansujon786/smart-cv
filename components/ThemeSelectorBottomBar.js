@@ -6,13 +6,15 @@ import { themeColors } from '../constant/globalStyles'
 const Loaderbar = () => {
   return (
     <HStack
-      py={2}
       px={8}
-      inset={0}
       justifyContent='space-between'
       position='absolute'
       bg='white'
-      opacity={0.6}
+      top={0}
+      bottom={0}
+      right={0}
+      left={0}
+      opacity={0.8}
     />
   )
 }
@@ -35,7 +37,7 @@ const ThemeSelectorBottomBar = ({ onSelect, themes, onShowPicker, isLoading }) =
           <TouchableOpacity
             key={theme}
             onPress={() => {
-              if (selectedTheme == idx) return
+              if (isLoading || selectedTheme == idx) return
               onSelect(idx)
               setSelectedTheme(idx)
             }}
@@ -49,21 +51,19 @@ const ThemeSelectorBottomBar = ({ onSelect, themes, onShowPicker, isLoading }) =
               borderWidth={1}
               borderColor={notSelectedBorderColor}
             >
-              {selectedTheme == idx && (
-                <Box opacity={0.5} bg='gray.100' width='100%' height='100%' borderRadius={20} />
-              )}
+              {selectedTheme == idx && <Box opacity={0.5} bg='gray.100' width='100%' height='100%' borderRadius={20} />}
             </Center>
           </TouchableOpacity>
         ))}
 
-        <TouchableOpacity onPress={onShowPicker}>
+        <TouchableOpacity
+          onPress={() => {
+            if (isLoading) return
+            onShowPicker()
+          }}
+        >
           <Center width={8} height={8}>
-            <Image
-              width='100%'
-              height='100%'
-              source={require('../assets/paint.png')}
-              alt='theme picker icon'
-            />
+            <Image width='100%' height='100%' source={require('../assets/paint.png')} alt='theme picker icon' />
           </Center>
         </TouchableOpacity>
       </HStack>

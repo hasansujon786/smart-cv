@@ -2,7 +2,6 @@ import { FormControl, Input, TextArea } from 'native-base'
 import React from 'react'
 
 // TODO: <11.02.23> add next button
-// Input - Black selection color by default : https://github.com/GeekyAnts/NativeBase/issues/5420
 const FromInput = ({ label, renderTextArea, placeholder, input, ...props }) => {
   const InputComp = renderTextArea ? TextArea : Input
   return (

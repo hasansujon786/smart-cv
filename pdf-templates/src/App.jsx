@@ -20,7 +20,6 @@ import TemplateU from './templates/U'
 import { dummyProfile } from './templates/dummy'
 import { templateList } from '../../constant/templateData'
 
-// TODO: <15.02.23> Update the Thumbnail of 14
 const jsxComponents = {
   A: (profile) => <Base1 templateId='A' profile={profile} />,
   B: (profile) => <Base1 templateId='B' profile={profile} />,
