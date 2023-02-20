@@ -2,7 +2,7 @@
   "expo": {
     "name": "smart-cv",
     "slug": "smart-cv",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -19,6 +19,7 @@
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 10,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -30,7 +31,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "cf1a196f-9fcd-410a-baa1-d16de06a0323"
+        "projectId": "60e69d7d-bf68-470c-8457-38f8f6ab67a0"
       }
     },
     "plugins": [
