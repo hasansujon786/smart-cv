@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ScrollView, Box } from 'native-base'
-import FromInput from '../../components/FromInput'
+import FormInput from '../../components/FormInput'
 import InputBoxWrapper from '../../components/InputBoxWrapper'
 import CreateProfileControl from '../../components/CreateProfileControl'
 import { useInput, useLazyScreenLoader, LazyScreenLoader } from '../../composables'
@@ -16,7 +16,7 @@ const Achievements = ({ route, navigation }) => {
   if (!isPageReady) return <LazyScreenLoader />
   return (
     <Box flex={1} _light={{ bg: themeColors.light.bgDark }} _dark={{ bg: themeColors.dark.bgDark }}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 40, paddingHorizontal: 12 }}>
         {inputData.map((achievement, idx) => (
           <InputBox
             setMainData={setInputData}
@@ -58,7 +58,7 @@ const InputBox = ({ editMode, itemData, index, setMainData }) => {
 
   return (
     <InputBoxWrapper title='Achievement' setMainData={setMainData} id={itemData.id} index={index}>
-      <FromInput label='Achievement name' input={name} />
+      <FormInput label='Achievement name' {...name} />
     </InputBoxWrapper>
   )
 }

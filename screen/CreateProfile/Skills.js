@@ -1,7 +1,7 @@
 import { Box, ScrollView } from 'native-base'
 import React, { useEffect, useState } from 'react'
 import CreateProfileControl from '../../components/CreateProfileControl'
-import FromInput from '../../components/FromInput'
+import FormInput from '../../components/FormInput'
 import InputBoxWrapper from '../../components/InputBoxWrapper'
 import LevelSlider from '../../components/LevelSlider'
 import { LazyScreenLoader, useInput, useLazyScreenLoader, useLevelInput } from '../../composables'
@@ -17,7 +17,7 @@ const Skills = ({ route, navigation }) => {
   if (!isPageReady) return <LazyScreenLoader />
   return (
     <Box flex={1} _light={{ bg: themeColors.light.bgDark }} _dark={{ bg: themeColors.dark.bgDark }}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 40, paddingHorizontal: 12 }}>
         {inputData.map((skill, idx) => (
           <InputBox
             setMainData={setInputData}
@@ -46,7 +46,7 @@ const InputBox = ({ editMode, itemData, index, setMainData }) => {
   const skillLevel = useLevelInput(itemData?.level, editMode)
 
   useEffect(() => {
-    // update mainData on every input change
+    // INFO: Effectupdate mainData on every input change
     const updatedData = {
       ...itemData,
       name: name.value,
@@ -60,7 +60,7 @@ const InputBox = ({ editMode, itemData, index, setMainData }) => {
 
   return (
     <InputBoxWrapper title='Skill' setMainData={setMainData} id={itemData.id} index={index}>
-      <FromInput label='Skill name' input={name} />
+      <FormInput label='Skill name' {...name} />
       <LevelSlider level={skillLevel} />
     </InputBoxWrapper>
   )

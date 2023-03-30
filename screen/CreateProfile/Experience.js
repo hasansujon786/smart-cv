@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ScrollView, Box } from 'native-base'
-import FromInput from '../../components/FromInput'
+import FormInput from '../../components/FormInput'
 import InputBoxWrapper from '../../components/InputBoxWrapper'
 import CreateProfileControl from '../../components/CreateProfileControl'
 import { themeColors } from '../../constant'
@@ -16,7 +16,7 @@ const Experience = ({ route, navigation }) => {
   if (!isPageReady) return <LazyScreenLoader />
   return (
     <Box flex={1} _light={{ bg: themeColors.light.bgDark }} _dark={{ bg: themeColors.dark.bgDark }}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 40, paddingHorizontal: 12 }}>
         {inputData.map((experience, idx) => (
           <InputBox
             setMainData={setInputData}
@@ -65,11 +65,11 @@ const InputBox = ({ editMode, itemData, index, setMainData }) => {
 
   return (
     <InputBoxWrapper title='Experience' setMainData={setMainData} id={itemData.id} index={index}>
-      <FromInput label='Company Name' input={companyName} />
-      <FromInput label='Job Title' input={jobTitle} />
-      <FromInput label='Start Date' input={startDate} />
-      <FromInput label='End Date' input={endDate} />
-      <FromInput label='Details' input={details} />
+      <FormInput label='Company Name' {...companyName} />
+      <FormInput label='Job Title' {...jobTitle} />
+      <FormInput label='Start Date' {...startDate} />
+      <FormInput label='End Date' {...endDate} />
+      <FormInput label='Details' {...details} />
     </InputBoxWrapper>
   )
 }

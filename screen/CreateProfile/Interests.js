@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ScrollView, Box } from 'native-base'
-import FromInput from '../../components/FromInput'
+import FormInput from '../../components/FormInput'
 import InputBoxWrapper from '../../components/InputBoxWrapper'
 import CreateProfileControl from '../../components/CreateProfileControl'
 import { useInput, useLazyScreenLoader, LazyScreenLoader } from '../../composables'
@@ -16,7 +16,7 @@ const Interests = ({ route, navigation }) => {
   if (!isPageReady) return <LazyScreenLoader />
   return (
     <Box flex={1} _light={{ bg: themeColors.light.bgDark }} _dark={{ bg: themeColors.dark.bgDark }}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 40, paddingHorizontal: 12 }}>
         {inputData.map((skill, idx) => (
           <InputBox
             setMainData={setInputData}
@@ -57,7 +57,7 @@ const InputBox = ({ editMode, itemData, index, setMainData }) => {
 
   return (
     <InputBoxWrapper title='Interest' setMainData={setMainData} id={itemData.id} index={index}>
-      <FromInput label='Interest name' input={name} />
+      <FormInput label='Interest name' {...name} />
     </InputBoxWrapper>
   )
 }

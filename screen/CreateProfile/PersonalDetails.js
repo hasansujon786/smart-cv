@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useRef } from 'react'
 import { ScrollView, Center, Box, Stack, Text, Button } from 'native-base'
-import FromInput from '../../components/FromInput'
+import FormInput from '../../components/FormInput'
 import AvaterWithControl from '../../components/AvaterWithControl'
 import { themeColors } from '../../constant'
 import { useInput, useLazyScreenLoader, LazyScreenLoader, useImagePicker } from '../../composables'
@@ -58,11 +58,11 @@ const PersonalDetails = ({ route, navigation }) => {
       <ScrollView px={4}>
         <Stack space={4} mt={4}>
           {/* <Text bold underline>Default:</Text> */}
-          <FromInput label='Name' input={name} />
-          <FromInput label='Email' input={email} />
-          <FromInput label='Phone No.' input={phone} />
-          <FromInput label='Address' input={address} />
-          <FromInput label='Job Position/Title (Ex: Teacher)' input={subTitle} />
+          <FormInput label='Name' {...name} />
+          <FormInput label='Email' {...email} />
+          <FormInput label='Phone No.' {...phone} />
+          <FormInput label='Address' {...address} />
+          <FormInput label='Job Position/Title (Ex: Teacher)' {...subTitle} />
         </Stack>
 
         <Stack>

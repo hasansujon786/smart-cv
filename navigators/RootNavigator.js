@@ -1,27 +1,27 @@
-import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
+import React from 'react'
 import GradientHeader from '../components/GradientHeader'
 
 import HomeNavigator from './HomeNavigator'
 import SelectTemplateNavigator from './SelectTemplateNavigator'
 
-import Profiles from '../screen/Profiles'
-import Template from '../screen/Template'
+import Achievements from '../screen/CreateProfile/Achievements'
+import AdditionalInformation from '../screen/CreateProfile/AdditionalInformation'
 import CreateProfile from '../screen/CreateProfile/CreateProfile'
-import PersonalDetails from '../screen/CreateProfile/PersonalDetails'
 import Education from '../screen/CreateProfile/Education'
 import Experience from '../screen/CreateProfile/Experience'
-import Objective from '../screen/CreateProfile/Objective'
-import Skills from '../screen/CreateProfile/Skills'
-import Achievements from '../screen/CreateProfile/Achievements'
 import Interests from '../screen/CreateProfile/Interests'
 import Language from '../screen/CreateProfile/Language'
-import AdditionalInformation from '../screen/CreateProfile/AdditionalInformation'
-import References from '../screen/CreateProfile/References'
+import Objective from '../screen/CreateProfile/Objective'
+import PersonalDetails from '../screen/CreateProfile/PersonalDetails'
 import Projects from '../screen/CreateProfile/Projects'
-import ZoomView from '../screen/ZoomView'
+import References from '../screen/CreateProfile/References'
+import Skills from '../screen/CreateProfile/Skills'
 import Playground from '../screen/Playground'
-import LogScreen from '../screen/LogScreen'
+import Profiles from '../screen/Profiles'
+import Template from '../screen/Template'
+import ZoomView from '../screen/ZoomView'
+// import LogScreen from '../screen/LogScreen'
 
 const Stack = createStackNavigator()
 
@@ -32,9 +32,9 @@ const RootNavigator = () => {
         header: props => <GradientHeader {...props} />
       }}
     >
-      {/* <Stack.Screen name='Play' component={Playground} options={{ title: 'Playground' }} /> */}
-      {/* <Stack.Screen name='Logs' component={LogScreen}  /> */}
       <Stack.Screen name='Home' component={HomeNavigator} options={{ title: 'Smart CV', headerShown: false }} />
+      <Stack.Screen name='Play' component={Playground} options={{ title: 'Playground' }} />
+      {/* <Stack.Screen name='Logs' component={LogScreen}  /> */}
 
       <Stack.Screen name='Profiles' component={Profiles} options={{ title: 'Choose Profile' }} />
       <Stack.Screen name='CreateProfile' component={CreateProfile} options={({ route }) => ({ title: route.params.title || 'Create Profile' })} />

@@ -12,10 +12,14 @@ const CreateProfileControl = ({ setMainData, profileId, sectionKey, mainData, na
     navigation.goBack()
   }
 
+  const onAddPress = () => {
+    setMainData((prevArr) => [...prevArr, { id: getNewId() }])
+  }
+
   return (
-    <Button.Group mt={8} px={4} space={3} justifyContent='center' size='lg'>
+    <Button.Group mb={20} mt={8} space={3} justifyContent='center' size='lg'>
       <Button
-        onPress={() => setMainData((prevArr) => [...prevArr, { id: getNewId() }])}
+        onPressIn={onAddPress}
         variant='secondary'
         flex={1}
         startIcon={<Icon color='deep-purple' name='add-outline' />}

@@ -1,28 +1,28 @@
-import { Box, HStack, Slider, Text } from 'native-base'
 import React from 'react'
+import { Label, Slider, XStack } from 'tamagui'
 
-const LevelSlider = ({ level }) => {
+const LevelSlider = ({ level, children, ...props }) => {
+  const handleValueChange = (v) => level.onChangeText(Math.floor(v))
+
   return (
-    <HStack justifyContent='space-between' marginTop={3}>
-      <Text>Level {level.value}</Text>
-      <Box flex={1} mx={4}>
-        <Slider
-          defaultValue={level.value}
-          minValue={1}
-          maxValue={5}
-          accessibilityLabel='level slider'
-          size='md'
-          step={1}
-          onChange={(v) => level.onChangeText(Math.floor(v))}
-          // onChangeEnd={(v) =>  v && setOnChangeEndValue(Math.floor(v)) }
-        >
-          <Slider.Track>
-            <Slider.FilledTrack />
-          </Slider.Track>
-          <Slider.Thumb />
-        </Slider>
-      </Box>
-    </HStack>
+    <XStack ai='center' space='$4'>
+      <Label color='$color9'>Level {level.value}</Label>
+      <Slider
+        theme='purple'
+        defaultValue={[level?.value]}
+        min={1}
+        max={5}
+        step={1}
+        f={1}
+        onValueChange={handleValueChange}
+        {...props}
+      >
+        <Slider.Track>
+          <Slider.TrackActive />
+        </Slider.Track>
+        <Slider.Thumb index={0} circular elevate />
+      </Slider>
+    </XStack>
   )
 }
 

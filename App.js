@@ -1,30 +1,46 @@
 import { NavigationContainer } from '@react-navigation/native'
+import { useFonts } from 'expo-font'
 import { StatusBar } from 'expo-status-bar'
 import { NativeBaseProvider } from 'native-base'
 import React from 'react'
+import { useColorScheme } from 'react-native'
 import 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { TamaguiProvider, Theme } from 'tamagui'
 import AdBannerBottom from './components/AdBannerBottom'
 import { NetINfoProvider } from './features'
 import { InterstitialAdProvider } from './services'
 
 import RootNavigation from './navigators/RootNavigator'
-import { colorModeManager, config, theme } from './theme'
+import { colorModeManager, config as nativeBaseConfig, theme } from './theme'
 
+import config from './tamagui.config'
 export default function App() {
+  const colorScheme = useColorScheme()
+  const [loaded] = useFonts({
+    Inter: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
+    InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
+  })
+  if (!loaded) {
+    return null
+  }
   return (
     <SafeAreaProvider>
-      <NetINfoProvider>
-        <InterstitialAdProvider>
-          <NativeBaseProvider theme={theme} config={config} colorModeManager={colorModeManager}>
-            <NavigationContainer>
-              <RootNavigation />
-              <StatusBar style='light' />
-              <AdBannerBottom />
-            </NavigationContainer>
-          </NativeBaseProvider>
-        </InterstitialAdProvider>
-      </NetINfoProvider>
+      <NativeBaseProvider theme={theme} config={nativeBaseConfig} colorModeManager={colorModeManager}>
+        <TamaguiProvider config={config}>
+          <Theme name={colorScheme === 'dark' ? 'dark' : 'light'}>
+            <NetINfoProvider>
+              <InterstitialAdProvider>
+                <NavigationContainer>
+                  <StatusBar style='auto' />
+                  <RootNavigation />
+                  <AdBannerBottom />
+                </NavigationContainer>
+              </InterstitialAdProvider>
+            </NetINfoProvider>
+          </Theme>
+        </TamaguiProvider>
+      </NativeBaseProvider>
     </SafeAreaProvider>
   )
 }

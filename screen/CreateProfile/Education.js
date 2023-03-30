@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ScrollView, Box } from 'native-base'
-import FromInput from '../../components/FromInput'
+import FormInput from '../../components/FormInput'
 import InputBoxWrapper from '../../components/InputBoxWrapper'
 import CreateProfileControl from '../../components/CreateProfileControl'
 import { themeColors } from '../../constant'
@@ -16,7 +16,7 @@ const Education = ({ route, navigation }) => {
   if (!isPageReady) return <LazyScreenLoader />
   return (
     <Box flex={1} _light={{ bg: themeColors.light.bgDark }} _dark={{ bg: themeColors.dark.bgDark }}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 40, paddingHorizontal: 12 }}>
         {inputData.map((edu, idx) => (
           <InputBox
             setMainData={setInputData}
@@ -65,10 +65,10 @@ const InputBox = ({ editMode, itemData, index, setMainData }) => {
 
   return (
     <InputBoxWrapper title='Education' setMainData={setMainData} id={itemData.id} index={index}>
-      <FromInput label='Course / Degree' input={courseName} />
-      <FromInput label='School / University' input={grade} />
-      <FromInput label='Grade / Score' input={year} />
-      <FromInput label='Year' input={schoolName} />
+      <FormInput label='Course / Degree' {...courseName} />
+      <FormInput label='School / University' {...grade} />
+      <FormInput label='Grade / Score' {...year} />
+      <FormInput label='Year' {...schoolName} />
     </InputBoxWrapper>
   )
 }

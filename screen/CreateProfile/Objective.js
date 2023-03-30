@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { ScrollView, Box, Button, Stack } from 'native-base'
-import FromInput from '../../components/FromInput'
+import FormInput from '../../components/FormInput'
 import { themeColors } from '../../constant'
 import { useInput, useLazyScreenLoader, LazyScreenLoader } from '../../composables'
 import { useProfileStore } from '../../store/profiles'
@@ -22,9 +22,9 @@ const Objective = ({ route, navigation }) => {
   if (!isPageReady) return <LazyScreenLoader />
   return (
     <Box flex={1} _light={{ bg: themeColors.light.bg }} _dark={{ bg: themeColors.dark.bgDark }}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 40, paddingHorizontal: 12 }}>
         <Stack space={4} mt={4} px={4}>
-          <FromInput renderTextArea label='Objective' input={objectiveData} />
+          <FormInput renderTextArea label='Objective' {...objectiveData} />
         </Stack>
 
         <Button.Group mt={8} px={4} space={3} justifyContent='center' size='lg'>

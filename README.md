@@ -1,3 +1,4 @@
+https://tamagui.dev/docs/intro/introduction
 com.thinknxtmedia.smartcv
 https://docs.expo.dev/versions/latest/config/app/
 
@@ -6,6 +7,8 @@ npx expo install styled-components styled-system
 "expo-splash-screen": "~0.14.1",
 "expo-updates": "~0.11.7",
 
+yarn add tamagui expo-font @tamagui/font-inter @tamagui/theme-base @tamagui/animations-react-native @tamagui/config
+react-native-web react-dom
 
 
 react-native-web

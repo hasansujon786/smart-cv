@@ -1,31 +1,63 @@
+import { IconButton } from 'native-base'
 import React from 'react'
-import { Box, Stack, IconButton, HStack, Heading } from 'native-base'
-import { globalStyles, globalColors, themeColors } from '../constant/globalStyles'
+import { StyleSheet, Text, View } from 'react-native'
+import Animated, { FadeInUp, FadeOutDown } from 'react-native-reanimated'
+import { globalColors, globalStyles } from '../constant'
 import Icon from './Icon'
 
 const InputBoxWrapper = ({ children, title, id, index, setMainData }) => {
+  const deleteItem = () => setMainData((prevArr) => prevArr.filter((item) => item.id != id))
+
   return (
-    <Box
-      mx={2} mt={4} pb={8} overflow='hidden'
-      shadow={globalStyles.shadow}
-      rounded={globalStyles.borderRadius}
-      _light={{ bg: themeColors.light.bg }}
-      _dark={{ bg: themeColors.dark.bg }}
-    >
-      <HStack py={2} px={2} alignItems='center' justifyContent='space-between' bg={globalColors.primary} borderBottomWidth={1} borderColor='purple.600'>
-        <Heading ml={1} color='white' size='md' fontWeight='normal' >{title} {index + 1}</Heading>
+    <Animated.View entering={FadeInUp} exiting={FadeOutDown} style={styles.card}>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>
+          {title} {index + 1}
+        </Text>
         <IconButton
-          onPress={() => setMainData(prevArr => prevArr.filter(item => item.id != id))}
+          onPress={deleteItem}
           size='md'
           colorScheme='red'
           icon={<Icon color='white' size={5} name='trash-outline' />}
         />
-      </HStack>
-      <Stack space={4} mx={4} mt={3}>
-        {children}
-      </Stack>
-    </Box>
+      </View>
+
+      <View style={styles.container}>{children}</View>
+    </Animated.View>
   )
 }
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: '#fff',
+    marginTop: 20,
+    borderRadius: globalStyles.borderRadius,
+    overflow: 'hidden',
+  },
+  header: {
+    backgroundColor: globalColors.primary,
+    paddingLeft: 12,
+    paddingRight: 4,
+    paddingVertical: 5,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  headerTitle: {
+    color: '#fff',
+    fontSize: 18,
+  },
+  container: {
+    paddingHorizontal: 14,
+    paddingVertical: 16,
+  },
+  input: {
+    borderWidth: 1,
+    height: 52,
+    borderRadius: 8,
+    borderColor: '#aaa',
+    paddingHorizontal: 10,
+  },
+})
 
 export default InputBoxWrapper
