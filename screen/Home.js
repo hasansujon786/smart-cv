@@ -53,6 +53,14 @@ const Home = ({ navigation }) => {
           >
             Saved Profiles
           </Button>
+
+          <Button
+            startIcon={<Icon color={globalColors.primary} name='person-outline' />}
+            variant='secondary'
+            onPress={() => navigation.navigate('Play')}
+          >
+            Saved Profiles
+          </Button>
         </Button.Group>
       </Center>
     </Box>
