@@ -1,7 +1,7 @@
 import { IconButton } from 'native-base'
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import Animated, { FadeInUp, FadeOutDown } from 'react-native-reanimated'
+import Animated, { FadeInUp, Layout, ZoomOut } from 'react-native-reanimated'
 import { globalColors, globalStyles } from '../constant'
 import Icon from './Icon'
 
@@ -9,7 +9,7 @@ const InputBoxWrapper = ({ children, title, id, index, setMainData }) => {
   const deleteItem = () => setMainData((prevArr) => prevArr.filter((item) => item.id != id))
 
   return (
-    <Animated.View entering={FadeInUp} exiting={FadeOutDown} style={styles.card}>
+    <Animated.View entering={FadeInUp} exiting={ZoomOut} layout={Layout.delay(100)} style={styles.card}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>
           {title} {index + 1}
@@ -50,13 +50,6 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 14,
     paddingVertical: 16,
-  },
-  input: {
-    borderWidth: 1,
-    height: 52,
-    borderRadius: 8,
-    borderColor: '#aaa',
-    paddingHorizontal: 10,
   },
 })
 
