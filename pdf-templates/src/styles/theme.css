@@ -580,3 +580,67 @@ img {
 #theme-custom #U {
   --primary: var(--custom-color);
 }
+
+#V {
+  --list-text-c: var(--neutral);
+  --bar-t: var(--primary);
+  --bar-b: var(--gray-300);
+
+  --neutral: var(--gray-900);
+  --muted: var(--gray-600);
+  --on-primary: var(--black);
+  /* --primary: var(--gray-700); */
+}
+#theme-0 #V {
+  --primary: #FEBC88;
+}
+#theme-1 #V {
+  --primary: var(--cyan-900);
+}
+#theme-2 #V {
+  --primary: var(--teal);
+}
+#theme-3 #V {
+  --primary: var(--sweet-purple);
+}
+#theme-4 #V {
+  --primary: var(--hot-pink);
+}
+#theme-5 #V {
+  --primary: var(--skyblue);
+}
+#theme-custom #V {
+  --primary: var(--custom-color);
+}
+
+#W {
+  --list-text-c: var(--neutral);
+  --bar-t: var(--primary);
+  --bar-b: var(--gray-300);
+
+  --neutral: var(--gray-900);
+  --muted: var(--gray-600);
+  --on-primary: var(--black);
+  /* --primary: var(--gray-700); */
+}
+#theme-0 #W {
+  --primary: #FEBC88;
+}
+#theme-1 #W {
+  --primary: var(--cyan-900);
+}
+#theme-2 #W {
+  --primary: var(--teal);
+}
+#theme-3 #W {
+  --primary: var(--sweet-purple);
+}
+#theme-4 #W {
+  --primary: var(--hot-pink);
+}
+#theme-5 #W {
+  --primary: var(--skyblue);
+}
+#theme-custom #W {
+  --primary: var(--custom-color);
+}
