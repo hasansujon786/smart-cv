@@ -18,7 +18,7 @@ const InputBoxWrapper = ({ children, title, id, index, setMainData }) => {
           onPress={deleteItem}
           size='md'
           colorScheme='red'
-          icon={<Icon color='white' size={5} name='trash-outline' />}
+          icon={<Icon color='white' name='trash-outline' />}
         />
       </View>
 

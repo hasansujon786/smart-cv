@@ -1,8 +1,8 @@
+import { Box, Button, Center, HStack, Heading, IconButton, Menu, Stack, Text } from 'native-base'
 import React from 'react'
-import { Box, Heading, Center, Button, HStack, Text, Stack, IconButton, Menu } from 'native-base'
+import { globalColors, globalStyles, themeColors } from '../constant/globalStyles'
 import Icon from './Icon'
 import ProfileImage from './ProfileImage'
-import { globalStyles, themeColors } from '../constant/globalStyles'
 
 const ProfileCard = ({ index, profile, deleteById, onView, onEdit, onDemoView, ...props }) => {
   return (
@@ -27,10 +27,10 @@ const ProfileCard = ({ index, profile, deleteById, onView, onEdit, onDemoView, .
             placement='left'
             trigger={(triggerProps) => (
               <IconButton
-                size='sm'
+                size={10}
                 colorScheme='light'
                 {...triggerProps}
-                icon={<Icon size='md' color='gray.400' name='ellipsis-vertical-outline' />}
+                icon={<Icon color='#A0A0A0' name='ellipsis-vertical-outline' />}
               />
             )}
           >
@@ -54,7 +54,7 @@ const ProfileCard = ({ index, profile, deleteById, onView, onEdit, onDemoView, .
           onPress={onEdit}
           variant='secondary'
           flex={1}
-          startIcon={<Icon size='sm' color='deep-purple' name='create-outline' />}
+          startIcon={<Icon size='sm' color={globalColors.primary} name='create-outline' />}
         >
           Edit
         </Button>
@@ -62,7 +62,7 @@ const ProfileCard = ({ index, profile, deleteById, onView, onEdit, onDemoView, .
           onPress={onView}
           variant='secondary'
           flex={1}
-          startIcon={<Icon size='sm' color='deep-purple' name='eye-outline' />}
+          startIcon={<Icon size='sm' color={globalColors.primary} name='eye-outline' />}
         >
           View CV
         </Button>

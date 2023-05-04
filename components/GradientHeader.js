@@ -9,6 +9,7 @@ export const HeaderBackBtn = ({ headerTintColor, backAction }) => {
       rounded='full'
       colorScheme='light'
       onPress={backAction}
+      size={10}
       icon={<Icon color={headerTintColor} name='arrow-back' size='md' />}
     />
   )

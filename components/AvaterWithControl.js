@@ -35,13 +35,13 @@ const AvaterWithControl = ({ uri, onPick, onRemove }) => {
         bottom={0}
         left={-10}
         onPress={onRemove}
-        icon={<Icon color='gray.500' name='trash-outline' size='md' />}
+        icon={<Icon name='trash-outline' size='md' />}
       />
       <IconB
         bottom={0}
         right={-10}
         onPress={onPick}
-        icon={<Icon color='gray.500' name='camera-outline' size='md' />}
+        icon={<Icon name='camera-outline' size='md' />}
       />
     </Box>
   )

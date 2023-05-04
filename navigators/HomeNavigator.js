@@ -11,11 +11,11 @@ import Settings from '../screen/Settings'
 const MenuIcon = ({ navigation, headerTintColor }) => {
   return (
     <IconButton
+      size={12}
       colorScheme='light'
       rounded='full'
-      size='sm'
       onPress={() => navigation.openDrawer()}
-      icon={<Icon color={headerTintColor} name='menu-outline' size={8} />}
+      icon={<Icon color={headerTintColor} name='menu-outline' size='lg' />}
     />
   )
 }

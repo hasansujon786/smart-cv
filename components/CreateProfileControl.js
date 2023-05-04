@@ -4,6 +4,7 @@ import Animated, { FadeInUp } from 'react-native-reanimated'
 import { useProfileStore } from '../store/profiles'
 import { getNewId } from '../util'
 import Icon from './Icon'
+import { globalColors } from '../constant'
 
 const CreateProfileControl = ({ setMainData, profileId, sectionKey, mainData, navigation }) => {
   const createProfile = useProfileStore(useCallback((state) => state.create))
@@ -18,13 +19,13 @@ const CreateProfileControl = ({ setMainData, profileId, sectionKey, mainData, na
   }
 
   return (
-    <Animated.View key='new-section-controll' entering={FadeInUp} >
+    <Animated.View key='new-section-controll' entering={FadeInUp}>
       <Button.Group mb={20} mt={8} space={3} justifyContent='center' size='lg'>
         <Button
           onPressIn={onAddPress}
           variant='secondary'
           flex={1}
-          startIcon={<Icon color='deep-purple' name='add-outline' />}
+          startIcon={<Icon color={globalColors.primary} name='add-outline' />}
         >
           Add
         </Button>
