@@ -1,15 +1,21 @@
-import React, { useState, useCallback, useContext } from 'react'
-import { Stack, Box, ScrollView, Center, Text } from 'native-base'
-import { TouchableHighlight } from 'react-native'
+import { Center, Text } from 'native-base'
+import React, { useCallback, useContext } from 'react'
+import { FlatList, TouchableHighlight } from 'react-native'
+import Animated, { FadeIn } from 'react-native-reanimated'
+import { Stack } from 'tamagui'
+import Icon from '../../components/Icon'
 import SectionItem from '../../components/SectionItem'
 import SectionTitle from '../../components/SectionTitle'
-import Icon from '../../components/Icon'
+import { LazyScreenLoader, useLazyScreenLoader } from '../../composables'
+import { linearGradient } from '../../constant'
 import { InterstitialAdContext } from '../../services'
 import { useProfileStore } from '../../store/profiles'
-import { linearGradient, themeColors } from '../../constant'
-import { useLazyScreenLoader, LazyScreenLoader } from '../../composables'
 
-const defaultSectionList = [
+export const defaultSectionList = [
+  {
+    renderSeparator: 'Sections',
+    key: 'sepa-sections',
+  },
   {
     route: 'PersonalDetails',
     key: 'personalDetails',
@@ -40,9 +46,10 @@ const defaultSectionList = [
     name: 'Skills',
     icon: 'shield-checkmark-outline',
   },
-]
-
-const moreSectionList = [
+  {
+    renderSeparator: 'More',
+    key: 'sepa-more',
+  },
   {
     route: 'References',
     key: 'references',
@@ -88,55 +95,38 @@ const CreateProfile = ({ navigation, route }) => {
   const profile = allProfiles.find((p) => p.id == profileId)
   const editMode = profile ? true : false
 
-  const [sectionList, setSectionList] = useState(defaultSectionList)
-
   const interstitialAd = useContext(InterstitialAdContext)
   const onViewCv = () => {
     interstitialAd.showAdIfLoaded()
     navigation.navigate('SelectTemplate', { profile })
   }
+  const navToSeledForm = (route, key) => {
+    navigation.navigate(route, {
+      editMode,
+      profileId: profileId,
+      [key]: profile && profile[key] && profile[key],
+    })
+  }
 
   const { isPageReady } = useLazyScreenLoader()
   if (!isPageReady) return <LazyScreenLoader />
-  return (
-    <Box flex={1} _light={{ bg: themeColors.light.bgDark }} _dark={{ bg: themeColors.dark.bgDark }}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 30 }}>
-        <SectionTitle>Sections</SectionTitle>
-        <Stack space={3} flex={1} px={3}>
-          {sectionList.map((secItem) => (
-            <SectionItem
-              icon={secItem.icon}
-              key={secItem.route}
-              text={secItem.name}
-              onSelect={() =>
-                navigation.navigate(secItem.route, {
-                  editMode,
-                  profileId: profileId,
-                  [secItem.key]: profile && profile[secItem.key] && profile[secItem.key],
-                })
-              }
-            />
-          ))}
-        </Stack>
 
-        <SectionTitle>More</SectionTitle>
-        <Stack space={3} flex={1} px={3}>
-          {moreSectionList.map((secItem) => (
-            <SectionItem
-              icon={secItem.icon}
-              key={secItem.route}
-              text={secItem.name}
-              onSelect={() =>
-                navigation.navigate(secItem.route, {
-                  editMode,
-                  profileId: profileId,
-                  [secItem.key]: profile && profile[secItem.key] && profile[secItem.key],
-                })
-              }
-            />
-          ))}
-        </Stack>
-      </ScrollView>
+  return (
+    <Stack flex={1} bc='$background'>
+      <FlatList
+        contentContainerStyle={{ paddingHorizontal: 12, paddingBottom: 16 }}
+        data={defaultSectionList}
+        initialNumToRender={1}
+        renderItem={({ item, index }) => (
+          <Animated.View key={item.key} entering={FadeIn.delay(50 * index)}>
+            {item.renderSeparator ? (
+              <SectionTitle>{item.renderSeparator}</SectionTitle>
+            ) : (
+              <SectionItem icon={item.icon} text={item.name} onSelect={() => navToSeledForm(item.route, item.key)} />
+            )}
+          </Animated.View>
+        )}
+      />
 
       {profile && (
         <TouchableHighlight onPress={onViewCv}>
@@ -148,7 +138,7 @@ const CreateProfile = ({ navigation, route }) => {
           </Center>
         </TouchableHighlight>
       )}
-    </Box>
+    </Stack>
   )
 }
 

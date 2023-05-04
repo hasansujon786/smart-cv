@@ -1,25 +1,24 @@
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
-import { Box, Heading, HStack } from 'native-base';
+import { Paragraph, XStack } from 'tamagui'
+import { globalColors, globalStyles } from '../constant/globalStyles'
 import Icon from './Icon'
-import { globalColors, globalStyles, themeColors } from '../constant/globalStyles';
 
 const SectionItem = ({ onSelect, text, icon }) => {
   return (
-    <TouchableOpacity onPress={onSelect}>
-      <Box
-        px={4} py={5}
-        rounded={globalStyles.borderRadius}
-        _light={{ bg: themeColors.light.bg }}
-        _dark={{ bg: themeColors.dark.bg }}
+    <TouchableOpacity onPress={onSelect} style={{ marginTop: 12 }}>
+      <XStack
+        alignItems='center'
+        borderRadius={globalStyles.borderRadius}
+        bc='$layer1'
+        style={{ paddingHorizontal: 16, paddingVertical: 20 }}
       >
-        <HStack alignItems='center' justifyContent='space-between'>
-          <Icon color={globalColors.primary} size='md' name={icon} />
-          <Heading ml={3} fontWeight='normal' size='sm'>{text}</Heading>
-          <Box flex={1} />
-          <Icon color='gray.200' size='sm' name='chevron-forward' _dark={{ color: 'gray.500' }} />
-        </HStack>
-      </Box>
+        <Icon color={globalColors.primary} size='md' name={icon} />
+        <Paragraph pl='$3' mr='auto'>
+          {text}
+        </Paragraph>
+        <Icon size='sm' name='chevron-forward' />
+      </XStack>
     </TouchableOpacity>
   )
 }

@@ -6,6 +6,32 @@ import { shorthands } from '@tamagui/shorthands'
 import { themes, size, space, zIndex, color, radius } from '@tamagui/themes'
 import { createTamagui, createTokens } from 'tamagui'
 
+// gray1: '#161616',
+// gray2: '#1C1C1C',
+// gray3: '#232323',
+// gray4: '#282828',
+// gray5: '#2E2E2E',
+// gray6: '#343434',
+// gray7: '#3E3E3E',
+// gray8: '#505050',
+// gray9: '#707070',
+// gray10: '#7E7E7E',
+// gray11: '#A0A0A0',
+// gray12: '#EDEDED',
+export const appTheme = {
+  light: {
+    background: 'rgb(242,242,242)', // => default navigator background
+    layer1: '#ffffff',
+    color: '#000',
+    muted1: '#A0A0A0',
+  },
+  dark: {
+    background: '#292524',
+    layer1: '#333',
+    color: '#fff',
+  },
+}
+
 const tokens = createTokens({
   size,
   space,
@@ -14,7 +40,7 @@ const tokens = createTokens({
     ...color,
     primary: '#9966FF',
     white: '#fff',
-    black: '#000'
+    black: '#000',
   },
   radius,
 })
@@ -54,8 +80,7 @@ const config = createTamagui({
     body: bodyFont,
   },
 
-  themes,
-
+  themes: appTheme,
   tokens,
 
   media: createMedia({

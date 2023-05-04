@@ -1,8 +1,13 @@
 import { Ionicons } from '@expo/vector-icons'
-import { Icon } from 'native-base'
 import React from 'react'
 
-export default function ({ name = 'heart', color='muted.500', size = 'md', ...props }) {
-  return <Icon color={color} size={size} {...props} as={<Ionicons name={name} {...props} />} />
+const _sizes = {
+  sm: 16,
+  md: 24,
+  lg: 28,
 }
 
+function Icon({ name = 'heart', color = '#A0A0A0', size = 'md', ...props }) {
+  return <Ionicons color={'#A0A0A0'} name={name} size={_sizes[size]} {...props} />
+}
+export default Icon

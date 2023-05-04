@@ -1,7 +1,7 @@
 export const globalColors = {
   primary: '#9966FF',
-  primaryDark: 'purple.600',
-  grya1: 'hsl(0, 0%, 70%)'
+  primaryDark: '#9333ea',
+  grya1: 'hsl(0, 0%, 70%)',
 }
 
 export const globalStyles = {
@@ -12,7 +12,7 @@ export const globalStyles = {
 }
 
 export const linearGradient = {
-  colors: ['pink.500', 'violet.600'],
+  colors: ['#ec4899', '#7c3aed'], // ['pink.500', 'violet.600'],
   start: [0, 0],
   end: [1, 0],
 }
@@ -27,5 +27,5 @@ export const themeColors = {
     bg: '#333',
     bgDark: '#292524',
     iconBg: '#52525b', // => gray.600
-  }
+  },
 }

@@ -51,7 +51,7 @@ const Profiles = ({ navigation }) => {
           onPress={onCreate}
           icon={<Icon color='white' name='add' />}
           shadow={3}
-          size='lg'
+          size={16}
           rounded='full'
           variant='solid'
         />
