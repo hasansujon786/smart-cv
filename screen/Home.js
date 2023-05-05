@@ -1,11 +1,11 @@
-import React, { useCallback, useLayoutEffect, useContext } from 'react'
 import { Box, Button, Center, Image } from 'native-base'
+import React, { useCallback, useContext, useLayoutEffect } from 'react'
 import { Dimensions } from 'react-native'
-import { getNewId } from '../util'
 import Icon from '../components/Icon'
 import { globalColors, themeColors } from '../constant/globalStyles'
-import { useSettingStore } from '../store/setting'
 import { InterstitialAdContext } from '../services'
+import { useSettingStore } from '../store/setting'
+import { getNewId } from '../util'
 
 const { width } = Dimensions.get('screen')
 const CIRCLE_WIDTH = width * 0.6

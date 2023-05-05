@@ -1,46 +1,24 @@
-import React from 'react'
-import { useColorModeValue } from 'native-base'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import React from 'react'
+import { useThemeModeValue } from '../composables'
+import { globalColors, themeColors } from '../constant'
 import SelectTemplate from '../screen/SelectTemplate'
-import { globalColors, themeColors } from '../constant/globalStyles'
 const Tab = createMaterialTopTabNavigator()
 
-import { templateList } from '../constant/templateData'
-
 const SelectTemplateNavigator = ({ route }) => {
+  const c = useThemeModeValue({ color: '#444', bg: themeColors.light.bg }, { color: '#ddd', bg: themeColors.dark.bg })
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarLabelStyle: {
-          fontSize: 12,
-          color: useColorModeValue('#444', '#ddd'),
-        },
+        tabBarLabelStyle: { fontSize: 12, color: c.color },
         backBehavior: 'none',
-        tabBarStyle: {
-          backgroundColor: useColorModeValue(themeColors.light.bg, themeColors.dark.bg),
-        },
+        tabBarStyle: { backgroundColor: c.bg },
         tabBarIndicatorStyle: { backgroundColor: globalColors.primary },
       }}
     >
-      <Tab.Screen name='All'>
-        {(props) => (
-          <SelectTemplate list={templateList.all} profile={route?.params?.profile} {...props} />
-        )}
-      </Tab.Screen>
-      <Tab.Screen name='Professional'>
-        {(props) => (
-          <SelectTemplate
-            list={templateList.professional}
-            profile={route?.params?.profile}
-            {...props}
-          />
-        )}
-      </Tab.Screen>
-      <Tab.Screen name='Modern'>
-        {(props) => (
-          <SelectTemplate list={templateList.modern} profile={route?.params?.profile} {...props} />
-        )}
-      </Tab.Screen>
+      <Tab.Screen name='professional' component={SelectTemplate} initialParams={{ profile: route?.params?.profile }} />
+      <Tab.Screen name='modern' component={SelectTemplate} initialParams={{ profile: route?.params?.profile }} />
+      <Tab.Screen name='all' component={SelectTemplate} initialParams={{ profile: route?.params?.profile }} />
     </Tab.Navigator>
   )
 }

@@ -57,7 +57,6 @@ const useInterstitialAd = (adIntervel = 1000 * 60 * 3) => {
         devlog('Already interstitial downloaded')
       }
     } catch (error) {
-      console.log(error)
       devlog('ERROR on interstitial downloadAd')
     }
   }

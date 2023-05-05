@@ -1,4 +1,4 @@
-import { createStackNavigator } from '@react-navigation/stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react'
 import GradientHeader from '../components/GradientHeader'
 
@@ -23,7 +23,7 @@ import Template from '../screen/Template'
 import ZoomView from '../screen/ZoomView'
 // import LogScreen from '../screen/LogScreen'
 
-const Stack = createStackNavigator()
+const Stack = createNativeStackNavigator()
 
 const RootNavigator = () => {
   return (

@@ -3,7 +3,7 @@ import { createInterFont } from '@tamagui/font-inter'
 import { createMedia } from '@tamagui/react-native-media-driver'
 import { shorthands } from '@tamagui/shorthands'
 
-import { themes, size, space, zIndex, color, radius } from '@tamagui/themes'
+import { color, radius, size, space, zIndex } from '@tamagui/themes'
 import { createTamagui, createTokens } from 'tamagui'
 
 // gray1: '#161616',
