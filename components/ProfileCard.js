@@ -1,73 +1,71 @@
-import { Box, Button, Center, HStack, Heading, IconButton, Menu, Stack, Text } from 'native-base'
 import React from 'react'
-import { globalColors, globalStyles, themeColors } from '../constant/globalStyles'
+import { Circle, Heading, Text, XStack, YStack } from 'tamagui'
+import { globalColors, globalStyles } from '../constant/globalStyles'
 import Icon from './Icon'
 import ProfileImage from './ProfileImage'
+import { Button } from './atom'
 
-const ProfileCard = ({ index, profile, deleteById, onView, onEdit, onDemoView, ...props }) => {
+const ProfileCard = ({ index, profile, deleteById, onView, onEdit, ...props }) => {
   return (
-    <Box
-      shadow={globalStyles.shadow}
-      pb={3}
-      mx={3}
-      pt={1}
-      rounded={globalStyles.borderRadius}
-      _light={{ bg: themeColors.light.bg }}
-      _dark={{ bg: themeColors.dark.bg }}
-      {...props}
+    <YStack
+      theme='light'
+      mt='$3'
+      mx='$3'
+      pb='$3'
+      pt='$1'
+      bc='$layer1'
+      borderRadius={globalStyles.borderRadius}
+      style={{ elevation: 1 }}
+      alignItems='center'
     >
-      <HStack justifyContent='space-between'>
-        <Center ml={2} mt={1} rounded='full' width={9} height={9} bg='gray.100' _dark={{ bg: themeColors.dark.bgDark }}>
-          <Text fontSize='xs' fontWeight='bold' color='gray.400'>
+      <XStack justifyContent='space-between' width='100%'>
+        <Circle ml='$2' mt='$1.5' size='$3' backgroundColor='$background'>
+          <Text color='$muted1' fontWeight='bold'>
             {index + 1}
           </Text>
-        </Center>
-        <Box mr={2} mt={1}>
-          <Menu
-            placement='left'
-            trigger={(triggerProps) => (
-              <IconButton
-                size={10}
-                colorScheme='light'
-                {...triggerProps}
-                icon={<Icon color='#A0A0A0' name='ellipsis-vertical-outline' />}
-              />
-            )}
-          >
-            <Menu.Item onPress={() => deleteById(profile.id)}>Delete</Menu.Item>
-          </Menu>
-        </Box>
-      </HStack>
+        </Circle>
 
-      <Stack pb={4} alignItems='center'>
-        <ProfileImage source={{ uri: profile?.personalDetails?.profileImage }} size='lg' />
-        <Heading size='xs' mt={5}>
-          {profile?.personalDetails?.name}
-        </Heading>
-        <Heading size='xs' fontWeight='normal'>
-          {profile?.personalDetails?.email}
-        </Heading>
-      </Stack>
+        {/* // TODO: add menu */}
+        {/* <Box mr={2} mt={1}> */}
+        {/*   <Menu */}
+        {/*     placement='left' */}
+        {/*     trigger={(triggerProps) => ( */}
+        {/*       <IconButton */}
+        {/*         size={10} */}
+        {/*         colorScheme='light' */}
+        {/*         {...triggerProps} */}
+        {/*         icon={<Icon color='#A0A0A0' name='ellipsis-vertical-outline' />} */}
+        {/*       /> */}
+        {/*     )} */}
+        {/*   > */}
+        {/*     <Menu.Item onPress={() => deleteById(profile.id)}>Delete</Menu.Item> */}
+        {/*   </Menu> */}
+        {/* </Box> */}
+      </XStack>
 
-      <Button.Group px={4} colorScheme='purple'>
+      <ProfileImage source={{ uri: profile?.personalDetails?.profileImage }} />
+      <Heading size='xs' mt='$3' fontWeight='bold'>
+        {profile?.personalDetails?.name}
+      </Heading>
+      <Heading color='$muted2' size='xs' mt={-2}>
+        {profile?.personalDetails?.email}
+      </Heading>
+
+      <XStack mt='$4' space='$2' px='$4' justifyContent='center'>
         <Button
-          onPress={onEdit}
-          variant='secondary'
-          flex={1}
-          startIcon={<Icon size='sm' color={globalColors.primary} name='create-outline' />}
+          onPress={() => onEdit(profile)}
+          icon={<Icon size='sm' color={globalColors.primary} name='create-outline' />}
         >
           Edit
         </Button>
         <Button
-          onPress={onView}
-          variant='secondary'
-          flex={1}
-          startIcon={<Icon size='sm' color={globalColors.primary} name='eye-outline' />}
+          onPress={() => onView(profile)}
+          icon={<Icon size='sm' color={globalColors.primary} name='eye-outline' />}
         >
           View CV
         </Button>
-      </Button.Group>
-    </Box>
+      </XStack>
+    </YStack>
   )
 }
 

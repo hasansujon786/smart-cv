@@ -1,11 +1,13 @@
 import React, { useCallback, useEffect } from 'react'
-import { Box, Center, IconButton, ScrollView } from 'native-base'
-import ProfileCard from '../components/ProfileCard'
+import { FlatList } from 'react-native'
+import Animated, { FadeIn } from 'react-native-reanimated'
+import { YStack } from 'tamagui'
 import Icon from '../components/Icon'
+import ProfileCard from '../components/ProfileCard'
+import { Center, PrimaryButton } from '../components/atom'
+import { LazyScreenLoader, useLazyScreenLoader } from '../composables'
 import { useProfileStore } from '../store/profiles'
 import { getNewId } from '../util'
-import { globalColors, themeColors } from '../constant'
-import { useLazyScreenLoader, LazyScreenLoader } from '../composables'
 
 const Profiles = ({ navigation }) => {
   const profiles = useProfileStore(useCallback((state) => state.profiles))
@@ -20,43 +22,45 @@ const Profiles = ({ navigation }) => {
     navigation.navigate('CreateProfile', { profileId: getNewId() })
   }
 
+  const handleOnView = (profile) => {
+    navigation.navigate('SelectTemplate', { profile })
+  }
+
+  const handleOnEdit = (profile) => {
+    navigation.navigate('CreateProfile', { profileId: profile.id, title: 'Update Profile' })
+  }
+
+  const profileCardItem = ({ item, index }) => {
+    return (
+      <Animated.View key={item.id} entering={FadeIn.delay(100 * index)}>
+        <ProfileCard
+          index={index}
+          profile={item}
+          deleteById={deleteProfile}
+          onView={handleOnView}
+          onEdit={handleOnEdit}
+          mt={4}
+        />
+      </Animated.View>
+    )
+  }
+
   const { isPageReady } = useLazyScreenLoader()
   if (!isPageReady) return <LazyScreenLoader />
   return (
-    <Box flex={1} _light={{ bg: themeColors.light.bgDark }} _dark={{ bg: themeColors.dark.bgDark }}>
-      <ScrollView contentContainerStyle={{ minHeight: '100%' }}>
-        {profiles.map((item, index) => (
-          <ProfileCard
-            key={item.id}
-            index={index}
-            profile={item}
-            deleteById={deleteProfile}
-            onView={() => navigation.navigate('SelectTemplate', { profile: item })}
-            onEdit={() =>
-              navigation.navigate('CreateProfile', {
-                profileId: item.id,
-                title: 'Update Profile',
-              })
-            }
-            mt={4}
-          />
-        ))}
-        <Box pb={100} />
-      </ScrollView>
-      <Center position='absolute' bottom={5} right={5}>
-        <IconButton
-          onLongPress={createDummyProfile} // todo: comment this line in production
-          bg={globalColors.primary}
-          colorScheme='purple'
+    <YStack flex={1} bc='$background'>
+      <FlatList contentContainerStyle={{ paddingBottom: 16 }} data={profiles} renderItem={profileCardItem} />
+
+      <Center position='absolute' bottom='$4' right='$4'>
+        <PrimaryButton
+          // onLongPress={createDummyProfile} // todo: comment this line in production
           onPress={onCreate}
-          icon={<Icon color='white' name='add' />}
-          shadow={3}
-          size={16}
-          rounded='full'
-          variant='solid'
+          icon={<Icon color='white' name='add' size='md' />}
+          size='$6'
+          circular
         />
       </Center>
-    </Box>
+    </YStack>
   )
 }
 

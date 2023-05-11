@@ -1,49 +1,26 @@
 import React from 'react'
-import { Box, IconButton } from 'native-base'
-import ProfileImage from './ProfileImage'
+import { Circle, XStack, YStack } from 'tamagui'
 import Icon from './Icon'
+import ProfileImage from './ProfileImage'
+import { Button } from './atom'
 
-const IconB = (props) => {
+const IconBtn = ({ iconName }) => {
   return (
-    <IconButton
-      variant='solid'
-      borderWidth={2}
-      borderColor='white'
-      colorScheme='dark'
-      _pressed={{ backgroundColor: 'gray.400' }}
-      _dark={{ borderColor: 'gray.700' }}
-      bg='gray.200'
-      position='absolute'
-      size='md'
-      {...props}
-    />
+    <Circle bg='$layer1' p={3}>
+      <Button circular icon={<Icon color='red' name={iconName} size='md' />} style={{}} />
+    </Circle>
   )
 }
 
 const AvaterWithControl = ({ uri, onPick, onRemove }) => {
   return (
-    <Box>
-      <ProfileImage
-        source={{ uri: uri }}
-        width={150}
-        height={150}
-        borderWidth={2}
-        borderColor='gray.200'
-        _dark={{ borderColor: 'gray.500' }}
-      />
-      <IconB
-        bottom={0}
-        left={-10}
-        onPress={onRemove}
-        icon={<Icon name='trash-outline' size='md' />}
-      />
-      <IconB
-        bottom={0}
-        right={-10}
-        onPress={onPick}
-        icon={<Icon name='camera-outline' size='md' />}
-      />
-    </Box>
+    <YStack position='relative'>
+      <ProfileImage source={{ uri: uri }} size='$12' />
+      <XStack justifyContent='space-between' position='absolute' bottom={0} left={-10} right={-10}>
+        <IconBtn onPress={onRemove} iconName='trash-outline' />
+        <IconBtn onPress={onPick} iconName='camera-outline' />
+      </XStack>
+    </YStack>
   )
 }
 

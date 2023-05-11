@@ -3,7 +3,7 @@ import { createInterFont } from '@tamagui/font-inter'
 import { createMedia } from '@tamagui/react-native-media-driver'
 import { shorthands } from '@tamagui/shorthands'
 
-import { color, radius, size, space, zIndex } from '@tamagui/themes'
+import { themes, color, radius, size, space, zIndex } from '@tamagui/themes'
 import { createTamagui, createTokens } from 'tamagui'
 
 // gray1: '#161616',
@@ -20,15 +20,24 @@ import { createTamagui, createTokens } from 'tamagui'
 // gray12: '#EDEDED',
 export const appTheme = {
   light: {
+    ...themes.light,
     background: 'rgb(242,242,242)', // => default navigator background
     layer1: '#ffffff',
     color: '#000',
     muted1: '#A0A0A0',
+    muted2: '#737373',
+    primary: '#9966FF',
+    primaryDark: '#9333ea',
   },
   dark: {
+    ...themes.dark,
     background: '#292524',
     layer1: '#333',
     color: '#fff',
+    muted1: '#A0A0A0',
+    muted2: '#a3a3a3',
+    primary: '#9966FF',
+    primaryDark: '#9333ea',
   },
 }
 
@@ -38,7 +47,7 @@ const tokens = createTokens({
   zIndex,
   color: {
     ...color,
-    primary: '#9966FF',
+    primary: '#ff0000',
     white: '#fff',
     black: '#000',
   },
