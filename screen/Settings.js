@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
-import { Box } from 'native-base'
+import { YStack } from 'tamagui'
 import SettingRadioOptions from '../components/SettingRadioOptions'
-import { themeColors, imageQualitys } from '../constant'
+import { imageQualitys } from '../constant'
 import { useSettingStore } from '../store/setting'
 
 const settings = {
@@ -16,7 +16,7 @@ const Settings = () => {
   const updateImageQuality = useSettingStore(useCallback((state) => state.updateImageQuality))
 
   return (
-    <Box _light={{ bg: themeColors.light.bg }} _dark={{ bg: themeColors.dark.bgDark }} flex={1}>
+    <YStack flex={1} bg='$background'>
       <SettingRadioOptions
         title='Paper Size'
         description={pageSize?.name || ''}
@@ -32,7 +32,7 @@ const Settings = () => {
         options={settings.imageQualityOptions}
         onOptionSelect={updateImageQuality}
       />
-    </Box>
+    </YStack>
   )
 }
 

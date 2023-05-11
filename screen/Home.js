@@ -1,8 +1,9 @@
-import { Box, Button, Center, Image } from 'native-base'
 import React, { useCallback, useContext, useLayoutEffect } from 'react'
 import { Dimensions } from 'react-native'
+import { Image, Stack, YStack } from 'tamagui'
 import Icon from '../components/Icon'
-import { globalColors, themeColors } from '../constant/globalStyles'
+import { Button, Center, PrimaryButton } from '../components/atom'
+import { globalColors } from '../constant/globalStyles'
 import { InterstitialAdContext } from '../services'
 import { useSettingStore } from '../store/setting'
 import { getNewId } from '../util'
@@ -27,43 +28,49 @@ const Home = ({ navigation }) => {
   }
 
   return (
-    <Box flex={1} _light={{ bg: themeColors.light.bg }} _dark={{ bg: themeColors.dark.bgDark }}>
-      <Center flex={1} mt={8}>
-        <Box
+    <YStack flex={1} bg='$layer1' py='$4'>
+      <Center flex={2}>
+        <Stack
           overflow='hidden'
+          borderColor='$background'
+          borderRadius={CIRCLE_WIDTH}
           borderWidth={6}
-          borderColor='gray.200'
           width={CIRCLE_WIDTH}
           height={CIRCLE_WIDTH}
-          rounded={CIRCLE_WIDTH}
-          _dark={{ borderColor: 'gray.600' }}
+          elevationAndroid={2}
         >
-          <Image width='100%' height='100%' source={require('../assets/icon-circle.png')} alt='app icon image' />
-        </Box>
+          <Image
+            source={require('../assets/icon-circle.png')}
+            alt='app icon image'
+            style={{ width: '100%', height: '100%' }}
+          />
+        </Stack>
       </Center>
-      <Center pb={10}>
-        <Button.Group space={3} direction='column' width={260} size='lg'>
-          <Button startIcon={<Icon color='white' name='create-outline' />} variant='primary' onPress={onCreateCv}>
-            Create CV
-          </Button>
-          <Button
-            startIcon={<Icon color={globalColors.primary} name='person-outline' />}
-            variant='secondary'
-            onPress={gotoProfile}
+
+      <Center flex={1}>
+        <YStack rowGap='$3' width={260}>
+          <PrimaryButton
+            size='$6'
+            borderRadius={26}
+            onPress={onCreateCv}
+            icon={<Icon size='md' color='white' name='create-outline' />}
+            style={{ height: 60, elevation: 2 }}
           >
-            Saved Profiles
-          </Button>
+            Create CV
+          </PrimaryButton>
 
           <Button
-            startIcon={<Icon color={globalColors.primary} name='person-outline' />}
-            variant='secondary'
-            onPress={() => navigation.navigate('Play')}
+            size='$6'
+            borderRadius={26}
+            onPress={gotoProfile}
+            icon={<Icon size='md' color={globalColors.primary} name='person-outline' />}
+            style={{ height: 60, elevation: 2 }}
           >
             Saved Profiles
           </Button>
-        </Button.Group>
+        </YStack>
       </Center>
-    </Box>
+    </YStack>
   )
 }
 

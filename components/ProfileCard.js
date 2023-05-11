@@ -8,7 +8,6 @@ import { Button } from './atom'
 const ProfileCard = ({ index, profile, deleteById, onView, onEdit, ...props }) => {
   return (
     <YStack
-      theme='light'
       mt='$3'
       mx='$3'
       pb='$3'
@@ -55,12 +54,14 @@ const ProfileCard = ({ index, profile, deleteById, onView, onEdit, ...props }) =
         <Button
           onPress={() => onEdit(profile)}
           icon={<Icon size='sm' color={globalColors.primary} name='create-outline' />}
+          flex={1}
         >
           Edit
         </Button>
         <Button
           onPress={() => onView(profile)}
           icon={<Icon size='sm' color={globalColors.primary} name='eye-outline' />}
+          flex={1}
         >
           View CV
         </Button>

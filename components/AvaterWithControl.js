@@ -1,13 +1,12 @@
 import React from 'react'
-import { Circle, XStack, YStack } from 'tamagui'
+import { Button, Circle, XStack, YStack } from 'tamagui'
 import Icon from './Icon'
 import ProfileImage from './ProfileImage'
-import { Button } from './atom'
 
 const IconBtn = ({ iconName }) => {
   return (
     <Circle bg='$layer1' p={3}>
-      <Button circular icon={<Icon color='red' name={iconName} size='md' />} style={{}} />
+      <Button circular icon={<Icon name={iconName} size='md' />} />
     </Circle>
   )
 }

@@ -39,7 +39,6 @@ const Profiles = ({ navigation }) => {
           deleteById={deleteProfile}
           onView={handleOnView}
           onEdit={handleOnEdit}
-          mt={4}
         />
       </Animated.View>
     )
@@ -49,7 +48,7 @@ const Profiles = ({ navigation }) => {
   if (!isPageReady) return <LazyScreenLoader />
   return (
     <YStack flex={1} bc='$background'>
-      <FlatList contentContainerStyle={{ paddingBottom: 16 }} data={profiles} renderItem={profileCardItem} />
+      <FlatList contentContainerStyle={{ paddingBottom: 100 }} data={profiles} renderItem={profileCardItem} />
 
       <Center position='absolute' bottom='$4' right='$4'>
         <PrimaryButton

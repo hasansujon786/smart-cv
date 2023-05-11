@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View } from 'react-native'
+import { Stack } from 'tamagui'
 
 export const useLazyScreenLoader = () => {
   const [isPageReady, setIsPageReady] = useState(false)
@@ -14,4 +14,4 @@ export const useLazyScreenLoader = () => {
   return { isPageReady }
 }
 
-export const LazyScreenLoader = () => <View />
+export const LazyScreenLoader = () => <Stack backgroundColor='$background' flex={1} />
