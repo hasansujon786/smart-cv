@@ -3,10 +3,10 @@ import { Button, Circle, XStack, YStack } from 'tamagui'
 import Icon from './Icon'
 import ProfileImage from './ProfileImage'
 
-const IconBtn = ({ iconName }) => {
+const IconBtn = ({ iconName, ...props }) => {
   return (
     <Circle bg='$layer1' p={3}>
-      <Button circular icon={<Icon name={iconName} size='md' />} />
+      <Button {...props} circular icon={<Icon name={iconName} size='md' />} />
     </Circle>
   )
 }

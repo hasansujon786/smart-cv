@@ -1,26 +1,29 @@
-import { useColorModeValue } from 'native-base'
-import React from 'react'
 import PDFReader from '@bildau/rn-pdf-reader'
+import React from 'react'
 // import PDFReader from 'rn-pdf-reader-js'
-import { themeColors } from '../constant/globalStyles'
-const IconSize = 48
+import { useTheme } from 'tamagui'
+const IconSize = 50
 
-const PdfView = ({ bg, uri, onLoadEnd, ...props }) => {
-  let iconBg = useColorModeValue(themeColors.light.iconBg, themeColors.dark.iconBg)
-  const readerContainerNumbersContent = useColorModeValue(
-    { backgroundColor: themeColors.light.bg, color: '#3f3f46' },
-    { backgroundColor: themeColors.dark.bg, color: '#ddd' },
-  )
+const PdfView = ({ uri, onLoadEnd, ...props }) => {
+  const theme = useTheme()
+  const screenBg = theme.background.val
+  const iconBg = theme.iconBg.val
+
   return (
     <PDFReader
-      webviewStyle={{ backgroundColor: bg }}
+      webviewStyle={{ backgroundColor: screenBg }}
       source={{ uri: uri }}
       customStyle={{
         readerContainerDocument: {
-          backgroundColor: bg, position: 'absolute', top: 0, bottom: 0, left: 0, right: 0,
+          backgroundColor: screenBg,
+          position: 'absolute',
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
         },
-        readerContainerNumbers: { backgroundColor: bg },
-        readerContainerNumbersContent: readerContainerNumbersContent,
+        readerContainerNumbers: { backgroundColor: screenBg },
+        readerContainerNumbersContent: { backgroundColor: iconBg },
         readerContainerNavigate: { backgroundColor: 'transparent', width: 120, marginBottom: 1 },
         readerContainerNavigateArrow: { backgroundColor: iconBg, borderRadius: 30, width: IconSize, height: IconSize },
         readerContainerZoomContainer: { display: 'none' },

@@ -9,7 +9,7 @@ const TemplateThumbnail = React.memo(({ index, item, onPress }) => {
   return (
     <Stack mt='$3' style={{ paddingHorizontal: 6 }}>
       <TouchableOpacity
-        style={{ flex: 1, borderRadius: 2, overflow: 'hidden', aspectRatio: 0.71429, width: THUMBNAIL_WIDTH }}
+        style={{ flex: 1, borderRadius: 4, overflow: 'hidden', aspectRatio: 0.71429, width: THUMBNAIL_WIDTH }}
         onPress={() => onPress(item.id, item.themes, item.defaultOptions)}
       >
         <Image resizeMode='cover' source={img} style={{ width: '100%', height: '100%' }} />
