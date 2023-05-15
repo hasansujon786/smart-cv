@@ -52,7 +52,7 @@ const Profiles = ({ navigation }) => {
 
       <Center position='absolute' bottom='$4' right='$4'>
         <PrimaryButton
-          // onLongPress={createDummyProfile} // todo: comment this line in production
+          // onLongPress={createDummyProfile} // TODO: comment this line in production
           onPress={onCreate}
           icon={<Icon color='white' name='add' size='md' />}
           size='$6'

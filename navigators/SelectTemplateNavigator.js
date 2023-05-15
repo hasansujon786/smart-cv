@@ -1,18 +1,21 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import React from 'react'
-import { useThemeModeValue } from '../composables'
-import { globalColors, themeColors } from '../constant'
+import { useTheme } from 'tamagui'
+import { globalColors } from '../constant'
 import SelectTemplate from '../screen/SelectTemplate'
 const Tab = createMaterialTopTabNavigator()
 
 const SelectTemplateNavigator = ({ route }) => {
-  const c = useThemeModeValue({ color: '#444', bg: themeColors.light.bg }, { color: '#ddd', bg: themeColors.dark.bg })
+  const theme = useTheme()
+  const bg = theme.layer1.val
+  const color = theme.muted2.val
+
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarLabelStyle: { fontSize: 12, color: c.color },
+        tabBarLabelStyle: { fontSize: 12, color: color },
         backBehavior: 'none',
-        tabBarStyle: { backgroundColor: c.bg },
+        tabBarStyle: { backgroundColor: bg },
         tabBarIndicatorStyle: { backgroundColor: globalColors.primary },
       }}
     >

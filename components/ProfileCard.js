@@ -46,7 +46,7 @@ const ProfileCard = ({ index, profile, deleteById, onView, onEdit, ...props }) =
       <Heading size='xs' mt='$3' fontWeight='bold'>
         {profile?.personalDetails?.name}
       </Heading>
-      <Heading color='$muted2' size='xs' mt={-2}>
+      <Heading color='$muted2' size='xs'>
         {profile?.personalDetails?.email}
       </Heading>
 

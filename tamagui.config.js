@@ -32,6 +32,7 @@ export const appTheme = {
     iconBg: 'hsl(0, 0%, 70%)',
     btnBg: '#f4f4f5',
     btnBg_pressed: '#e4e4e7',
+    inputBorder: '#EBEBEB'
   },
   dark: {
     ...themes.dark,
@@ -46,6 +47,7 @@ export const appTheme = {
     iconBg: '#52525b', // => gray.600
     btnBg: '#3f3f46',
     btnBg_pressed: '#27272a',
+    inputBorder: '#505050'
   },
 }
 

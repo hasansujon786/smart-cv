@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
-import { Text, YStack } from 'tamagui'
+import { Paragraph, Text, YStack } from 'tamagui'
 import AvaterWithControl from '../../components/AvaterWithControl'
 import FormInput from '../../components/FormInput'
 import { Center, PrimaryButton } from '../../components/atom'
@@ -59,14 +59,15 @@ const PersonalDetails = ({ route, navigation }) => {
     <YStack flex={1} bg='$layer1'>
       <ScrollView style={{ paddingHorizontal: 16 }}>
         <YStack space='$3' mt='$2'>
-          {/* <Text bold underline>Default:</Text> */}
           <FormInput label='Name' {...name} />
           <FormInput label='Email' {...email} />
           <FormInput label='Phone No.' {...phone} />
           <FormInput label='Address' {...address} />
           <FormInput label='Job Position/Title (Ex: Teacher)' {...subTitle} />
 
-          <Text mt='$2'>Photo (Optional)</Text>
+          <Paragraph size='sm' mt='$2'>
+            Photo (Optional)
+          </Paragraph>
           <Center>
             <AvaterWithControl uri={profileImage} onPick={pickImage} onRemove={() => setProfileImage(null)} />
           </Center>

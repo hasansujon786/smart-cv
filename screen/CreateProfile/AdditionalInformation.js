@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react'
 import { ScrollView } from 'react-native'
+import { Stack } from 'tamagui'
 import FormInput from '../../components/FormInput'
 import { Center, PrimaryButton } from '../../components/atom'
 import { LazyScreenLoader, useInput, useLazyScreenLoader } from '../../composables'
 import { globalStyles } from '../../constant'
 import { useProfileStore } from '../../store/profiles'
-import { Stack } from 'tamagui'
 
 const SECTION_KEY = 'additionalInformation'
 
@@ -25,7 +25,6 @@ const AdditionalInformation = ({ route, navigation }) => {
   return (
     <Stack flex={1} bg='$background'>
       <ScrollView contentContainerStyle={{ paddingBottom: 40, paddingHorizontal: 12 }}>
-        {/* // TODO: add textArea */}
         <FormInput renderTextArea label='Additional Info' {...inputData} />
 
         <Center mt='$6'>

@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingHorizontal: 14,
-    paddingBottom: 20,
+    paddingBottom: 22,
   },
 })
 
