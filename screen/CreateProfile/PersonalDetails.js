@@ -1,9 +1,11 @@
-import React, { useCallback, useState, useRef } from 'react'
-import { ScrollView, Center, Box, Stack, Text, Button } from 'native-base'
-import FormInput from '../../components/FormInput'
+import React, { useCallback, useRef, useState } from 'react'
+import { ScrollView } from 'react-native'
+import { Text, YStack } from 'tamagui'
 import AvaterWithControl from '../../components/AvaterWithControl'
-import { themeColors } from '../../constant'
-import { useInput, useLazyScreenLoader, LazyScreenLoader, useImagePicker } from '../../composables'
+import FormInput from '../../components/FormInput'
+import { Center, PrimaryButton } from '../../components/atom'
+import { LazyScreenLoader, useImagePicker, useInput, useLazyScreenLoader } from '../../composables'
+import { globalStyles } from '../../constant'
 import { useProfileStore } from '../../store/profiles'
 import { encodeImg } from '../../util'
 
@@ -54,31 +56,29 @@ const PersonalDetails = ({ route, navigation }) => {
   const { isPageReady } = useLazyScreenLoader()
   if (!isPageReady) return <LazyScreenLoader />
   return (
-    <Box flex={1} _light={{ bg: themeColors.light.bg }} _dark={{ bg: themeColors.dark.bgDark }}>
-      <ScrollView px={4}>
-        <Stack space={4} mt={4}>
+    <YStack flex={1} bg='$layer1'>
+      <ScrollView style={{ paddingHorizontal: 16 }}>
+        <YStack space='$3' mt='$2'>
           {/* <Text bold underline>Default:</Text> */}
           <FormInput label='Name' {...name} />
           <FormInput label='Email' {...email} />
           <FormInput label='Phone No.' {...phone} />
           <FormInput label='Address' {...address} />
           <FormInput label='Job Position/Title (Ex: Teacher)' {...subTitle} />
-        </Stack>
 
-        <Stack>
-          <Text mt={6}>Photo (Optional)</Text>
-          <Center flex={1} space={2} mt={2}>
+          <Text mt='$2'>Photo (Optional)</Text>
+          <Center>
             <AvaterWithControl uri={profileImage} onPick={pickImage} onRemove={() => setProfileImage(null)} />
           </Center>
-        </Stack>
+        </YStack>
 
-        <Button.Group my={8} px={4} space={3} justifyContent='center' size='lg'>
-          <Button width={200} onPress={saveProfile} variant='primary'>
+        <Center my='$6'>
+          <PrimaryButton onPress={saveProfile} size='$5' width={200} borderRadius={globalStyles.borderRadius}>
             Save
-          </Button>
-        </Button.Group>
+          </PrimaryButton>
+        </Center>
       </ScrollView>
-    </Box>
+    </YStack>
   )
 }
 

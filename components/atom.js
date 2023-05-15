@@ -1,10 +1,12 @@
 import { Button as RawButton, styled, YStack } from 'tamagui'
+import { globalStyles } from '../constant'
 
 export const Button = styled(RawButton, {
-  borderRadius: 16,
+  borderRadius: globalStyles.borderRadius,
   color: '$primary',
   style: { elevation: 2 },
-  pressStyle: { backgroundColor: '$color7', elevation: 0 },
+  backgroundColor: '$btnBg',
+  pressStyle: { backgroundColor: '$btnBg_pressed', elevation: 0 },
   variants: {
     isDisabled: {
       true: {
@@ -15,7 +17,7 @@ export const Button = styled(RawButton, {
 })
 
 export const PrimaryButton = styled(RawButton, {
-  borderRadius: 16,
+  borderRadius: globalStyles.borderRadius,
   color: 'white',
   backgroundColor: '$primary',
   style: { elevation: 2 },

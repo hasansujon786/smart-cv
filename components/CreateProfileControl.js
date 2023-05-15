@@ -1,10 +1,12 @@
-import { Button } from 'native-base'
 import React, { useCallback } from 'react'
+import { StyleSheet } from 'react-native'
 import Animated, { FadeInUp } from 'react-native-reanimated'
+
+import { globalColors, globalStyles } from '../constant'
 import { useProfileStore } from '../store/profiles'
 import { getNewId } from '../util'
 import Icon from './Icon'
-import { globalColors } from '../constant'
+import { Button, PrimaryButton } from './atom'
 
 const CreateProfileControl = ({ setMainData, profileId, sectionKey, mainData, navigation }) => {
   const createProfile = useProfileStore(useCallback((state) => state.create))
@@ -19,22 +21,29 @@ const CreateProfileControl = ({ setMainData, profileId, sectionKey, mainData, na
   }
 
   return (
-    <Animated.View key='new-section-controll' entering={FadeInUp}>
-      <Button.Group mb={20} mt={8} space={3} justifyContent='center' size='lg'>
-        <Button
-          onPressIn={onAddPress}
-          variant='secondary'
-          flex={1}
-          startIcon={<Icon color={globalColors.primary} name='add-outline' />}
-        >
-          Add
-        </Button>
-        <Button onPress={saveProfile} variant='primary' flex={1}>
-          Save
-        </Button>
-      </Button.Group>
+    <Animated.View key='new-section-controll' entering={FadeInUp} style={styles.wrapper}>
+      <Button
+        size='$5'
+        flex={1}
+        borderRadius={globalStyles.borderRadius}
+        icon={<Icon size='md' color={globalColors.primary} name='add-outline' />}
+        onPressIn={onAddPress}
+      >
+        Add
+      </Button>
+      <PrimaryButton size='$5' flex={1} borderRadius={globalStyles.borderRadius} onPress={saveProfile}>
+        Save
+      </PrimaryButton>
     </Animated.View>
   )
 }
 
 export default CreateProfileControl
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flexDirection: 'row',
+    columnGap: 8,
+    marginTop: 24,
+  },
+})

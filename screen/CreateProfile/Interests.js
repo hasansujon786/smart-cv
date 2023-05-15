@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { ScrollView, Box } from 'native-base'
+import React, { useEffect, useState } from 'react'
+import { ScrollView } from 'react-native'
+import { Stack } from 'tamagui'
+import CreateProfileControl from '../../components/CreateProfileControl'
 import FormInput from '../../components/FormInput'
 import InputBoxWrapper from '../../components/InputBoxWrapper'
-import CreateProfileControl from '../../components/CreateProfileControl'
-import { useInput, useLazyScreenLoader, LazyScreenLoader } from '../../composables'
-import { themeColors } from '../../constant'
+import { LazyScreenLoader, useInput, useLazyScreenLoader } from '../../composables'
 
 const SECTION_KEY = 'interests'
 
@@ -15,7 +15,7 @@ const Interests = ({ route, navigation }) => {
   const { isPageReady } = useLazyScreenLoader()
   if (!isPageReady) return <LazyScreenLoader />
   return (
-    <Box flex={1} _light={{ bg: themeColors.light.bgDark }} _dark={{ bg: themeColors.dark.bgDark }}>
+    <Stack flex={1} bg='$background'>
       <ScrollView contentContainerStyle={{ paddingBottom: 40, paddingHorizontal: 12 }}>
         {inputData.map((skill, idx) => (
           <InputBox
@@ -36,7 +36,7 @@ const Interests = ({ route, navigation }) => {
           mainData={inputData}
         />
       </ScrollView>
-    </Box>
+    </Stack>
   )
 }
 

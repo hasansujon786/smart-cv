@@ -1,11 +1,12 @@
-import { Center, Text } from 'native-base'
 import React, { useCallback, useContext } from 'react'
 import { FlatList, TouchableHighlight } from 'react-native'
 import Animated, { FadeIn } from 'react-native-reanimated'
-import { Stack } from 'tamagui'
+import { Stack, Text } from 'tamagui'
+import { LinearGradient } from 'tamagui/linear-gradient'
 import Icon from '../../components/Icon'
 import SectionItem from '../../components/SectionItem'
 import SectionTitle from '../../components/SectionTitle'
+import { Center } from '../../components/atom'
 import { LazyScreenLoader, useLazyScreenLoader } from '../../composables'
 import { linearGradient } from '../../constant'
 import { InterstitialAdContext } from '../../services'
@@ -130,12 +131,14 @@ const CreateProfile = ({ navigation, route }) => {
 
       {profile && (
         <TouchableHighlight onPress={onViewCv}>
-          <Center flexDirection='row' py={3} bg={{ linearGradient }}>
-            <Icon color='white' name='eye-outline' />
-            <Text color='white' ml={2} fontSize='lg'>
-              View CV
-            </Text>
-          </Center>
+          <LinearGradient height='$6' {...linearGradient}>
+            <Center flex={1} flexDirection='row'>
+              <Icon color='white' name='eye-outline' />
+              <Text fontSize={16} ml='$2' color='white'>
+                View CV
+              </Text>
+            </Center>
+          </LinearGradient>
         </TouchableHighlight>
       )}
     </Stack>

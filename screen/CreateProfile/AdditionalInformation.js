@@ -1,9 +1,11 @@
 import React, { useCallback } from 'react'
-import { ScrollView, Box, Button, Stack } from 'native-base'
+import { ScrollView } from 'react-native'
 import FormInput from '../../components/FormInput'
+import { Center, PrimaryButton } from '../../components/atom'
+import { LazyScreenLoader, useInput, useLazyScreenLoader } from '../../composables'
+import { globalStyles } from '../../constant'
 import { useProfileStore } from '../../store/profiles'
-import { useInput, useLazyScreenLoader, LazyScreenLoader } from '../../composables'
-import { themeColors } from '../../constant'
+import { Stack } from 'tamagui'
 
 const SECTION_KEY = 'additionalInformation'
 
@@ -21,19 +23,18 @@ const AdditionalInformation = ({ route, navigation }) => {
   const { isPageReady } = useLazyScreenLoader()
   if (!isPageReady) return <LazyScreenLoader />
   return (
-    <Box flex={1} _light={{ bg: themeColors.light.bg }} _dark={{ bg: themeColors.dark.bgDark }}>
+    <Stack flex={1} bg='$background'>
       <ScrollView contentContainerStyle={{ paddingBottom: 40, paddingHorizontal: 12 }}>
-        <Box px={4} mt={4}>
-          <FormInput renderTextArea label='Additional Info' {...inputData} />
-        </Box>
+        {/* // TODO: add textArea */}
+        <FormInput renderTextArea label='Additional Info' {...inputData} />
 
-        <Button.Group mt={8} px={4} space={3} justifyContent='center' size='lg'>
-          <Button width={200} onPress={saveProfile} variant='primary'>
+        <Center mt='$6'>
+          <PrimaryButton onPress={saveProfile} size='$5' width={200} borderRadius={globalStyles.borderRadius}>
             Save
-          </Button>
-        </Button.Group>
+          </PrimaryButton>
+        </Center>
       </ScrollView>
-    </Box>
+    </Stack>
   )
 }
 

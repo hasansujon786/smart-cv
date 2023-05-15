@@ -1,7 +1,7 @@
-import { IconButton } from 'native-base'
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import Animated, { FadeInUp, Layout, ZoomOut } from 'react-native-reanimated'
+import { Button, YStack } from 'tamagui'
 import { globalColors, globalStyles } from '../constant'
 import Icon from './Icon'
 
@@ -14,22 +14,24 @@ const InputBoxWrapper = ({ children, title, id, index, setMainData }) => {
         <Text style={styles.headerTitle}>
           {title} {index + 1}
         </Text>
-        <IconButton
+        <Button
+          circular
           onPress={deleteItem}
-          size='md'
-          colorScheme='red'
-          icon={<Icon color='white' name='trash-outline' />}
+          backgroundColor='transparent'
+          pressStyle={{ backgroundColor: '$red9' }}
+          icon={<Icon size='md' color='white' name='trash-outline' />}
         />
       </View>
 
-      <View style={styles.container}>{children}</View>
+      <YStack rowGap='$2' bg='$layer1' style={styles.container}>
+        {children}
+      </YStack>
     </Animated.View>
   )
 }
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
     marginTop: 20,
     borderRadius: globalStyles.borderRadius,
     overflow: 'hidden',
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingHorizontal: 14,
-    paddingVertical: 16,
+    paddingBottom: 20,
   },
 })
 

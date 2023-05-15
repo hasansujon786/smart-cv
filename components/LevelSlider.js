@@ -6,7 +6,7 @@ const LevelSlider = ({ level, children, ...props }) => {
 
   return (
     <XStack ai='center' space='$4'>
-      <Label color='$color9'>Level {level.value}</Label>
+      <Label>Level {level.value}</Label>
       <Slider
         theme='purple'
         defaultValue={[level?.value]}
@@ -20,7 +20,7 @@ const LevelSlider = ({ level, children, ...props }) => {
         <Slider.Track>
           <Slider.TrackActive />
         </Slider.Track>
-        <Slider.Thumb index={0} circular elevate />
+        <Slider.Thumb index={0} bg='$primary' borderRadius={20} />
       </Slider>
     </XStack>
   )

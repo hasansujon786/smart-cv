@@ -127,7 +127,7 @@ const Template = ({ route, navigation }) => {
         {isPdfLoading && <TemplateLoader height={LOADER_HEIGHT} />}
       </Stack>
 
-      <Center mb='$4' mt='$3' justifyContent='space-around' rowGap='$2'>
+      <Center flex={0} mb='$4' mt='$3' justifyContent='space-around' rowGap='$2'>
         <PrimaryButton
           disabled={isPdfLoading || isDownloading}
           isDisabled={isPdfLoading || isDownloading}

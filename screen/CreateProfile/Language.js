@@ -1,11 +1,11 @@
-import { Box, ScrollView } from 'native-base'
 import React, { useEffect, useState } from 'react'
+import { ScrollView } from 'react-native'
+import { Stack } from 'tamagui'
 import CreateProfileControl from '../../components/CreateProfileControl'
 import FormInput from '../../components/FormInput'
 import InputBoxWrapper from '../../components/InputBoxWrapper'
 import LevelSlider from '../../components/LevelSlider'
 import { LazyScreenLoader, useInput, useLazyScreenLoader, useLevelInput } from '../../composables'
-import { themeColors } from '../../constant'
 
 const SECTION_KEY = 'languages'
 
@@ -16,7 +16,7 @@ const Language = ({ route, navigation }) => {
   const { isPageReady } = useLazyScreenLoader()
   if (!isPageReady) return <LazyScreenLoader />
   return (
-    <Box flex={1} _light={{ bg: themeColors.light.bgDark }} _dark={{ bg: themeColors.dark.bgDark }}>
+    <Stack flex={1} bg='$background'>
       <ScrollView contentContainerStyle={{ paddingBottom: 40, paddingHorizontal: 12 }}>
         {inputData.map((skill, idx) => (
           <InputBox
@@ -37,7 +37,7 @@ const Language = ({ route, navigation }) => {
           mainData={inputData}
         />
       </ScrollView>
-    </Box>
+    </Stack>
   )
 }
 
