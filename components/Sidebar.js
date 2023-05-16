@@ -1,22 +1,13 @@
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer'
-import { Box, HStack, Stack, Switch, Text, useColorMode, useColorModeValue } from 'native-base'
-import React, { useEffect, useState } from 'react'
-import { Linking, Share, TouchableNativeFeedback } from 'react-native'
-import Icon from '../components/Icon'
-import AboutPopup from './AboutPopup'
+import React from 'react'
+import { Alert, Linking, Share } from 'react-native'
+import { YStack } from 'tamagui'
 
-import { PLAY_STORE_ALL_APPS, PLAY_STORE_APP_LINK, themeColors } from '../constant'
+import Icon from '../components/Icon'
+import { APP_NAME, APP_VERSION_NAME, PLAY_STORE_ALL_APPS, PLAY_STORE_APP_LINK } from '../constant'
 
 const Sidebar = (props) => {
-  const [aboutModalVisible, setAboutModalVisible] = useState(false)
   const { drawerInactiveTintColor } = props
-  const { toggleColorMode, colorMode } = useColorMode()
-  const [isDarkMode, setIsDarkMode] = useState(colorMode == 'dark')
-  const toggleDarkMode = () => {
-    toggleColorMode()
-    setIsDarkMode((v) => !v)
-  }
-  useEffect(() => setIsDarkMode(colorMode == 'dark'), [colorMode])
 
   const onShare = async () => {
     try {
@@ -38,11 +29,23 @@ const Sidebar = (props) => {
       alert(error.message)
     }
   }
+  const onRateApp = () => Linking.openURL(PLAY_STORE_APP_LINK)
+  const onOpenMoreApps = () => Linking.openURL(PLAY_STORE_ALL_APPS)
+
+  const showAboutPopup = () =>
+    Alert.alert(APP_NAME, `Think nXt Media 2023 \nVersion: ${APP_VERSION_NAME}`, [
+      {
+        text: 'Close',
+        style: 'cancel',
+      },
+    ])
 
   return (
-    <Box bg='white' _dark={{ bg: themeColors.dark.bg }} flex={1}>
+    <YStack bg='$layer1' flex={1}>
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
+
+        {/* Custom list */}
         <DrawerItem
           inactiveTintColor={drawerInactiveTintColor}
           icon={(props) => <Icon {...props} name='share-social-outline' size='md' />}
@@ -53,39 +56,22 @@ const Sidebar = (props) => {
           inactiveTintColor={drawerInactiveTintColor}
           icon={(props) => <Icon {...props} name='star-outline' size='md' />}
           label='Rate the app'
-          onPress={() => Linking.openURL(PLAY_STORE_APP_LINK)}
+          onPress={onRateApp}
         />
         <DrawerItem
           inactiveTintColor={drawerInactiveTintColor}
           icon={(props) => <Icon {...props} name='information-circle-outline' size='md' />}
           label='About'
-          onPress={() => setAboutModalVisible(true)}
+          onPress={showAboutPopup}
         />
         <DrawerItem
           inactiveTintColor={drawerInactiveTintColor}
           icon={(props) => <Icon {...props} name='apps-outline' size='md' />}
           label='More apps'
-          onPress={() => Linking.openURL(PLAY_STORE_ALL_APPS)}
+          onPress={onOpenMoreApps}
         />
       </DrawerContentScrollView>
-
-      <Stack borderTopWidth={1} borderColor='gray.100' _dark={{ borderColor: 'gray.700' }}>
-        <HStack pr={2}>
-          <TouchableNativeFeedback onPress={toggleDarkMode}>
-            <HStack space={6} flex={1} alignItems='center' pl={5} py={4} roundedRight='md'>
-              <Icon name={useColorModeValue('moon-outline', 'moon')} size='md' color={drawerInactiveTintColor} />
-              <Text fontSize='sm' color={drawerInactiveTintColor}>
-                Dark Mode
-              </Text>
-            </HStack>
-          </TouchableNativeFeedback>
-
-          <Switch size='md' onToggle={toggleDarkMode} isChecked={isDarkMode} colorScheme='purple' />
-        </HStack>
-      </Stack>
-
-      <AboutPopup isOpen={aboutModalVisible} onClose={setAboutModalVisible} />
-    </Box>
+    </YStack>
   )
 }
 

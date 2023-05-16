@@ -35,3 +35,10 @@ export const Center = styled(YStack, {
   justifyContent: 'center',
   alignItems: 'center',
 })
+
+export const GroustIconButton = styled(RawButton, {
+  size: '$4',
+  circular: true,
+  backgroundColor: 'transparent',
+  pressStyle: { backgroundColor: 'hsla(0, 0%, 0%, 0.15)' },
+})

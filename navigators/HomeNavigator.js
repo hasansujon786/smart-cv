@@ -1,20 +1,21 @@
 import { createDrawerNavigator } from '@react-navigation/drawer'
-import { IconButton, useColorModeValue } from 'native-base'
 import React from 'react'
+import { useTheme } from 'tamagui'
 import GradientHeader from '../components/GradientHeader'
 import Icon from '../components/Icon'
 import Sidebar from '../components/Sidebar'
+import { GroustIconButton } from '../components/atom'
+import { APP_NAME } from '../constant'
 import { globalColors } from '../constant/globalStyles'
 import Home from '../screen/Home'
 import Settings from '../screen/Settings'
 
 const MenuIcon = ({ navigation, headerTintColor }) => {
   return (
-    <IconButton
-      size={12}
-      colorScheme='light'
-      rounded='full'
-      onPress={() => navigation.openDrawer()}
+    <GroustIconButton
+      size='$5'
+      circular
+      onPress={navigation.openDrawer}
       icon={<Icon color={headerTintColor} name='menu-outline' size='lg' />}
     />
   )
@@ -22,7 +23,8 @@ const MenuIcon = ({ navigation, headerTintColor }) => {
 
 const Drawer = createDrawerNavigator()
 const HomeNavigator = () => {
-  const drawerInactiveTintColor = useColorModeValue('#666', '#f3e8ff')
+  const theme = useTheme()
+  const drawerInactiveTintColor = theme.muted2.val
 
   return (
     <Drawer.Navigator
@@ -39,7 +41,7 @@ const HomeNavigator = () => {
         name='HomeScreen'
         component={Home}
         options={{
-          title: 'Smart CV',
+          title: APP_NAME,
           drawerIcon: (props) => <Icon name='home-outline' {...props} size='md' />,
         }}
       />
