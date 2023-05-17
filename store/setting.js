@@ -15,7 +15,7 @@ export const useSettingStore = create((set) => ({
     set({ pageSize, imageQuality })
   },
   updatePageSize: async (pageName) => {
-    const newPageSize = pageSizes.find((ps) => ps.name == pageName)
+    const newPageSize = pageSizes.find((ps) => ps.value == pageName)
     set({ pageSize: newPageSize })
     await storeData(PAGE_SIZE, newPageSize)
   },

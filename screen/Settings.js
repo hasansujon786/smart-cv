@@ -1,36 +1,36 @@
 import React, { useCallback } from 'react'
 import { YStack } from 'tamagui'
-import SettingRadioOptions from '../components/SettingRadioOptions'
-import { imageQualitys } from '../constant'
+import { OptionsSelect } from '../components/OptionsSelect'
+import { useLazyScreenLoader } from '../composables/useLazyScreenLoader'
+import { imageQualityOptions, pageSizes } from '../constant'
 import { useSettingStore } from '../store/setting'
 
-const settings = {
-  pageSizeOptions: ['A4', 'US Letter'],
-  imageQualityOptions: Object.keys(imageQualitys),
-}
-
 const Settings = () => {
-  const pageSize = useSettingStore(useCallback((state) => state.pageSize))
-  const imageQuality = useSettingStore(useCallback((state) => state.imageQuality))
+  const curPageSize = useSettingStore(useCallback((state) => state.pageSize))
   const updatePageSize = useSettingStore(useCallback((state) => state.updatePageSize))
+  const curImageQuality = useSettingStore(useCallback((state) => state.imageQuality))
   const updateImageQuality = useSettingStore(useCallback((state) => state.updateImageQuality))
+
+  const { isPageReady } = useLazyScreenLoader()
 
   return (
     <YStack flex={1} bg='$background'>
-      <SettingRadioOptions
-        title='Paper Size'
-        description={pageSize?.name || ''}
-        defaultOption={pageSize?.name || ''}
-        options={settings.pageSizeOptions}
-        onOptionSelect={updatePageSize}
+      <OptionsSelect
+        label='Paper Size'
+        heading='Chose a options'
+        options={pageSizes}
+        value={curPageSize.value}
+        onValueChange={updatePageSize}
+        lazy={isPageReady}
       />
 
-      <SettingRadioOptions
-        title='Image Quality'
-        description={imageQuality || ''}
-        defaultOption={imageQuality || ''}
-        options={settings.imageQualityOptions}
-        onOptionSelect={updateImageQuality}
+      <OptionsSelect
+        label='Image Quality'
+        heading='Chose a options'
+        options={imageQualityOptions}
+        value={curImageQuality}
+        onValueChange={updateImageQuality}
+        lazy={isPageReady}
       />
     </YStack>
   )
