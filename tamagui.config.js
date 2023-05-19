@@ -28,6 +28,7 @@ export const appTheme = {
     muted2: '#737373',
     primary: '#9966FF',
     primaryDark: '#9333ea',
+    primaryLight: '#b894ff',
 
     iconBg: 'hsl(0, 0%, 70%)',
     btnBg: '#f4f4f5',
@@ -43,6 +44,7 @@ export const appTheme = {
     muted2: '#a3a3a3',
     primary: '#9966FF',
     primaryDark: '#9333ea',
+    primaryLight: '#b894ff',
 
     iconBg: '#52525b', // => gray.600
     btnBg: '#3f3f46',

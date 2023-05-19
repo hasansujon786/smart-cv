@@ -25,7 +25,7 @@ export const PrimaryButton = styled(RawButton, {
   variants: {
     isDisabled: {
       true: {
-        opacity: 0.7,
+        backgroundColor: '$primaryLight'
       },
     },
   },
