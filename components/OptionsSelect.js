@@ -17,7 +17,7 @@ export function OptionsSelect({
   const muted1 = theme.muted1.val
 
   return (
-    <Select size='$6' id='food' value={value} onValueChange={onValueChange} {...props}>
+    <Select size='$6' value={value} onValueChange={onValueChange} {...props}>
       {/* <XStack justifyContent='space-between' alignItems='center'> */}
       {/*   <Heading>{label}</Heading> */}
       {/*   <Select.Trigger borderWidth={1} width={180} iconAfter={<Icon name='chevron-down-outline' size={32} />}> */}
