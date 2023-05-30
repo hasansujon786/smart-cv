@@ -13,6 +13,7 @@ const PdfView = ({ uri, onLoadEnd, ...props }) => {
     <PDFReader
       webviewStyle={{ backgroundColor: screenBg }}
       source={{ uri: uri }}
+      noLoader
       customStyle={{
         readerContainerDocument: {
           backgroundColor: screenBg,

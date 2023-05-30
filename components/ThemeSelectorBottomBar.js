@@ -4,6 +4,7 @@ import { Stack, XStack } from 'tamagui'
 
 const ThemeSelectorBottomBar = ({ onSelect, themes, onShowPicker, isLoading }) => {
   const [selectedTheme, setSelectedTheme] = useState(0)
+  const opacity = isLoading ? 0.5 : 1
 
   const handlePress = (idx) => {
     if (isLoading || selectedTheme == idx) return
@@ -18,21 +19,19 @@ const ThemeSelectorBottomBar = ({ onSelect, themes, onShowPicker, isLoading }) =
           key={theme}
           onPress={() => handlePress(idx)}
           disabled={isLoading}
-          style={[styles.btn, { backgroundColor: theme }]}
+          style={[styles.btn, { backgroundColor: theme, opacity }]}
         >
           {selectedTheme == idx && <Stack opacity={0.5} bg='black' width={15} height={15} borderRadius={20} />}
         </TouchableOpacity>
       ))}
 
-      <TouchableOpacity onPress={onShowPicker} disabled={isLoading} style={[styles.btn, { borderWidth: 0 }]}>
+      <TouchableOpacity onPress={onShowPicker} disabled={isLoading} style={[styles.btn, { borderWidth: 0, opacity }]}>
         <Image
           source={require('../assets/paint.png')}
           alt='theme picker icon'
           style={{ width: '100%', height: '100%' }}
         />
       </TouchableOpacity>
-
-      {isLoading && <Stack position='absolute' bg='$layer1' top={0} bottom={0} right={0} left={0} opacity={0.8} />}
     </XStack>
   )
 }

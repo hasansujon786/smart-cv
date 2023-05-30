@@ -95,7 +95,7 @@ const Template = ({ route, navigation }) => {
   }, [isPageReady, navigation, isPdfLoading])
 
   // local functions
-  const onPdfLoadEnd = () => setTimeout(() => appIsMounted.current && setIsPdfLoadig(false), 200)
+  const onPdfLoadEnd = () => setTimeout(() => appIsMounted.current && setIsPdfLoadig(false), 10)
   const onPdfLoadError = () => {
     setIsPdfLoadig(false)
     alert('An error occurred during PDF render.')
@@ -113,16 +113,18 @@ const Template = ({ route, navigation }) => {
             <TouchableOpacity onPress={openZoomView} style={[styles.touchable, { height: LOADER_HEIGHT }]} />
           </>
         )}
+        {!isPdfLoading && (
+          <Stack position='absolute' style={{ bottom: 0, right: 5 }}>
+            <Button
+              size='$5'
+              circular
+              bg='$iconBg'
+              onPress={toggleToolBox}
+              icon={<Icon size='md' color='white' name='options-outline' />}
+            />
+          </Stack>
+        )}
         {isPdfLoading && <TemplateLoader top={10} mx={3} height={LOADER_HEIGHT} />}
-        <Stack position='absolute' style={{ bottom: 0, right: 5 }}>
-          <Button
-            size='$5'
-            circular
-            bg='$iconBg'
-            onPress={toggleToolBox}
-            icon={<Icon size='md' color='white' name='options-outline' />}
-          />
-        </Stack>
       </YStack>
 
       <Center flex={0} mb='$4' mt='$3' justifyContent='space-around'>
