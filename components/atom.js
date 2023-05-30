@@ -4,13 +4,19 @@ import { globalStyles } from '../constant'
 export const Button = styled(RawButton, {
   borderRadius: globalStyles.borderRadius,
   color: '$primary',
-  style: { elevation: 2 },
+  elevationAndroid: 2,
   backgroundColor: '$btnBg',
-  pressStyle: { backgroundColor: '$btnBg_pressed', elevation: 0 },
+  pressStyle: { backgroundColor: '$btnBg_pressed', elevationAndroid: 0 },
   variants: {
     isDisabled: {
       true: {
         opacity: 0.7,
+      },
+    },
+    ghoust: {
+      true: {
+        backgroundColor: 'transparent',
+        elevationAndroid: 0,
       },
     },
   },
@@ -20,12 +26,12 @@ export const PrimaryButton = styled(RawButton, {
   borderRadius: globalStyles.borderRadius,
   color: 'white',
   backgroundColor: '$primary',
-  style: { elevation: 2 },
-  pressStyle: { backgroundColor: '$primaryDark', elevation: 0 },
+  elevationAndroid: 2,
+  pressStyle: { backgroundColor: '$primaryDark', elevationAndroid: 0 },
   variants: {
     isDisabled: {
       true: {
-        backgroundColor: '$primaryLight'
+        backgroundColor: '$primaryLight',
       },
     },
   },

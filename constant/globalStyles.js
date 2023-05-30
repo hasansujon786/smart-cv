@@ -2,6 +2,8 @@ export const globalColors = {
   primary: '#9966FF',
   primaryDark: '#9333ea',
   grya1: 'hsl(0, 0%, 70%)',
+  hotPink: '#ec4899',
+  blue: '#0989ff',
 }
 
 export const globalStyles = {

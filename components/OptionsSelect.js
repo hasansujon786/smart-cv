@@ -1,8 +1,8 @@
-import { Adapt, Select, Sheet, Text, YStack } from 'tamagui'
+import { Adapt, Select, Sheet, Text, YStack, useTheme } from 'tamagui'
 import Icon from './Icon'
 
 const SHEET_BG = '$layer1'
-const PRESS_BG = 'hsla(0, 0%, 0%, 0.08)'
+const PRESS_HL = 'hsla(0, 0%, 0%, 0.08)'
 
 export function OptionsSelect({
   label = '',
@@ -13,6 +13,9 @@ export function OptionsSelect({
   lazy = true,
   ...props
 }) {
+  const theme = useTheme()
+  const muted1 = theme.muted1.val
+
   return (
     <Select size='$6' id='food' value={value} onValueChange={onValueChange} {...props}>
       {/* <XStack justifyContent='space-between' alignItems='center'> */}
@@ -24,9 +27,9 @@ export function OptionsSelect({
       <Select.Trigger
         borderWidth={0}
         borderRadius={0}
-        pressStyle={{ backgroundColor: PRESS_BG }}
+        pressStyle={{ backgroundColor: PRESS_HL }}
         px={16}
-        iconAfter={<Icon name='chevron-down-outline' size={32} />}
+        iconAfter={<Icon color={muted1} name='chevron-down-outline' size={32} />}
       >
         <YStack>
           <Text fontSize={16} color='$color'>
@@ -40,7 +43,7 @@ export function OptionsSelect({
 
       {lazy && (
         <Adapt when='sm' platform='touch'>
-          <Sheet native modal={true} dismissOnSnapToBottom>
+          <Sheet native modal={false} dismissOnSnapToBottom>
             <Sheet.Frame backgroundColor={SHEET_BG}>
               <Sheet.ScrollView>
                 <Adapt.Contents />
@@ -52,26 +55,27 @@ export function OptionsSelect({
       )}
 
       {lazy && (
-        <Select.Content zIndex={200000}>
+        // zIndex={200000}
+        <Select.Content>
           <Select.Viewport>
             <Select.Group space='$0'>
-              <Select.Label backgroundColor='transparent'>{heading}</Select.Label>
-              {options.map((item, i) => {
-                return (
-                  <Select.Item
-                    backgroundColor='transparent'
-                    pressStyle={{ backgroundColor: PRESS_BG }}
-                    index={i}
-                    key={item.name}
-                    value={item.value}
-                  >
-                    <Select.ItemText>{item.name}</Select.ItemText>
-                    <Select.ItemIndicator marginLeft='auto'>
-                      <Icon size='md' name='checkmark' />
-                    </Select.ItemIndicator>
-                  </Select.Item>
-                )
-              })}
+              <Select.Label fontSize={14} color='$muted1' fontWeight='400' backgroundColor='transparent'>
+                {heading}
+              </Select.Label>
+              {options.map((item, i) => (
+                <Select.Item
+                  backgroundColor='transparent'
+                  pressStyle={{ backgroundColor: PRESS_HL }}
+                  index={i}
+                  key={item.name}
+                  value={item.value}
+                >
+                  <Select.ItemText>{item.name}</Select.ItemText>
+                  <Select.ItemIndicator marginLeft='auto'>
+                    <Icon size='md' name='checkmark' />
+                  </Select.ItemIndicator>
+                </Select.Item>
+              ))}
             </Select.Group>
           </Select.Viewport>
         </Select.Content>
@@ -79,3 +83,12 @@ export function OptionsSelect({
     </Select>
   )
 }
+
+// <OptionsSelect
+//   label='Paper Size'
+//   heading='Select Paper Size'
+//   options={pageSizes}
+//   value={curPageSize.value}
+//   onValueChange={updatePageSize}
+//   lazy={isPageReady}
+// />
