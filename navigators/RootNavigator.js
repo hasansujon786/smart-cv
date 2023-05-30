@@ -22,7 +22,6 @@ import Playground from '../screen/Playground'
 import Profiles from '../screen/Profiles'
 import Template from '../screen/Template'
 import ZoomView from '../screen/ZoomView'
-// import LogScreen from '../screen/LogScreen'
 
 const Stack = createNativeStackNavigator()
 
