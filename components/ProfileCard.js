@@ -6,17 +6,12 @@ import Icon from './Icon'
 import ProfileImage from './ProfileImage'
 import { Button } from './atom'
 
-const ProfileCard = ({ index, profile }) => {
+const ProfileCard = ({ index, profile, onDelete }) => {
   const navigation = useNavigation()
-  // const deleteProfile = useProfileStore(useCallback((state) => state.deleteById))
 
-  const handleOnView = () => {
-    navigation.navigate('SelectTemplate', { profile })
-  }
-
-  const handleOnEdit = () => {
-    navigation.navigate('CreateProfile', { profileId: profile.id, title: 'Update Profile' })
-  }
+  const handleOnView = () => navigation.navigate('SelectTemplate', { profile })
+  const handleOnEdit = () => navigation.navigate('CreateProfile', { profileId: profile.id, title: 'Update Profile' })
+  const deleteProfile = () => onDelete(profile.id)
 
   return (
     <YStack
@@ -29,29 +24,22 @@ const ProfileCard = ({ index, profile }) => {
       style={{ elevation: 1 }}
       alignItems='center'
     >
-      <XStack justifyContent='space-between' width='100%'>
-        <Circle ml='$2' mt='$1.5' size='$3' backgroundColor='$background'>
+      <XStack pt='$1.5' px='$2' justifyContent='space-between' width='100%'>
+        <Circle size='$3' backgroundColor='$background'>
           <Text color='$muted1' fontWeight='bold'>
             {index + 1}
           </Text>
         </Circle>
 
-        {/* // TODO: add menu */}
-        {/* <Box mr={2} mt={1}> */}
-        {/*   <Menu */}
-        {/*     placement='left' */}
-        {/*     trigger={(triggerProps) => ( */}
-        {/*       <IconButton */}
-        {/*         size={10} */}
-        {/*         colorScheme='light' */}
-        {/*         {...triggerProps} */}
-        {/*         icon={<Icon color='#A0A0A0' name='ellipsis-vertical-outline' />} */}
-        {/*       /> */}
-        {/*     )} */}
-        {/*   > */}
-        {/*     <Menu.Item onPress={() => deleteById(profile.id)}>Delete</Menu.Item> */}
-        {/*   </Menu> */}
-        {/* </Box> */}
+        <Button
+          size='$4'
+          circular
+          elevationAndroid={0}
+          backgroundColor='transparent'
+          pressStyle={{ backgroundColor: '$red9' }}
+          icon={<Icon size='md' color={globalColors.grya1} name='trash-outline' />}
+          onPress={deleteProfile}
+        />
       </XStack>
 
       <ProfileImage source={{ uri: profile?.personalDetails?.profileImage }} />
@@ -83,3 +71,20 @@ const ProfileCard = ({ index, profile }) => {
 }
 
 export default ProfileCard
+
+// {/* // TODO: add menu */}
+// {/* <Box mr={2} mt={1}> */}
+// {/*   <Menu */}
+// {/*     placement='left' */}
+// {/*     trigger={(triggerProps) => ( */}
+// {/*       <IconButton */}
+// {/*         size={10} */}
+// {/*         colorScheme='light' */}
+// {/*         {...triggerProps} */}
+// {/*         icon={<Icon color='#A0A0A0' name='ellipsis-vertical-outline' />} */}
+// {/*       /> */}
+// {/*     )} */}
+// {/*   > */}
+// {/*     <Menu.Item onPress={() => deleteById(profile.id)}>Delete</Menu.Item> */}
+// {/*   </Menu> */}
+// {/* </Box> */}

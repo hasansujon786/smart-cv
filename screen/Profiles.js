@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import { FlatList } from 'react-native'
+import { Alert, FlatList } from 'react-native'
 import Animated, { FadeIn } from 'react-native-reanimated'
 import { YStack } from 'tamagui'
 import Icon from '../components/Icon'
@@ -10,8 +10,8 @@ import { useProfileStore } from '../store/profiles'
 import { getNewId } from '../util'
 
 const Profiles = ({ navigation }) => {
-  const [profiles, restoreProfiels, createDummyProfile] = useProfileStore(
-    useCallback((s) => [s.profiles, s.restore, s.createDummyProfile])
+  const [profiles, restoreProfiels, createDummyProfile, deleteById] = useProfileStore(
+    useCallback((s) => [s.profiles, s.restore, s.createDummyProfile, s.deleteById])
   )
 
   useEffect(() => {
@@ -22,10 +22,21 @@ const Profiles = ({ navigation }) => {
     navigation.navigate('CreateProfile', { profileId: getNewId() })
   }
 
+  const confirmDelete = (id) =>
+    Alert.alert(
+      'Confirm Delete',
+      'Are you sure you want to delete this profile?',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        { text: 'Delete', onPress: () => deleteById(id) },
+      ],
+      { cancelable: true }
+    )
+
   const profileCardItem = useCallback(({ item, index }) => {
     return (
       <Animated.View key={item.id} entering={FadeIn.delay(100 * index)}>
-        <ProfileCard index={index} profile={item} />
+        <ProfileCard index={index} profile={item} onDelete={confirmDelete} />
       </Animated.View>
     )
   }, [])
@@ -39,7 +50,7 @@ const Profiles = ({ navigation }) => {
 
       <Center position='absolute' bottom='$4' right='$4'>
         <PrimaryButton
-          // onLongPress={createDummyProfile} // TODO: comment this line in production
+          // onPress={createDummyProfile} // TODO: comment this line in production
           onPress={onCreate}
           icon={<Icon color='white' name='add' size='md' />}
           size='$6'

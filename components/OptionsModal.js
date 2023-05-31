@@ -22,9 +22,6 @@ const OptionsModal = ({
     onValueChange(value)
   }
 
-  const theme = useTheme()
-  const layer1 = theme.layer1.val
-
   return (
     <View>
       <TouchableHighlight underlayColor={PRESS_HL} onPress={openModal}>
@@ -38,32 +35,48 @@ const OptionsModal = ({
         </View>
       </TouchableHighlight>
 
-      <Modal animationType='fade' transparent={true} visible={modalVisible} onRequestClose={closeModal}>
-        <View style={styles.centeredView}>
-          <YStack backgroundColor={layer1} style={styles.modalView}>
-            <Heading mb='$3' size='$6' marginLeft='$3'>
-              {heading}
-            </Heading>
-
-            {options.map((op) => (
-              <RadioWithLabel
-                key={op.value}
-                value={op.value}
-                label={op.name}
-                currentValue={value}
-                onValueChange={onRadioSelect}
-              />
-            ))}
-
-            <XStack justifyContent='flex-end'>
-              <Button ghoust onPress={closeModal}>
-                Cancel
-              </Button>
-            </XStack>
-          </YStack>
-        </View>
-      </Modal>
+      <CustomModal
+        heading={heading}
+        visible={modalVisible}
+        onRequestClose={closeModal}
+        actions={
+          <Button ghoust onPress={closeModal}>
+            Cancel
+          </Button>
+        }
+      >
+        {options.map((op) => (
+          <RadioWithLabel
+            key={op.value}
+            value={op.value}
+            label={op.name}
+            currentValue={value}
+            onValueChange={onRadioSelect}
+          />
+        ))}
+      </CustomModal>
     </View>
+  )
+}
+
+export const CustomModal = ({ heading = '', children, visible = false, onRequestClose, actions }) => {
+  const theme = useTheme()
+  const layer1 = theme.layer1.val
+
+  return (
+    <Modal animationType='fade' transparent={true} visible={visible} onRequestClose={onRequestClose}>
+      <View style={styles.centeredView}>
+        <YStack backgroundColor={layer1} style={styles.modalView}>
+          <Heading mb='$3' size='$6' marginLeft='$3'>
+            {heading}
+          </Heading>
+
+          {children}
+
+          <XStack justifyContent='flex-end'>{actions}</XStack>
+        </YStack>
+      </View>
+    </Modal>
   )
 }
 
