@@ -5,6 +5,7 @@ import Icon from '../components/Icon'
 import { Button, Center, PrimaryButton } from '../components/atom'
 import { globalColors } from '../constant/globalStyles'
 import { InterstitialAdContext } from '../services'
+import { useProfileStore } from '../store'
 import { useSettingStore } from '../store/setting'
 import { getNewId } from '../util'
 
@@ -13,7 +14,10 @@ const CIRCLE_WIDTH = width * 0.6
 
 const Home = ({ navigation }) => {
   const restoreSetting = useSettingStore(useCallback((state) => state.restore))
+  const restoreProfiels = useProfileStore(useCallback((s) => s.restore))
+
   useLayoutEffect(() => {
+    restoreProfiels()
     restoreSetting()
   }, [])
 

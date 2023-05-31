@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { Alert, FlatList } from 'react-native'
 import Animated, { FadeIn } from 'react-native-reanimated'
 import { YStack } from 'tamagui'
@@ -10,13 +10,9 @@ import { useProfileStore } from '../store/profiles'
 import { getNewId } from '../util'
 
 const Profiles = ({ navigation }) => {
-  const [profiles, restoreProfiels, createDummyProfile, deleteById] = useProfileStore(
-    useCallback((s) => [s.profiles, s.restore, s.createDummyProfile, s.deleteById])
+  const [profiles, createDummyProfile, deleteById] = useProfileStore(
+    useCallback((s) => [s.profiles, s.createDummyProfile, s.deleteById])
   )
-
-  useEffect(() => {
-    restoreProfiels()
-  }, [])
 
   const onCreate = () => {
     navigation.navigate('CreateProfile', { profileId: getNewId() })
@@ -45,7 +41,12 @@ const Profiles = ({ navigation }) => {
   return (
     <YStack flex={1} bc='$background'>
       {isPageReady && (
-        <FlatList contentContainerStyle={{ paddingBottom: 100 }} data={profiles} renderItem={profileCardItem} />
+        <FlatList
+          initialNumToRender={4}
+          contentContainerStyle={{ paddingBottom: 100 }}
+          data={profiles}
+          renderItem={profileCardItem}
+        />
       )}
 
       <Center position='absolute' bottom='$4' right='$4'>
