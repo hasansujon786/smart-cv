@@ -109,24 +109,28 @@ const CreateProfile = ({ navigation, route }) => {
     })
   }
 
+  const renderItem = useCallback(
+    ({ item, index }) => (
+      <Animated.View key={item.key} entering={FadeIn.delay(50 * index)}>
+        {item.renderSeparator ? (
+          <SectionTitle>{item.renderSeparator}</SectionTitle>
+        ) : (
+          <SectionItem icon={item.icon} text={item.name} onSelect={() => navToSeledForm(item.route, item.key)} />
+        )}
+      </Animated.View>
+    ),
+    []
+  )
+
   const { isPageReady } = useLazyScreenLoader()
   if (!isPageReady) return <LazyScreenLoader />
-
   return (
     <Stack flex={1} bc='$background'>
       <FlatList
         contentContainerStyle={{ paddingHorizontal: 12, paddingBottom: 16 }}
         data={defaultSectionList}
         initialNumToRender={1}
-        renderItem={({ item, index }) => (
-          <Animated.View key={item.key} entering={FadeIn.delay(50 * index)}>
-            {item.renderSeparator ? (
-              <SectionTitle>{item.renderSeparator}</SectionTitle>
-            ) : (
-              <SectionItem icon={item.icon} text={item.name} onSelect={() => navToSeledForm(item.route, item.key)} />
-            )}
-          </Animated.View>
-        )}
+        renderItem={renderItem}
       />
 
       {profile && (

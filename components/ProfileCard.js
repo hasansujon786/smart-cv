@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Circle, Heading, Text, XStack, YStack } from 'tamagui'
 import { globalColors, globalStyles } from '../constant/globalStyles'
@@ -5,7 +6,18 @@ import Icon from './Icon'
 import ProfileImage from './ProfileImage'
 import { Button } from './atom'
 
-const ProfileCard = ({ index, profile, deleteById, onView, onEdit, ...props }) => {
+const ProfileCard = ({ index, profile }) => {
+  const navigation = useNavigation()
+  // const deleteProfile = useProfileStore(useCallback((state) => state.deleteById))
+
+  const handleOnView = () => {
+    navigation.navigate('SelectTemplate', { profile })
+  }
+
+  const handleOnEdit = () => {
+    navigation.navigate('CreateProfile', { profileId: profile.id, title: 'Update Profile' })
+  }
+
   return (
     <YStack
       mt='$3'
@@ -52,14 +64,14 @@ const ProfileCard = ({ index, profile, deleteById, onView, onEdit, ...props }) =
 
       <XStack mt='$4' space='$2' px='$4' justifyContent='center'>
         <Button
-          onPress={() => onEdit(profile)}
+          onPress={handleOnEdit}
           icon={<Icon size='sm' color={globalColors.primary} name='create-outline' />}
           flex={1}
         >
           Edit
         </Button>
         <Button
-          onPress={() => onView(profile)}
+          onPress={handleOnView}
           icon={<Icon size='sm' color={globalColors.primary} name='eye-outline' />}
           flex={1}
         >
