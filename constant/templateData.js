@@ -13,7 +13,7 @@ const c = {
   orange: '#f97316',
   cyan: '#06b6d4',
 }
-
+// html data on => util\generageHtml.js
 const templateData = [
   {
     id: 'A',
@@ -130,12 +130,12 @@ const templateData = [
   },
   {
     id: 'V',
-    isModern: false,
+    isModern: true,
     themes: [c.darkGray, c.cyanDark, c.teal, c.sweetPurple, c.cyan],
   },
   {
     id: 'W',
-    isModern: false,
+    isModern: true,
     themes: [c.darkGray, c.cyanDark, c.teal, c.sweetPurple, c.cyan],
   },
 ]

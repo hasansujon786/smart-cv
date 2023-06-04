@@ -36,8 +36,8 @@ const ProfileCard = ({ index, profile, onDelete }) => {
           circular
           elevationAndroid={0}
           backgroundColor='transparent'
-          pressStyle={{ backgroundColor: '$red9' }}
-          icon={<Icon size='md' color={globalColors.grya1} name='trash-outline' />}
+          pressStyle={{ backgroundColor: '$red5' }}
+          icon={<Icon size='md' color={globalColors.grya1} name='close-outline' />}
           onPress={deleteProfile}
         />
       </XStack>

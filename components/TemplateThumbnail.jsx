@@ -6,6 +6,7 @@ const THUMBNAIL_WIDTH = (width - 36) / 2
 
 const TemplateThumbnail = React.memo(({ index, item, onPress }) => {
   const img = getImage(item.id)
+  const count = __DEV__ ? item.id : index + 1
   return (
     <Stack mt='$3' style={{ paddingHorizontal: 6 }}>
       <TouchableOpacity
@@ -19,13 +20,13 @@ const TemplateThumbnail = React.memo(({ index, item, onPress }) => {
           br='$1'
           zIndex={1}
           position='absolute'
-          bg='#000'
+          bg='$primary'
           ai='center'
           jc='center'
           bottom={0}
           right={0}
         >
-          <Text color='white'>{index + 1}</Text>
+          <Text color='white'>{count}</Text>
         </Stack>
       </TouchableOpacity>
     </Stack>
@@ -73,7 +74,7 @@ export const getImage = (profileId) => {
     case 'U':
       return require('../assets/thumbnail/U.jpg')
     default:
-      return require('../assets/thumbnail/A.jpg')
+      return require('../assets/icon-circle.png')
   }
 }
 

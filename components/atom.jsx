@@ -5,6 +5,7 @@ export const Button = styled(RawButton, {
   borderRadius: globalStyles.borderRadius,
   color: '$primary',
   elevationAndroid: 2,
+  borderWidth: 0,
   backgroundColor: '$btnBg',
   pressStyle: { backgroundColor: '$btnBg_pressed', elevationAndroid: 0 },
   variants: {
@@ -26,6 +27,7 @@ export const PrimaryButton = styled(RawButton, {
   borderRadius: globalStyles.borderRadius,
   color: 'white',
   backgroundColor: '$primary',
+  borderWidth: 0,
   elevationAndroid: 2,
   pressStyle: { backgroundColor: '$primaryDark', elevationAndroid: 0 },
   variants: {
