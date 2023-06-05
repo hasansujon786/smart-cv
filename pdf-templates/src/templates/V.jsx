@@ -24,7 +24,7 @@ const Header = ({ children }) => (
 )
 
 const Card = ({ children, title, style }) => (
-  <div style={style} className='bg-white p-1_half rounded-md shadow-2xl shadow-gray-800/30 border border-gray-400/20'>
+  <div style={style} className='bg-white p-1_half rounded-md border border-gray-100'>
     {title && <Header>{title}</Header>}
     <div className='px-1_half'>{children}</div>
   </div>
@@ -40,7 +40,7 @@ const TemplateV = ({ profile }) => {
             <div>
               {/* img */}
               <div
-                className='bg-gray-800 mx-auto aspect-square relative z-10 rounded-full overflow-hidden'
+                className='bg-gray-300 mx-auto aspect-square relative z-10 rounded-full overflow-hidden'
                 style={{ width: '120px', marginBottom: -30 }}
               >
                 <PersonalDetails personalDetails={profile.personalDetails}>
@@ -106,7 +106,7 @@ const TemplateV = ({ profile }) => {
           {(p) => (
             <div className='px-4 py-3 flex flex-col items-center text-on-primary'>
               <h1 className='name font-semibold'>{p.name}</h1>
-              <hr className='border-b-2 w-[80%] border-gray-300' />
+              <hr className='border-b-2 border-gray-400' style={{ width: '80%' }} />
               <h3 className='mt-1 opacity-80 tracking-widest'>{p.subTitle}</h3>
             </div>
           )}

@@ -85,7 +85,7 @@ const TemplateW = ({ profile }) => {
                 <h3 className='mt-2 opacity-70 tracking-wide'>{p.subTitle}</h3>
               </div>
               <div
-                className='bg-gray-800 mt-2 mb-3 mx-auto aspect-square relative z-10 rounded-full overflow-hidden'
+                className='bg-gray-300 mt-2 mb-3 mx-auto aspect-square relative z-10 rounded-full overflow-hidden'
                 style={{ width: '120px' }}
               >
                 {p.profileImage && <img src={p.profileImageBase64} alt='profile image' />}
@@ -110,6 +110,7 @@ const TemplateW = ({ profile }) => {
           )}
         </Objective>
 
+        {/* // TODO: update section style */}
         <Skills items={profile.skills}>
           {(title, items) => (
             <Card title={title}>
