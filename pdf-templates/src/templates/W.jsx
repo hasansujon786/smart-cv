@@ -14,7 +14,7 @@ import {
 } from './shared'
 import InfoRow from './shared/InfoRow'
 import RatingList from './shared/RatingList'
-import SimpleList from './shared/SimpleList'
+import SimpleList, { FlexList } from './shared/SimpleList'
 import UserInfoWithIcon, { ContactListItem } from './shared/UserInfoWithIcon'
 
 const Header = ({ children }) => (
@@ -115,7 +115,7 @@ const TemplateW = ({ profile }) => {
         <Languages items={profile.languages}>
           {(title, items) => (
             <Card title={title}>
-              <RatingList items={items} />
+              <FlexList classNames='mt-2' items={items} />
             </Card>
           )}
         </Languages>
@@ -131,7 +131,7 @@ const TemplateW = ({ profile }) => {
         <Interests items={profile.interests}>
           {(title, items) => (
             <Card title={title}>
-              <SimpleList col='grid-cols-1 mt-1' items={items} />
+              <FlexList classNames='mt-2' items={items} />
             </Card>
           )}
         </Interests>

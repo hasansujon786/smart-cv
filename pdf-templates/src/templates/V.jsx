@@ -80,7 +80,7 @@ const TemplateV = ({ profile }) => {
         <Languages items={profile.languages}>
           {(title, items) => (
             <Card title={title}>
-              <RatingList items={items} />
+              <SimpleList col='grid-cols-2 mt-1' items={items} />
             </Card>
           )}
         </Languages>
