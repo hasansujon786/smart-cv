@@ -16,6 +16,7 @@ import {
 import InfoRow from './shared/InfoRow'
 import PillList from './shared/PillList'
 import SimpleList, { FlexList } from './shared/SimpleList'
+import UserInfoWithIcon, { ContactListItem } from './shared/UserInfoWithIcon'
 
 const CommonTile = ({ main, subtitle, bottom }) => {
   return (
@@ -55,6 +56,7 @@ const TemplateY = ({ profile }) => {
             </section>
           )}
         </PersonalDetails>
+
         <Objective text={profile.objective}>
           {(_, text) => (
             <Card>
@@ -65,13 +67,8 @@ const TemplateY = ({ profile }) => {
 
         <PersonalDetails personalDetails={profile.personalDetails}>
           {(p) => (
-            <Card title='Contact'>
-              {/* TODO: Add icon */}
-              <div className='flex flex-wrap gap-x-4 gap-y-1 mt-1_half'>
-                <p className='text-xs text-neutral'>P: {p.phone}</p>
-                <p className='text-xs text-neutral'>E: {p.email}</p>
-                <p className='text-xs text-neutral'>A: {p.address}</p>
-              </div>
+            <Card style={{ margin: '4px 0' }} title='Contact'>
+              <UserInfoWithIcon containerClasses='flex flex-col gap-y-2 mt-1' data={p} renderItem={ContactListItem} />
             </Card>
           )}
         </PersonalDetails>

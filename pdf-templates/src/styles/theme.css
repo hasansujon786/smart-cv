@@ -12,6 +12,7 @@
 
   --heading-size: 14px;
   --bg-pill: var(--gray-600);
+  --icon-color: var(--primary);
 
   --black: #000;
   --white: #fff;
@@ -185,6 +186,9 @@ img {
 .feather {
   width: 100%;
   height: 100%;
+}
+.contact-icon-color {
+  color: var(--primary);
 }
 
 #K {
@@ -591,6 +595,7 @@ img {
 
   --neutral: var(--gray-900);
   --muted: var(--gray-600);
+  /* // TODO: update on-primary color */
   --on-primary: var(--black);
   /* --primary: var(--gray-700); */
 }

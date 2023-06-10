@@ -1,21 +1,22 @@
 import React from 'react'
+import { CommonTile } from './Q'
 import {
-  PersonalDetails,
-  Experience,
-  Education,
-  Objective,
-  References,
-  Projects,
-  AdditionalInformation,
-  Skills,
   Achievements,
+  AdditionalInformation,
+  Education,
+  Experience,
   Interests,
   Languages,
+  Objective,
+  PersonalDetails,
+  Projects,
+  References,
+  Skills,
 } from './shared'
-import { CommonTile } from './Q'
+import InfoRow from './shared/InfoRow'
 import RatingList from './shared/RatingList'
 import SimpleList from './shared/SimpleList'
-import InfoRow from './shared/InfoRow'
+import UserInfoWithIcon, { ContactListItem } from './shared/UserInfoWithIcon'
 
 const Header = ({ children }) => (
   <div className='bg-primary pl-2 rounded-sm'>
@@ -48,10 +49,12 @@ const TemplateV = ({ profile }) => {
                 </PersonalDetails>
               </div>
               <Card>
-                <div className='space-y-2 mt-8'>
-                  <p className='text-xs text-neutral'>Phone: {p.phone}</p>
-                  <p className='text-xs text-neutral'>Email: {p.email}</p>
-                  <p className='text-xs text-neutral'>Address: {p.address}</p>
+                <div className='mt-8'>
+                  <UserInfoWithIcon
+                    containerClasses='flex flex-col gap-y-2 mt-1'
+                    data={p}
+                    renderItem={ContactListItem}
+                  />
                 </div>
               </Card>
             </div>
@@ -106,7 +109,7 @@ const TemplateV = ({ profile }) => {
           {(p) => (
             <div className='px-4 py-3 flex flex-col items-center text-on-primary'>
               <h1 className='name font-semibold'>{p.name}</h1>
-              <hr className='border-b-2 border-gray-400' style={{ width: '80%' }} />
+              <hr className='border-gray-300 border-b-2 opacity-70' style={{ width: '80%' }} />
               <h3 className='mt-1 opacity-80 tracking-widest'>{p.subTitle}</h3>
             </div>
           )}

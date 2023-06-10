@@ -15,6 +15,7 @@ import {
 import InfoRow from './shared/InfoRow'
 import RatingList from './shared/RatingList'
 import SimpleList, { FlexList } from './shared/SimpleList'
+import UserInfoWithIcon, { ContactListItem } from './shared/UserInfoWithIcon'
 
 const Header = ({ children }) => (
   <div className=''>
@@ -66,16 +67,15 @@ const TemplateX = ({ profile }) => {
                 <div className='inline-flex flex-col'>
                   <h1 className='name text-sm font-semibold'>{p.name}</h1>
                   <h3 className='mt-2 opacity-70 tracking-wide'>{p.subTitle}</h3>
-                  <hr className='mt-1 border-t-2 border-primary opacity-40' style={{ width: 'calc(100% + 10px)' }} />
+                  <hr className='mt-1 border-t-2 border-primary opacity-50' style={{ width: 'calc(100% + 10px)' }} />
                 </div>
               </div>
 
-              {/* // TODO: Add icon */}
-              <div className='flex flex-wrap gap-x-4 gap-y-1 mt-1_half'>
-                <p className='text-xs text-neutral'>P: {p.phone}</p>
-                <p className='text-xs text-neutral'>E: {p.email}</p>
-                <p className='text-xs text-neutral'>A: {p.address}</p>
-              </div>
+              <UserInfoWithIcon
+                containerClasses='flex flex-wrap gap-x-4 gap-y-2 mt-1_half'
+                data={p}
+                renderItem={ContactListItem}
+              />
             </div>
 
             <div className='flex flex-col justify-center mr-3'>

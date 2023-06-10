@@ -1,20 +1,21 @@
 import React from 'react'
 import {
-  PersonalDetails,
-  Experience,
-  Education,
-  Objective,
-  References,
-  Projects,
-  AdditionalInformation,
-  Skills,
   Achievements,
+  AdditionalInformation,
+  Education,
+  Experience,
   Interests,
   Languages,
+  Objective,
+  PersonalDetails,
+  Projects,
+  References,
+  Skills,
 } from './shared'
+import InfoRow from './shared/InfoRow'
 import RatingList from './shared/RatingList'
 import SimpleList from './shared/SimpleList'
-import InfoRow from './shared/InfoRow'
+import UserInfoWithIcon, { ContactListItem } from './shared/UserInfoWithIcon'
 
 const Header = ({ children }) => (
   <div
@@ -78,7 +79,7 @@ const TemplateW = ({ profile }) => {
               />
               <div className='text-center relative z-10'>
                 <h1 className='name text-sm font-semibold'>{p.name}</h1>
-                <h3 className='mt-2 opacity-70 tracking-wide'>{p.subTitle}</h3>
+                <h3 className='mt-2 tracking-wide'>{p.subTitle}</h3>
               </div>
               <div
                 className='bg-gray-300 mt-2 mb-3 mx-auto aspect-square relative z-10 rounded-full overflow-hidden'
@@ -88,11 +89,7 @@ const TemplateW = ({ profile }) => {
               </div>
 
               <Card title='Contacts'>
-                <div className='space-y-1 mt-2'>
-                  <p className='text-xs text-neutral'>Phone: {p.phone}</p>
-                  <p className='text-xs text-neutral'>Email: {p.email}</p>
-                  <p className='text-xs text-neutral'>Address: {p.address}</p>
-                </div>
+                <UserInfoWithIcon containerClasses='flex flex-col gap-y-2 mt-3' data={p} renderItem={ContactListItem} />
               </Card>
             </div>
           )}

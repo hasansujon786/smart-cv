@@ -1,20 +1,20 @@
 import React from 'react'
 import {
-  PersonalDetails,
-  Experience,
-  Education,
-  Objective,
-  References,
-  Projects,
-  AdditionalInformation,
-  Skills,
   Achievements,
+  AdditionalInformation,
+  Education,
+  Experience,
   Interests,
   Languages,
+  Objective,
+  PersonalDetails,
+  Projects,
+  References,
+  Skills,
 } from './shared'
-import { Phone, Email, Pin } from './shared/template_icons'
-import SimpleList from './shared/SimpleList'
 import InfoRow from './shared/InfoRow'
+import SimpleList from './shared/SimpleList'
+import UserInfoWithIcon from './shared/UserInfoWithIcon'
 
 const Header = ({ children }) => (
   <div className='uppercase'>
@@ -34,7 +34,14 @@ export const CommonTile = ({ top, main, bottom, className = 'mt-1' }) => {
   )
 }
 
-const personInfoIcons = { phone: <Phone />, email: <Email />, address: <Pin /> }
+const ContactListItemRight = ({ icon, value }) => (
+  <div className='flex gap-x-2 justify-end'>
+    <p className='text-xs text-neutral text-right'>{value}</p>
+    <div>
+      <div className='contact-icon-color w-4 h-4'>{icon}</div>
+    </div>
+  </div>
+)
 
 const TemplateU = ({ profile }) => {
   return (
@@ -56,7 +63,7 @@ const TemplateU = ({ profile }) => {
           </PersonalDetails>
 
           <Objective title='Profile' text={profile.objective}>
-            {(title, text) => (
+            {(_, text) => (
               <div className='mt-2'>
                 <p className='text-xs mt-1 text-neutral'>{text}</p>
               </div>
@@ -67,17 +74,11 @@ const TemplateU = ({ profile }) => {
         <section className='w-1_2 py-3 pl-3'>
           <PersonalDetails personalDetails={profile.personalDetails}>
             {(p) => (
-              <div className='space-y-2 h-full w-full flex flex-col justify-end items-end'>
-                {Object.keys(personInfoIcons).map(
-                  (key) =>
-                    p[key] && (
-                      <div key={key} className='flex'>
-                        <p className='text-xs text-neutral'>{p[key]}</p>
-                        <span className='w-4 h-4 ml-3'>{personInfoIcons[key]}</span>
-                      </div>
-                    )
-                )}
-              </div>
+              <UserInfoWithIcon
+                containerClasses='h-full w-full flex flex-col justify-end items-end gap-y-1_half'
+                data={p}
+                renderItem={ContactListItemRight}
+              />
             )}
           </PersonalDetails>
         </section>
