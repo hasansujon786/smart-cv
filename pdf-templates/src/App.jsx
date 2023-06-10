@@ -19,6 +19,8 @@ import TemplateT from './templates/T'
 import TemplateU from './templates/U'
 import TemplateV from './templates/V'
 import TemplateW from './templates/W'
+import TemplateX from './templates/X'
+import TemplateY from './templates/Y'
 import { dummyProfile } from './templates/dummy'
 import { templateList } from '../../constant/templateData'
 
@@ -44,6 +46,8 @@ const jsxComponents = {
   U: (profile) => <TemplateU templateId='U' profile={profile} />,
   V: (profile) => <TemplateV templateId='V' profile={profile} />,
   W: (profile) => <TemplateW templateId='W' profile={profile} />,
+  X: (profile) => <TemplateX templateId='X' profile={profile} />,
+  Y: (profile) => <TemplateY templateId='Y' profile={profile} />,
 }
 
 function App() {

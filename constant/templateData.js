@@ -138,6 +138,16 @@ const templateData = [
     isModern: true,
     themes: [c.darkGray, c.cyanDark, c.teal, c.sweetPurple, c.cyan],
   },
+  {
+    id: 'X',
+    isModern: true,
+    themes: [c.darkGray, c.cyanDark, c.teal, c.sweetPurple, c.cyan],
+  },
+  {
+    id: 'Y',
+    isModern: true,
+    themes: [c.darkGray, c.cyanDark, c.teal, c.sweetPurple, c.cyan],
+  },
 ]
 
 export const templateList = {
