@@ -25,9 +25,9 @@ export const CommonTile = ({ main, subTitle, right, bottom, gridCols = '3', clas
   return (
     <div className={[`CommonTile grid ${gridCols == 2 ? 'grid-cols-2' : 'grid-cols-3'} mt-2 ${className}`]}>
       <h3 className='text-xs text-neutral font-bold uppercase col-span-2'>{main}</h3>
-      <p className='text-xs text-muted text-right'>{right}</p>
-      <p className='text-xs text-muted col-span-full'>{subTitle}</p>
-      <p className='text-xs text-neutral col-span-full'>{bottom}</p>
+      <div className='text-xs text-muted text-right'>{right}</div>
+      <div className='text-xs text-muted col-span-full'>{subTitle}</div>
+      <div className='text-xs text-neutral col-span-full'>{bottom}</div>
     </div>
   )
 }

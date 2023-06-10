@@ -24,12 +24,12 @@ const Header = ({ children }) => (
   </div>
 )
 
-const CommonTile = ({ top, main, bottom, className = 'mt-1' }) => {
+export const CommonTile = ({ top, main, bottom, className = 'mt-1' }) => {
   return (
     <div className={className}>
-      <p className='text-xs text-neutral'>{top}</p>
+      <div className='text-xs text-neutral'>{top}</div>
       <h3 className='text-sm text-black tracking-wider font-semibold'>{main}</h3>
-      <p className='text-xs text-neutral'>{bottom}</p>
+      <div className='text-xs text-neutral'>{bottom}</div>
     </div>
   )
 }

@@ -22,20 +22,20 @@ const Header = ({ children }) => (
   </div>
 )
 
-export const Card = ({ children, title, style, border = false }) => (
-  <div style={style} className='pt-1_half'>
-    {title && <Header>{title}</Header>}
-    <div
-      className={
-        border &&
-        'pl-2_half ml-1_half relative border-secondary before:absolute before:top-0 before:-left-1 before:w-2 before:h-2 before:bg-white'
-      }
-      style={{ borderLeftWidth: border && 1.5 }}
-    >
-      {children}
+export const Card = ({ children, title, style, border = false }) => {
+  const borderStyle = border
+    ? 'pl-2_half ml-1_half relative border-secondary before:absolute before:top-0 before:-left-1 before:w-2 before:h-2 before:bg-white'
+    : undefined
+
+  return (
+    <div style={style} className='pt-1_half'>
+      {title && <Header>{title}</Header>}
+      <div className={borderStyle} style={{ borderLeftWidth: border && 1.5 }}>
+        {children}
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 const CommonTile = ({ main, subtitle, bottom }) => {
   return (

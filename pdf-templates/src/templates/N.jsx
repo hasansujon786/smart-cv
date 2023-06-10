@@ -31,9 +31,9 @@ const HeaderRight = ({ children }) => (
 const CommonTile = ({ top, main, bottom }) => {
   return (
     <div className='mt-1'>
-      <p className='text-xs text-muted'>{top}</p>
+      <div className='text-xs text-muted'>{top}</div>
       <h3 className='text-sm text-black font-bold'>{main}</h3>
-      <p className='text-xs text-neutral'>{bottom}</p>
+      <div className='text-xs text-neutral'>{bottom}</div>
     </div>
   )
 }

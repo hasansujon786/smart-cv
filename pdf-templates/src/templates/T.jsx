@@ -14,6 +14,7 @@ import {
 } from './shared'
 import SimpleList from './shared/SimpleList'
 import InfoRow from './shared/InfoRow'
+import { CommonTile } from './U'
 
 const Header = ({ children }) => (
   <div className='uppercase'>
@@ -22,16 +23,6 @@ const Header = ({ children }) => (
     </h2>
   </div>
 )
-
-const CommonTile = ({ top, main, bottom, className = 'mt-1' }) => {
-  return (
-    <div className={className}>
-      <p className='text-xs text-neutral'>{top}</p>
-      <h3 className='text-sm text-black tracking-wider font-semibold'>{main}</h3>
-      <p className='text-xs text-neutral'>{bottom}</p>
-    </div>
-  )
-}
 
 const TemplateT = ({ profile }) => {
   return (

@@ -18,9 +18,9 @@ import InfoRow from './shared/InfoRow'
 const CommonTile = ({ top, main, bottom }) => {
   return (
     <div className='mt-2'>
-      <p className='text-xs text-muted'>{top}</p>
+      <div className='text-xs text-muted'>{top}</div>
       <h3 className='text-sm text-neutral font-bold'>{main}</h3>
-      <p className='text-xs text-muted'>{bottom}</p>
+      <div className='text-xs text-muted'>{bottom}</div>
     </div>
   )
 }

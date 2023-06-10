@@ -27,43 +27,39 @@ const Header = ({ children }) => (
   </div>
 )
 
-const Card = ({ children, title, style, border = false }) => (
-  <div style={style} className='p-1_half'>
-    {title && <Header>{title}</Header>}
-    <div
-      className={
-        !border
-          ? 'px-2'
-          : 'px-2 ml-1 relative border-primary before:absolute before:top-0 before:-left-1 before:w-2 before:h-2 before:bg-white'
-      }
-      style={{ borderLeftWidth: border && 1.5, marginTop: '' }}
-    >
-      {children}
+const Card = ({ children, title, style, border = false }) => {
+  const borderStyle = border
+    ? 'px-2 ml-1 relative border-primary before:absolute before:top-0 before:-left-1 before:w-2 before:h-2 before:bg-white'
+    : 'px-2'
+
+  return (
+    <div style={style} className='p-1_half'>
+      {title && <Header>{title}</Header>}
+      <div className={borderStyle} style={{ borderLeftWidth: border && 1.5, marginTop: '' }}>
+        {children}
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 const CommonTile = ({ main, top, subtitle, bottom }) => {
   return (
     <div className='mt-2 '>
-      <span className='flex justify-between relative'>
-        <div
-          style={{ top: '6px', left: '-11.8px' }}
-          className='absolute rounded-full w-1_half h-1_half bg-primary'
-        ></div>
-        <p className='text-xs text-muted'>{top}</p>
-      </span>
+      <div className='flex justify-between relative'>
+        <span className='absolute rounded-full w-1_half h-1_half bg-primary' style={{ top: '6px', left: '-11.8px' }} />
+        <div className='text-xs text-muted'>{top}</div>
+      </div>
 
       <div className=''>
-        <p className='text-xs text-neutral font-bold uppercase'>
+        <div className='text-xs text-neutral font-bold uppercase'>
           {main}
           {subtitle && ','}
           <span className='pl-1 font-normal' style={{ fontSize: '10px' }}>
             {subtitle}
           </span>
-        </p>
+        </div>
       </div>
-      <p className='text-xs text-neutral col-span-full'>{bottom}</p>
+      <div className='text-xs text-neutral col-span-full'>{bottom}</div>
     </div>
   )
 }
