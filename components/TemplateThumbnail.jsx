@@ -73,6 +73,14 @@ export const getImage = (profileId) => {
       return require('../assets/thumbnail/T.jpg')
     case 'U':
       return require('../assets/thumbnail/U.jpg')
+    case 'V':
+      return require('../assets/thumbnail/V.jpg')
+    case 'W':
+      return require('../assets/thumbnail/W.jpg')
+    case 'X':
+      return require('../assets/thumbnail/X.jpg')
+    case 'Y':
+      return require('../assets/thumbnail/Y.jpg')
     default:
       return require('../assets/icon-circle.png')
   }

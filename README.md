@@ -2,14 +2,13 @@ https://tamagui.dev/docs/intro/introduction
 com.thinknxtmedia.smartcv
 https://docs.expo.dev/versions/latest/config/app/
 
-npx expo install styled-components styled-system 
+npx expo install styled-components styled-system
 "expo-status-bar": "~1.2.0",
 "expo-splash-screen": "~0.14.1",
 "expo-updates": "~0.11.7",
 
 yarn add tamagui expo-font @tamagui/font-inter @tamagui/theme-base @tamagui/animations-react-native @tamagui/config
 react-native-web react-dom
-
 
 react-native-web
 
@@ -44,11 +43,8 @@ expo-ads-admob
 
 expo-intent-launcher expo-print
 
-
-
 old "projectId": "cf1a196f-9fcd-410a-baa1-d16de06a0323"
 new "projectId": "60e69d7d-bf68-470c-8457-38f8f6ab67a0"
-
 
 https://stackoverflow.com/questions/71592608/expo-build-eas-local-sdk-location-not-found
 
@@ -57,3 +53,26 @@ VirtualizedList: You have a large list that is slow to update - make sure your
 renderItem function renders components that follow React performance best
 practices like PureComponent, shouldComponentUpdate, etc. {"contentLength":
 2418, "dt": 515, "prevDt": 2032}
+
+```js
+const TemplateLoader = ({ height = '100%', width = '100%', ...props }) => {
+  return (
+    <Box position='absolute' top={0} bottom={0} left={0} right={0} flex={1} alignItems='center' {...props}>
+      <Box width={width} height={height} bg='white'>
+        <Center flex={1}>
+          <HStack space={2} alignItems='center'>
+            <Spinner color={globalColors.primary} accessibilityLabel='Loading CV' />
+            <Heading color={globalColors.primary} fontSize='md'>
+              Loading
+            </Heading>
+          </HStack>
+        </Center>
+      </Box>
+    </Box>
+  )
+}
+```
+
+Note: We've moved @tamagui/theme-base over to @tamagui/themes.
+They are much improved and easier to use. If you really want to keep this package,
+copy and paste the contents into your app as it will be removed eventually
