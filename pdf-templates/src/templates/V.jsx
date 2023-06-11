@@ -112,10 +112,10 @@ const TemplateV = ({ profile }) => {
         {/* top */}
         <PersonalDetails personalDetails={profile.personalDetails}>
           {(p) => (
-            <div className='px-4 py-3 flex flex-col items-center text-on-primary'>
+            <div className='px-4 py-3 flex flex-col items-center'>
               <h1 className='name font-semibold'>{p.name}</h1>
-              <hr className='border-gray-300 border-b-2 opacity-70' style={{ width: '80%' }} />
-              <h3 className='mt-1 opacity-80 tracking-widest'>{p.subTitle}</h3>
+              <hr className='border-primary border-t-2 opacity-30' style={{ width: '80%' }} />
+              <h3 className='mt-1 opacity-70 tracking-widest font-semibold'>{p.subTitle}</h3>
             </div>
           )}
         </PersonalDetails>

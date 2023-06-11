@@ -79,8 +79,8 @@ const TemplateW = ({ profile }) => {
           {(p) => (
             <div className='pt-6 relative'>
               <span
-                className='absolute top-0 left-1_2 -translate-x-1_2 bg-primary opacity-30'
-                style={{ width: '90px', height: '50%' }}
+                className='absolute top-0 left-1_2 -translate-x-1_2 bg-primary opacity-20'
+                style={{ width: '100px', height: '50%' }}
               />
               <div className='text-center relative z-10'>
                 <h1 className='name text-sm font-semibold'>{p.name}</h1>
@@ -103,7 +103,7 @@ const TemplateW = ({ profile }) => {
         <Objective text={profile.objective}>
           {(title, text) => (
             <Card title={title}>
-              <p className='text-xs mt-2 text-on-primary'>{text}</p>
+              <p className='text-xs mt-2'>{text}</p>
             </Card>
           )}
         </Objective>

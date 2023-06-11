@@ -6,12 +6,16 @@ const c = {
   cyanDark: '#164e63',
   teal: '#20c997',
   sweetPurple: '#6f42c1',
+  purpleDark: '#8215a6',
   hotPink: '#dc3545',
   pink: '#d63384',
   skyblue: 'skyblue',
   tomato: 'tomato',
   orange: '#f97316',
   cyan: '#06b6d4',
+  samonLight: '#febc88',
+  samon: '#f4b0af',
+  golden: '#b38303',
 }
 // html data on => util\generageHtml.js
 const templateData = [
@@ -131,22 +135,22 @@ const templateData = [
   {
     id: 'V',
     isModern: true,
-    themes: [c.darkGray, c.cyanDark, c.teal, c.sweetPurple, c.cyan],
+    themes: [c.samonLight, c.cyanDark, c.teal, c.darkGray, c.hotPink],
   },
   {
     id: 'W',
     isModern: true,
-    themes: [c.darkGray, c.cyanDark, c.teal, c.sweetPurple, c.cyan],
+    themes: [c.samon, c.cyanDark, c.sweetPurple, c.darkGray, c.hotPink],
   },
   {
     id: 'X',
     isModern: true,
-    themes: [c.darkGray, c.cyanDark, c.teal, c.sweetPurple, c.cyan],
+    themes: [c.golden, c.cyan, c.teal, c.sweetPurple, c.hotPink],
   },
   {
     id: 'Y',
     isModern: true,
-    themes: [c.darkGray, c.cyanDark, c.teal, c.sweetPurple, c.cyan],
+    themes: [c.purpleDark, c.cyanDark, c.cyan, 'green', c.hotPink],
   },
 ]
 
