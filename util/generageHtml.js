@@ -19,6 +19,8 @@ import TemplateT from '../pdf-templates/src/templates/T'
 import TemplateU from '../pdf-templates/src/templates/U'
 import TemplateV from '../pdf-templates/src/templates/V'
 import TemplateW from '../pdf-templates/src/templates/W'
+import TemplateX from '../pdf-templates/src/templates/X'
+import TemplateY from '../pdf-templates/src/templates/Y'
 
 const jsxComponents = {
   A: (profile) => <Base1 templateId='A' profile={profile} />,
@@ -44,6 +46,8 @@ const jsxComponents = {
   U: (profile) => <TemplateU templateId='U' profile={profile} />,
   V: (profile) => <TemplateV templateId='V' profile={profile} />,
   W: (profile) => <TemplateW templateId='W' profile={profile} />,
+  X: (profile) => <TemplateX templateId='X' profile={profile} />,
+  Y: (profile) => <TemplateY templateId='Y' profile={profile} />,
 }
 
 function selectTemplate(templateId, profile) {

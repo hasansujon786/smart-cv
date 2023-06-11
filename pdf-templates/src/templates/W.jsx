@@ -24,7 +24,12 @@ const Header = ({ children }) => (
       clipPath: 'polygon(0% 0%, 100% 0, 96% 51%, 100% 100%, 0% 100%)',
     }}
   >
-    <h2 className='heading text-on-primary font-semibold uppercase'>{children}</h2>
+    <h2
+      style={{ paddingTop: '6px', paddingBottom: '2px' }}
+      className='heading text-on-primary font-semibold uppercase leading-none'
+    >
+      {children}
+    </h2>
   </div>
 )
 

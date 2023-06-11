@@ -19,8 +19,13 @@ import SimpleList from './shared/SimpleList'
 import UserInfoWithIcon, { ContactListItem } from './shared/UserInfoWithIcon'
 
 const Header = ({ children }) => (
-  <div className='bg-primary pl-2 rounded-sm'>
-    <h2 className='heading text-on-primary font-semibold uppercase'>{children}</h2>
+  <div className='bg-primary pl-2 rounded-sm flex'>
+    <h2
+      style={{ paddingTop: '6px', paddingBottom: '2px' }}
+      className='heading text-on-primary font-semibold uppercase leading-none'
+    >
+      {children}
+    </h2>
   </div>
 )
 

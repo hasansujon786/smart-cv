@@ -18,7 +18,7 @@ import SimpleList, { FlexList } from './shared/SimpleList'
 import UserInfoWithIcon, { ContactListItem } from './shared/UserInfoWithIcon'
 
 const Header = ({ children }) => (
-  <div className=''>
+  <div>
     <h2 className='heading text-black text-opacity-70 font-bold'>{children}</h2>
   </div>
 )
