@@ -11,7 +11,7 @@ import ToolBoxPopUp from '../components/ToolBoxPopUp'
 import { Center, PrimaryButton } from '../components/atom'
 
 import { LazyScreenLoader, promptToViewDownloadedPdf, useLazyScreenLoader, usePdf } from '../composables'
-import { PLAY_STORE_APP_LINK } from '../constant'
+import { PLAY_STORE_APP_LINK, globalStyles } from '../constant'
 import { InterstitialAdContext } from '../services'
 import { useSettingStore } from '../store/setting'
 
@@ -133,7 +133,7 @@ const Template = ({ route, navigation }) => {
           isDisabled={isPdfLoading || isDownloading}
           width={260}
           size='$5'
-          borderRadius={26}
+          borderRadius={globalStyles.borderRadiusMd}
           onPress={downloadPdf}
           icon={isDownloading ? Spinner : <Icon size='md' color='white' name='download-outline' />}
         >

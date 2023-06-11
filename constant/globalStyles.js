@@ -8,6 +8,7 @@ export const globalColors = {
 
 export const globalStyles = {
   borderRadius: 15,
+  borderRadiusMd: 22,
   shadow: 0,
   textColor: 'gray.700',
   muted: 'gray.400',

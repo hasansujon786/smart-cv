@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native'
 import { Image, Stack, YStack } from 'tamagui'
 import Icon from '../components/Icon'
 import { Button, Center, PrimaryButton } from '../components/atom'
-import { globalColors } from '../constant/globalStyles'
+import { globalColors, globalStyles } from '../constant/globalStyles'
 import { InterstitialAdContext } from '../services'
 import { useProfileStore } from '../store'
 import { useSettingStore } from '../store/setting'
@@ -55,20 +55,18 @@ const Home = ({ navigation }) => {
         <YStack rowGap='$3' width={260}>
           <PrimaryButton
             size='$6'
-            borderRadius={26}
+            borderRadius={globalStyles.borderRadiusMd}
             onPress={onCreateCv}
             icon={<Icon size='md' color='white' name='create-outline' />}
-            style={{ height: 60, elevation: 2 }}
           >
             Create CV
           </PrimaryButton>
 
           <Button
             size='$6'
-            borderRadius={26}
+            borderRadius={globalStyles.borderRadiusMd}
             onPress={gotoProfile}
             icon={<Icon size='md' color={globalColors.primary} name='person-outline' />}
-            style={{ height: 60, elevation: 2 }}
           >
             Saved Profiles
           </Button>

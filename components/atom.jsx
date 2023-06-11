@@ -4,9 +4,10 @@ import { globalStyles } from '../constant'
 export const Button = styled(RawButton, {
   borderRadius: globalStyles.borderRadius,
   color: '$primary',
-  elevationAndroid: 2,
-  borderWidth: 0,
   backgroundColor: '$btnBg',
+  borderWidth: 0,
+  elevationAndroid: 2,
+  maxHeight: 56,
   pressStyle: { backgroundColor: '$btnBg_pressed', elevationAndroid: 0 },
   variants: {
     isDisabled: {
@@ -29,6 +30,7 @@ export const PrimaryButton = styled(RawButton, {
   backgroundColor: '$primary',
   borderWidth: 0,
   elevationAndroid: 2,
+  maxHeight: 56,
   pressStyle: { backgroundColor: '$primaryDark', elevationAndroid: 0 },
   variants: {
     isDisabled: {

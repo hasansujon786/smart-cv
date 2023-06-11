@@ -74,7 +74,7 @@ const PersonalDetails = ({ route, navigation }) => {
         </YStack>
 
         <Center my='$6'>
-          <PrimaryButton onPress={saveProfile} size='$5' width={200} borderRadius={globalStyles.borderRadius}>
+          <PrimaryButton onPress={saveProfile} size='$5' width={200} borderRadius={globalStyles.borderRadiusMd}>
             Save
           </PrimaryButton>
         </Center>
