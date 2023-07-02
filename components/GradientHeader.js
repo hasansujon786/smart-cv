@@ -20,7 +20,7 @@ const GradientHeader = (props) => {
       <LinearGradient {...linearGradient} height={HEADER_HEIGHT}>
         <XStack position='relative' mt={MARGIN_TOP} px='$2' flex={1} style={[options.headerStyle]}>
           <Center position='absolute' zIndex={-1} left={0} right={0} bottom={0} top={0}>
-            <Heading size='$6' numberOfLines={1} color={headerTintColor}>
+            <Heading size='$7' numberOfLines={1} color={headerTintColor}>
               {options.title || route.name}
             </Heading>
           </Center>
