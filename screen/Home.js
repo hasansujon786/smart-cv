@@ -1,6 +1,8 @@
 import React, { useCallback, useContext, useLayoutEffect } from 'react'
 import { Dimensions } from 'react-native'
+import { BannerAdSize } from 'react-native-google-mobile-ads'
 import { Image, Stack, YStack } from 'tamagui'
+import AdBannerBottom from '../components/AdBannerBottom'
 import Icon from '../components/Icon'
 import { Button, Center, PrimaryButton } from '../components/atom'
 import { globalColors, globalStyles } from '../constant/globalStyles'
@@ -9,8 +11,9 @@ import { useProfileStore } from '../store'
 import { useSettingStore } from '../store/setting'
 import { getNewId } from '../util'
 
-const { width } = Dimensions.get('screen')
-const CIRCLE_WIDTH = width * 0.6
+const { width, height } = Dimensions.get('screen')
+const hasLargeScreen = height > 640
+const CIRCLE_WIDTH = width * (hasLargeScreen ? 0.6 : 0.55)
 
 const Home = ({ navigation }) => {
   const restoreSetting = useSettingStore(useCallback((state) => state.restore))
@@ -32,9 +35,11 @@ const Home = ({ navigation }) => {
   }
 
   return (
-    <YStack flex={1} bg='$layer1' py='$4'>
+    <YStack flex={1} bg='$layer1' pt='$4' paddingBottom={hasLargeScreen ? 16 : 0}>
       <Center flex={2}>
+        <AdBannerBottom size={BannerAdSize.LARGE_BANNER}></AdBannerBottom>
         <Stack
+          marginTop={hasLargeScreen ? 24 : 12}
           overflow='hidden'
           borderColor='$background'
           borderRadius={CIRCLE_WIDTH}

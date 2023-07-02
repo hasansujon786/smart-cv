@@ -5,14 +5,15 @@ import { UNIT_IDS } from '../constant'
 
 const adUnitId = __DEV__ ? TestIds.BANNER : UNIT_IDS.banner
 
-const AdBannerBottom = () => {
-  const [height, setHeight] = useState(0)
+// LARGE_BANNER
+const AdBannerBottom = ({ size = BannerAdSize.ANCHORED_ADAPTIVE_BANNER }) => {
+  const [height, setHeight] = useState(null)
 
   return (
     <Stack height={height} backgroundColor='#fff'>
       <BannerAd
         unitId={adUnitId}
-        size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+        size={size}
         requestOptions={{
           requestNonPersonalizedAdsOnly: true,
         }}
