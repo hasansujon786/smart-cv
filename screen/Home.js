@@ -15,17 +15,17 @@ const CIRCLE_WIDTH = width * 0.6
 const Home = ({ navigation }) => {
   const restoreSetting = useSettingStore(useCallback((state) => state.restore))
   const restoreProfiels = useProfileStore(useCallback((s) => s.restore))
+  const interstitialAd = useContext(InterstitialAdContext)
 
   useLayoutEffect(() => {
     restoreProfiels()
     restoreSetting()
   }, [])
 
-  const interstitialAd = useContext(InterstitialAdContext)
   const onCreateCv = () => {
+    interstitialAd.showAdIfLoaded()
     navigation.navigate('CreateProfile', { profileId: getNewId() })
   }
-
   const gotoProfile = () => {
     interstitialAd.showAdIfLoaded()
     navigation.navigate('Profiles')

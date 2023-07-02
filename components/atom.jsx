@@ -50,5 +50,6 @@ export const GroustIconButton = styled(RawButton, {
   size: '$4',
   circular: true,
   backgroundColor: 'transparent',
+  borderWidth: 0,
   pressStyle: { backgroundColor: 'hsla(0, 0%, 0%, 0.15)' },
 })
