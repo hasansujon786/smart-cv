@@ -2,7 +2,7 @@
   "expo": {
     "name": "smart-cv",
     "slug": "smart-cv",
-    "version": "1.6.0",
+    "version": "1.6.1",
     "orientation": "portrait",
     "icon": "./assets/appicon.png",
     "userInterfaceStyle": "light",
@@ -19,7 +19,7 @@
       "supportsTablet": true
     },
     "android": {
-      "versionCode": 12,
+      "versionCode": 13,
       "adaptiveIcon": {
         "foregroundImage": "./assets/appicon.png",
         "backgroundColor": "#ffffff"
