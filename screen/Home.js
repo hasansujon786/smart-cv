@@ -57,7 +57,7 @@ const Home = ({ navigation }) => {
       </Center>
 
       <Center flex={1}>
-        <YStack rowGap='$3' width={260}>
+        <YStack rowGap='$3' width='100%' maxWidth={260}>
           <PrimaryButton
             size='$6'
             borderRadius={globalStyles.borderRadiusMd}
