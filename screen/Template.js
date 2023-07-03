@@ -131,7 +131,8 @@ const Template = ({ route, navigation }) => {
         <PrimaryButton
           disabled={isPdfLoading || isDownloading}
           isDisabled={isPdfLoading || isDownloading}
-          width={260}
+          maxWidth={260}
+          width='100%'
           size='$5'
           borderRadius={globalStyles.borderRadiusMd}
           onPress={downloadPdf}
