@@ -1,37 +1,40 @@
-import React, { useState } from 'react'
-import { Center, Modal, Button } from 'native-base'
+import React, { useRef } from 'react'
 import { TriangleColorPicker, fromHsv } from 'react-native-color-picker'
-import { globalColors } from '../constant/globalStyles'
+import { YStack } from 'tamagui'
+import { CustomModal } from './OptionsModal'
+import { Button, Center } from './atom'
 
-const PickerPopUp = ({ children, isOpen, onApply, onClose, ...props }) => {
-  const [color, setColor] = useState('#ff0000')
+const ColorPickerPopUp = ({ children, isOpen, onApply, onClose, ...props }) => {
+  const color = useRef('#ff0000')
+  const setColor = (c) => (color.current = c)
+
+  const handleApply = () => onApply(fromHsv(color.current))
+
   return (
-    <Modal isOpen={isOpen} onClose={() => onClose(false)} {...props}>
-      <Modal.Content>
-        <Modal.CloseButton colorScheme='red' />
-        <Modal.Header _text={{ color: globalColors.primary }}>Pick Theme Color</Modal.Header>
-        <Modal.Body>
-          <Center flex={1}>
-            <TriangleColorPicker
-              defaultColor='#ff0000'
-              onColorChange={(cv) => setColor(cv)}
-              // hideSliders={true}
-              // hideControls={true}
-              onColorSelected={(cv) => setColor(cv)}
-              style={{ width: 300, height: 300 }}
-            />
-          </Center>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button.Group mb={3} variant='secondary' space={1} justifyContent='center' flex={1}>
-            <Button onPress={() => onApply(fromHsv(color))} _dark={{ bg: 'gray.600' }} width={160}>
-              Apply
-            </Button>
-          </Button.Group>
-        </Modal.Footer>
-      </Modal.Content>
-    </Modal>
+    <CustomModal
+      heading='Pick Theme Color'
+      visible={isOpen}
+      onRequestClose={onClose}
+      actions={
+        <Center flex={1} mt='$3' mb='$2'>
+          <Button width='100%' maxWidth={160} onPress={handleApply}>
+            Apply
+          </Button>
+        </Center>
+      }
+    >
+      <YStack>
+        <TriangleColorPicker
+          defaultColor={color.current}
+          onColorChange={setColor}
+          // hideSliders={true}
+          // hideControls={true}
+          onColorSelected={setColor}
+          style={{ width: 300, height: 300 }}
+        />
+      </YStack>
+    </CustomModal>
   )
 }
 
-export default PickerPopUp
+export default ColorPickerPopUp

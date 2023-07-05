@@ -5,7 +5,6 @@ import DownloadPopUp from '../components/DownloadPopUp'
 import GradientHeader, { HeaderBackBtn } from '../components/GradientHeader'
 import Icon from '../components/Icon'
 import PdfView from '../components/PdfView'
-import PickerPopUp from '../components/PickerPopUp'
 import ThemeSelectorBottomBar from '../components/ThemeSelectorBottomBar'
 import ToolBoxPopUp from '../components/ToolBoxPopUp'
 import { Center, PrimaryButton } from '../components/atom'
@@ -50,12 +49,6 @@ const Template = ({ route, navigation }) => {
   const onOptionsApply = (updatedOptions) => {
     updateOptions(updatedOptions)
     setIsToolBoxVisible((v) => !v)
-  }
-
-  const [isColorPickerVisible, setIsColorPickerVisible] = useState(false)
-  const onSelectCustomColor = (color) => {
-    setIsColorPickerVisible((v) => !v)
-    onPickCustomTheme(color)
   }
 
   const interstitialAd = useContext(InterstitialAdContext)
@@ -146,9 +139,8 @@ const Template = ({ route, navigation }) => {
         isLoading={isPdfLoading || isDownloading}
         themes={themes}
         onSelect={onThemeChange}
-        onShowPicker={() => setIsColorPickerVisible((v) => !v)}
+        onPickCustomColor={onPickCustomTheme}
       />
-
       <DownloadPopUp
         isOpen={isModalVisible}
         onClose={setIsModalVisible}
@@ -158,7 +150,6 @@ const Template = ({ route, navigation }) => {
           Linking.openURL(PLAY_STORE_APP_LINK)
         }}
       />
-      <PickerPopUp isOpen={isColorPickerVisible} onClose={setIsColorPickerVisible} onApply={onSelectCustomColor} />
       <ToolBoxPopUp
         isOpen={isToolBoxVisible}
         onClose={setIsToolBoxVisible}

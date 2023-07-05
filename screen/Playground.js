@@ -9,10 +9,6 @@ export default function Playground() {
   return (
     <YStack py='$4' px='$0' flex={1} backgroundColor='$layer1'>
       <Text>hello</Text>
-
-
-      {/* <OptionsSelect label='Image Quality' heading='Chose a fruit' options={items} value={val} onValueChange={setVal} /> */}
-      {/* <Popup></Popup> */}
     </YStack>
   )
 }

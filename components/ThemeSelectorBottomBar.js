@@ -1,15 +1,23 @@
 import React, { useState } from 'react'
 import { Image, StyleSheet, TouchableOpacity } from 'react-native'
 import { Stack, XStack } from 'tamagui'
+import ColorPickerPopUp from './PickerPopUp'
 
-const ThemeSelectorBottomBar = ({ onSelect, themes, onShowPicker, isLoading }) => {
+const ThemeSelectorBottomBar = ({ onSelect, themes, onPickCustomColor, isLoading }) => {
   const [selectedTheme, setSelectedTheme] = useState(0)
   const opacity = isLoading ? 0.5 : 1
 
-  const handlePress = (idx) => {
+  const handleThemeSelect = (idx) => {
     if (isLoading || selectedTheme == idx) return
     onSelect(idx)
     setSelectedTheme(idx)
+  }
+
+  const [isColorPickerVisible, setIsColorPickerVisible] = useState(false)
+  const toggleColorPicker = () => setIsColorPickerVisible((v) => !v)
+  const handleCustomColorPick = (color) => {
+    onPickCustomColor(color)
+    toggleColorPicker()
   }
 
   return (
@@ -17,7 +25,7 @@ const ThemeSelectorBottomBar = ({ onSelect, themes, onShowPicker, isLoading }) =
       {themes.map((theme, idx) => (
         <TouchableOpacity
           key={theme}
-          onPress={() => handlePress(idx)}
+          onPress={() => handleThemeSelect(idx)}
           disabled={isLoading}
           style={[styles.btn, { backgroundColor: theme, opacity }]}
         >
@@ -25,13 +33,19 @@ const ThemeSelectorBottomBar = ({ onSelect, themes, onShowPicker, isLoading }) =
         </TouchableOpacity>
       ))}
 
-      <TouchableOpacity onPress={onShowPicker} disabled={isLoading} style={[styles.btn, { borderWidth: 0, opacity }]}>
+      <TouchableOpacity
+        onPress={toggleColorPicker}
+        disabled={isLoading}
+        style={[styles.btn, { borderWidth: 0, opacity }]}
+      >
         <Image
           source={require('../assets/paint.png')}
           alt='theme picker icon'
           style={{ width: '100%', height: '100%' }}
         />
       </TouchableOpacity>
+
+      <ColorPickerPopUp isOpen={isColorPickerVisible} onClose={toggleColorPicker} onApply={handleCustomColorPick} />
     </XStack>
   )
 }
