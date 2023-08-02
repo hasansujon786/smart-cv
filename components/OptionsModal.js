@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { StyleSheet, TouchableHighlight, View } from 'react-native'
-import Modal from 'react-native-modal'
-import { Heading, Text, XStack, YStack, useTheme } from 'tamagui'
+import { Text } from 'tamagui'
 import RadioWithLabel from './RadioWithLabel'
+import SimpleModal from './SimpleModal'
 import { Button } from './atom'
 
 const PRESS_HL = 'hsla(0, 0%, 0%, 0.08)'
@@ -36,7 +36,7 @@ const OptionsModal = ({
         </View>
       </TouchableHighlight>
 
-      <CustomModal
+      <SimpleModal
         heading={heading}
         visible={modalVisible}
         onRequestClose={closeModal}
@@ -55,47 +55,12 @@ const OptionsModal = ({
             onValueChange={onRadioSelect}
           />
         ))}
-      </CustomModal>
+      </SimpleModal>
     </View>
   )
 }
 
-export const CustomModal = ({ heading = '', children, visible = false, onRequestClose, actions }) => {
-  const theme = useTheme()
-  const layer1 = theme.layer1.val
-
-  return (
-    <Modal
-      useNativeDriver
-      useNativeDriverForBackdrop
-      backdropTransitionOutTiming={50}
-      onBackButtonPress={onRequestClose}
-      onBackdropPress={onRequestClose}
-      isVisible={visible}
-      animationIn='fadeInUp'
-    >
-      <YStack backgroundColor={layer1} style={styles.modalView}>
-        <Heading mb='$3' size='$6' marginLeft='$3'>
-          {heading}
-        </Heading>
-
-        {children}
-
-        <XStack justifyContent='flex-end'>{actions}</XStack>
-      </YStack>
-    </Modal>
-  )
-}
-
 const styles = StyleSheet.create({
-  modalView: {
-    marginHorizontal: 4,
-    borderRadius: 6,
-    paddingHorizontal: 8,
-    paddingTop: 16,
-    paddingBottom: 12,
-    elevation: 5,
-  },
   button: {
     paddingVertical: 18,
     paddingHorizontal: 12,

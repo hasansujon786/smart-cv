@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { TriangleColorPicker, fromHsv } from 'react-native-color-picker'
 import { YStack } from 'tamagui'
-import { CustomModal } from './OptionsModal'
+import SimpleModal from './SimpleModal'
 import { Button, Center } from './atom'
 
 const ColorPickerPopUp = ({ children, isOpen, onApply, onClose, ...props }) => {
@@ -11,7 +11,7 @@ const ColorPickerPopUp = ({ children, isOpen, onApply, onClose, ...props }) => {
   const handleApply = () => onApply(fromHsv(color.current))
 
   return (
-    <CustomModal
+    <SimpleModal
       heading='Pick Theme Color'
       visible={isOpen}
       onRequestClose={onClose}
@@ -33,7 +33,7 @@ const ColorPickerPopUp = ({ children, isOpen, onApply, onClose, ...props }) => {
           style={{ width: 300, height: 300 }}
         />
       </YStack>
-    </CustomModal>
+    </SimpleModal>
   )
 }
 

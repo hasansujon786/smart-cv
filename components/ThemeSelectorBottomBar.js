@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Image, StyleSheet, TouchableOpacity } from 'react-native'
 import { Stack, XStack } from 'tamagui'
-import ColorPickerPopUp from './PickerPopUp'
+import ColorPickerPopUp from './ColorPickerPopUp'
 
 const ThemeSelectorBottomBar = ({ onSelect, themes, onPickCustomColor, isLoading }) => {
   const [selectedTheme, setSelectedTheme] = useState(0)
