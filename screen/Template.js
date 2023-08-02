@@ -1,5 +1,5 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
-import { Alert, BackHandler, Dimensions, Linking, StyleSheet, TouchableOpacity } from 'react-native'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { Alert, BackHandler, Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
 import { Button, Spinner, Stack, YStack } from 'tamagui'
 import DownloadPopUp from '../components/DownloadPopUp'
 import GradientHeader, { HeaderBackBtn } from '../components/GradientHeader'
@@ -8,10 +8,8 @@ import PdfView from '../components/PdfView'
 import ThemeSelectorBottomBar from '../components/ThemeSelectorBottomBar'
 import ToolBoxPopUp from '../components/ToolBoxPopUp'
 import { Center, PrimaryButton } from '../components/atom'
-
-import { LazyScreenLoader, promptToViewDownloadedPdf, useLazyScreenLoader, usePdf } from '../composables'
-import { PLAY_STORE_APP_LINK, globalStyles } from '../constant'
-import { InterstitialAdContext } from '../services'
+import { LazyScreenLoader, useLazyScreenLoader, usePdf } from '../composables'
+import { globalStyles } from '../constant'
 import { useSettingStore } from '../store/setting'
 
 const { width, height } = Dimensions.get('screen')
@@ -22,12 +20,15 @@ const Template = ({ route, navigation }) => {
   const pageSize = useSettingStore(useCallback((state) => state.pageSize))
   const LOADER_HEIGHT = (PDF_VIEW_WIDHT - 24) * (pageSize.name == 'A4' ? 1.41 : 1.29)
   const { profile, selectedTemplateId, themes, defaultOptions } = route.params
+
+  // download popup
+  const [isModalVisible, setIsModalVisible] = useState(false)
+  const toggleDownloadModal = () => setIsModalVisible((v) => !v)
+
   const {
     /* States */
     savedPdfUri,
     previewPdfUri,
-    isModalVisible,
-    setIsModalVisible,
     isDownloading,
     isPdfLoading,
     setIsPdfLoadig,
@@ -38,7 +39,7 @@ const Template = ({ route, navigation }) => {
     onPickCustomTheme,
     updateOptions,
     getRawHtmlAndRenderPdf,
-  } = usePdf({ profile, selectedTemplateId, appIsMounted, defaultOptions })
+  } = usePdf({ profile, selectedTemplateId, appIsMounted, defaultOptions, onDownloadCompleted: toggleDownloadModal })
 
   useEffect(() => {
     getRawHtmlAndRenderPdf()
@@ -49,15 +50,6 @@ const Template = ({ route, navigation }) => {
   const onOptionsApply = (updatedOptions) => {
     updateOptions(updatedOptions)
     setIsToolBoxVisible((v) => !v)
-  }
-
-  const interstitialAd = useContext(InterstitialAdContext)
-  const onViewDownload = () => {
-    let adHasShowed = false
-    adHasShowed = interstitialAd.showAdIfLoaded()
-    if (adHasShowed) return
-
-    promptToViewDownloadedPdf(savedPdfUri)
   }
 
   const { isPageReady } = useLazyScreenLoader()
@@ -141,15 +133,7 @@ const Template = ({ route, navigation }) => {
         onSelect={onThemeChange}
         onPickCustomColor={onPickCustomTheme}
       />
-      <DownloadPopUp
-        isOpen={isModalVisible}
-        onClose={setIsModalVisible}
-        onViewDownload={onViewDownload}
-        onRateUs={() => {
-          setIsModalVisible((v) => !v)
-          Linking.openURL(PLAY_STORE_APP_LINK)
-        }}
-      />
+      <DownloadPopUp isOpen={isModalVisible} onClose={toggleDownloadModal} pdfUri={savedPdfUri} />
       <ToolBoxPopUp
         isOpen={isToolBoxVisible}
         onClose={setIsToolBoxVisible}

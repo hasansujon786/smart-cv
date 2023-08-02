@@ -1,13 +1,13 @@
-import { useState, useCallback } from 'react'
-import { printToFileAsync } from 'expo-print'
-import { startActivityAsync } from 'expo-intent-launcher'
 import { getContentUriAsync } from 'expo-file-system'
+import { startActivityAsync } from 'expo-intent-launcher'
+import { printToFileAsync } from 'expo-print'
+import { useCallback, useState } from 'react'
 import { Alert, PermissionsAndroid } from 'react-native'
 import RNFetchBlob from 'rn-fetch-blob'
 
-import { getNewId, getHtml, devlog } from '../util'
 import { htmlStyles } from '../constant/styles'
 import { useSettingStore } from '../store'
+import { devlog, getHtml, getNewId } from '../util'
 
 const DEFALUT_THEME = 0
 const getDefaultStyles = (defaultOptions) => {
@@ -19,11 +19,10 @@ const getDefaultStyles = (defaultOptions) => {
       `
 }
 
-export const usePdf = ({ profile, selectedTemplateId, appIsMounted, defaultOptions }) => {
+export const usePdf = ({ profile, selectedTemplateId, appIsMounted, defaultOptions, onDownloadCompleted }) => {
   const pageSize = useSettingStore(useCallback((state) => state.pageSize))
 
   const [isPdfLoading, setIsPdfLoadig] = useState(true)
-  const [isModalVisible, setIsModalVisible] = useState(false)
   const [savedPdfUri, setSavedPdfUri] = useState('')
   const [previewPdfUri, setPreviewPdfUri] = useState('')
   const [optionStyles, setOptionStyles] = useState(getDefaultStyles(defaultOptions))
@@ -95,7 +94,7 @@ export const usePdf = ({ profile, selectedTemplateId, appIsMounted, defaultOptio
         return Alert.alert('', error.message)
       }
       setSavedPdfUri(uri)
-      setIsModalVisible((v) => !v)
+      onDownloadCompleted()
     })
 
     // createPdfAndSavetoFile(printOptions, OS, (uri) => {
@@ -150,8 +149,6 @@ export const usePdf = ({ profile, selectedTemplateId, appIsMounted, defaultOptio
 
     savedPdfUri,
     previewPdfUri,
-    isModalVisible,
-    setIsModalVisible,
     isPdfLoading,
     isDownloading,
     setIsPdfLoadig,

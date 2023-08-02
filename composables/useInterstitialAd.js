@@ -12,7 +12,7 @@ const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
   keywords: ['fashion', 'clothing'],
 })
 
-const useInterstitialAd = (adIntervel = 1000 * 60 * 3) => {
+const useInterstitialAd = (adIntervel = 500) => {
   const { devlog } = useDevLog()
   const netinfo = useContext(NetINfoContext)
   // TODO: <14.02.23> may timestamp should be a good way
@@ -21,7 +21,7 @@ const useInterstitialAd = (adIntervel = 1000 * 60 * 3) => {
   // initEvents
   useEffect(() => {
     const eventClosed = interstitial.addAdEventListener(AdEventType.CLOSED, () => {
-      devlog('interstitial CLOSED ')
+      devlog('interstitial CLOSED')
       setTimeout(() => {
         devlog('========= App is now allowed to show ad =========')
         setAllowedToShowAd(true)
@@ -48,10 +48,9 @@ const useInterstitialAd = (adIntervel = 1000 * 60 * 3) => {
   }, [netinfo.isOnline])
 
   const downloadAd = (logMsg) => {
-    devlog('downloadAd ran ' + logMsg)
     try {
       if (!isAdReady()) {
-        devlog('Downloading interstitial')
+        devlog('Downloading interstitial: ' + logMsg)
         interstitial.load()
       } else {
         devlog('Already interstitial downloaded')
