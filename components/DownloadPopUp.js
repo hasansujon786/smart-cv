@@ -18,7 +18,6 @@ const DownloadPopUp = ({ pdfUri, isOpen, onClose }) => {
   }
 
   const openRateUs = () => {
-    onClose()
     Linking.openURL(PLAY_STORE_APP_LINK)
   }
 
