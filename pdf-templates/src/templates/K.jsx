@@ -1,3 +1,4 @@
+// This Template was removed
 import React from 'react'
 import {
   SectionHeading,

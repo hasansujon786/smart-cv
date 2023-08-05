@@ -18,7 +18,7 @@ const c = {
   golden: '#b38303',
 }
 // html data on => util\generageHtml.js
-const templateData = [
+export const templateDataRaw = [
   {
     id: 'A',
     isModern: false,
@@ -179,7 +179,7 @@ const filterTemplateData = (templates) => {
 }
 
 export const templateList = {
-  all: filterTemplateData(templateData),
-  professional: filterTemplateData(templateData.filter((t) => !t.isModern)),
-  modern: filterTemplateData(templateData.filter((t) => t.isModern)),
+  all: filterTemplateData(templateDataRaw),
+  professional: filterTemplateData(templateDataRaw.filter((t) => !t.isModern)),
+  modern: filterTemplateData(templateDataRaw.filter((t) => t.isModern)),
 }

@@ -1,13 +1,9 @@
 import { useState } from 'react'
-import './styles/theme.css'
 import './App.css'
 import Paper from './components/Paper'
+import './styles/theme.css'
 
-import Base1 from './templates/old/pro/Base1'
-import MBase1 from './templates/old/modern/MBase1'
-import MBase2 from './templates/old/modern/MBase2'
-import MBase3 from './templates/old/modern/MBase3'
-import MBase4 from './templates/old/modern/MBase4'
+import { templateDataRaw } from '../../constant/templateData'
 import TemplateM from './templates/M'
 import TemplateN from './templates/N'
 import TemplateO from './templates/O'
@@ -22,7 +18,11 @@ import TemplateW from './templates/W'
 import TemplateX from './templates/X'
 import TemplateY from './templates/Y'
 import { dummyProfile } from './templates/dummy'
-import { templateList } from '../../constant/templateData'
+import MBase1 from './templates/old/modern/MBase1'
+import MBase2 from './templates/old/modern/MBase2'
+import MBase3 from './templates/old/modern/MBase3'
+import MBase4 from './templates/old/modern/MBase4'
+import Base1 from './templates/old/pro/Base1'
 
 const jsxComponents = {
   A: (profile) => <Base1 templateId='A' profile={profile} />,
@@ -55,7 +55,7 @@ function App() {
   const templateIds = Object.keys(jsxComponents)
   const curTemplateId = templateIds[curPageIdx]
   const selectedComponent = jsxComponents[curTemplateId](dummyProfile)
-  const themeData = templateList.all.find((t) => t.id == curTemplateId)
+  const themeData = templateDataRaw.find((t) => t.id == curTemplateId)
 
   const changePage = (newVal) => {
     if (newVal == -1 && curPageIdx == 0) return
