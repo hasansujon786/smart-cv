@@ -1,19 +1,36 @@
-import { Dimensions, TouchableOpacity } from 'react-native'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import { useContext } from 'react'
+import { Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
 import { Image, Stack, Text } from 'tamagui'
+import { InterstitialAdContext } from '../services'
 
 const { width } = Dimensions.get('screen')
 const THUMBNAIL_WIDTH = (width - 36) / 2
 
-const TemplateThumbnail = React.memo(({ onPress, index, ...item }) => {
-  const img = getImage(item.id)
-  const count = __DEV__ ? item.id : index + 1
+const TemplateThumbnail = React.memo(({ index, id, themes, defaultOptions }) => {
+  const route = useRoute()
+  const navigation = useNavigation()
+  const interstitialAd = useContext(InterstitialAdContext)
+
+  const onViewCv = () => {
+    let adHasShowed = false
+    adHasShowed = interstitialAd.showAdIfLoaded()
+    if (adHasShowed) return
+
+    navigation.navigate('Template', {
+      themes: themes,
+      selectedTemplateId: id,
+      defaultOptions: defaultOptions,
+      profile: route.params.profile,
+    })
+  }
+
+  const img = getImage(id)
+  const count = __DEV__ ? id : index + 1
   return (
     <Stack mt='$3' style={{}}>
-      <TouchableOpacity
-        style={{ flex: 1, borderRadius: 4, overflow: 'hidden', aspectRatio: 0.71429, width: THUMBNAIL_WIDTH }}
-        onPress={() => onPress(item.id, item.themes, item.defaultOptions)}
-      >
-        <Image resizeMode='cover' source={img} style={{ width: '100%', height: '100%' }} />
+      <TouchableOpacity onPress={onViewCv} style={styles.touch}>
+        <Image resizeMode='cover' source={img} style={styles.img} />
         <Stack
           w='$1'
           h='$1'
@@ -31,6 +48,20 @@ const TemplateThumbnail = React.memo(({ onPress, index, ...item }) => {
       </TouchableOpacity>
     </Stack>
   )
+})
+
+const styles = StyleSheet.create({
+  touch: {
+    flex: 1,
+    borderRadius: 4,
+    overflow: 'hidden',
+    aspectRatio: 0.71429,
+    width: THUMBNAIL_WIDTH,
+  },
+  img: {
+    width: '100%',
+    height: '100%',
+  },
 })
 
 export const getImage = (profileId) => {
