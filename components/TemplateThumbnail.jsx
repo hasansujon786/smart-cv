@@ -4,11 +4,11 @@ import { Image, Stack, Text } from 'tamagui'
 const { width } = Dimensions.get('screen')
 const THUMBNAIL_WIDTH = (width - 36) / 2
 
-const TemplateThumbnail = React.memo(({ index, item, onPress }) => {
+const TemplateThumbnail = React.memo(({ onPress, index, ...item }) => {
   const img = getImage(item.id)
   const count = __DEV__ ? item.id : index + 1
   return (
-    <Stack mt='$3' style={{ paddingHorizontal: 6 }}>
+    <Stack mt='$3' style={{}}>
       <TouchableOpacity
         style={{ flex: 1, borderRadius: 4, overflow: 'hidden', aspectRatio: 0.71429, width: THUMBNAIL_WIDTH }}
         onPress={() => onPress(item.id, item.themes, item.defaultOptions)}

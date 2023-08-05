@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react'
 import { FlatList } from 'react-native'
-import { Stack } from 'tamagui'
+import { Stack, XStack } from 'tamagui'
 import TemplateThumbnail from '../components/TemplateThumbnail'
 import { LazyScreenLoader, useLazyScreenLoader } from '../composables'
 import { templateList } from '../constant'
@@ -17,17 +17,27 @@ const SelectTemplate = ({ route, navigation }) => {
     navigation.navigate('Template', { profile: route.params.profile, selectedTemplateId, themes, defaultOptions })
   }
 
-  const renderItem = useCallback((data) => <TemplateThumbnail {...data} onPress={onViewCv} />, [])
+  const renderItem = useCallback(({ item, index }) => {
+    if (item.type == 'ad') {
+      return <Stack mt='$3' bg='white' h='$12'></Stack>
+    }
+
+    return (
+      <XStack justifyContent='space-between'>
+        {item.row?.map((template, curIdx) => (
+          <TemplateThumbnail {...template} key={template.id} index={index + curIdx} onPress={onViewCv} />
+        ))}
+      </XStack>
+    )
+  }, [])
 
   const { isPageReady } = useLazyScreenLoader()
   if (!isPageReady) return <LazyScreenLoader />
   return (
     <Stack flex={1} bc='$background'>
       <FlatList
-        numColumns={2}
-        contentContainerStyle={{ paddingBottom: 30, paddingHorizontal: 6, marginTop: 6 }}
+        contentContainerStyle={{ paddingBottom: 30, paddingHorizontal: 12, marginTop: 6 }}
         data={templateList[route?.name]}
-        keyExtractor={(data) => data.id}
         renderItem={renderItem}
       />
     </Stack>

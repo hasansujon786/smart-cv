@@ -95,7 +95,7 @@ const Template = ({ route, navigation }) => {
         {previewPdfUri != '' && (
           <>
             <PdfView uri={previewPdfUri} onLoadEnd={onPdfLoadEnd} onError={onPdfLoadError} />
-            <TouchableOpacity onPress={openZoomView} style={[styles.touchable, { height: LOADER_HEIGHT }]} />
+            <TouchableOpacity onPress={openZoomView} style={[styles.touchable, { height: LOADER_HEIGHT - 40 }]} />
           </>
         )}
         {!isPdfLoading && (

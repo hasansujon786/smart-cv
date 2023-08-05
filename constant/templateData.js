@@ -154,8 +154,32 @@ const templateData = [
   },
 ]
 
+const filterTemplateData = (templates) => {
+  let _list = []
+  let lastIdx = 0
+  for (let i = 0; i < Math.round(templates.length / 2); i++) {
+    const group = {
+      id: i + '-comp',
+      type: 'comp',
+      row: [templates[lastIdx]],
+    }
+    const group2ndItem = templates[lastIdx + 1] !== undefined
+    if (group2ndItem) {
+      group.row.push(templates[lastIdx + 1])
+    }
+    _list.push(group)
+    lastIdx = lastIdx + 2
+
+    if (i > 0 && (i / 2) % 1) {
+      _list.push({ id: i + '-ad', type: 'ad' })
+    }
+  }
+
+  return _list
+}
+
 export const templateList = {
-  all: templateData,
-  professional: templateData.filter((t) => !t.isModern),
-  modern: templateData.filter((t) => t.isModern),
+  all: filterTemplateData(templateData),
+  professional: filterTemplateData(templateData.filter((t) => !t.isModern)),
+  modern: filterTemplateData(templateData.filter((t) => t.isModern)),
 }

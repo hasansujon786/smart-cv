@@ -19,9 +19,9 @@ const SelectTemplateNavigator = ({ route }) => {
         tabBarIndicatorStyle: { backgroundColor: globalColors.primary },
       }}
     >
+      <Tab.Screen name='all' component={SelectTemplate} initialParams={{ profile: route?.params?.profile }} />
       <Tab.Screen name='professional' component={SelectTemplate} initialParams={{ profile: route?.params?.profile }} />
       <Tab.Screen name='modern' component={SelectTemplate} initialParams={{ profile: route?.params?.profile }} />
-      <Tab.Screen name='all' component={SelectTemplate} initialParams={{ profile: route?.params?.profile }} />
     </Tab.Navigator>
   )
 }
