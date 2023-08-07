@@ -1,16 +1,24 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useContext } from 'react'
 import { Circle, Heading, Text, XStack, YStack } from 'tamagui'
 import { globalColors, globalStyles } from '../constant/globalStyles'
+import { InterstitialAdContext } from '../services'
 import Icon from './Icon'
 import ProfileImage from './ProfileImage'
 import { Button } from './atom'
 
 const ProfileCard = ({ index, profile, onDelete }) => {
+  const interstitialAd = useContext(InterstitialAdContext)
   const navigation = useNavigation()
 
-  const handleOnView = () => navigation.navigate('SelectTemplate', { profile })
-  const handleOnEdit = () => navigation.navigate('CreateProfile', { profileId: profile.id, title: 'Update Profile' })
+  const handleOnView = () => {
+    interstitialAd.showAdIfLoaded()
+    navigation.navigate('SelectTemplate', { profile })
+  }
+  const handleOnEdit = () => {
+    interstitialAd.showAdIfLoaded()
+    navigation.navigate('CreateProfile', { profileId: profile.id, title: 'Update Profile' })
+  }
   const deleteProfile = () => onDelete(profile.id)
 
   return (

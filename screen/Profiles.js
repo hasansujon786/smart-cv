@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useContext } from 'react'
 import { Alert, FlatList } from 'react-native'
 import Animated, { FadeIn } from 'react-native-reanimated'
 import { YStack } from 'tamagui'
@@ -6,15 +6,19 @@ import Icon from '../components/Icon'
 import ProfileCard from '../components/ProfileCard'
 import { Center, PrimaryButton } from '../components/atom'
 import { useLazyScreenLoader } from '../composables'
+import { InterstitialAdContext } from '../services'
 import { useProfileStore } from '../store/profiles'
 import { getNewId } from '../util'
 
 const Profiles = ({ navigation }) => {
+  const interstitialAd = useContext(InterstitialAdContext)
+
   const [profiles, createDummyProfile, deleteById] = useProfileStore(
     useCallback((s) => [s.profiles, s.createDummyProfile, s.deleteById])
   )
 
   const onCreate = () => {
+    interstitialAd.showAdIfLoaded()
     navigation.navigate('CreateProfile', { profileId: getNewId() })
   }
 
