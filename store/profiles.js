@@ -43,6 +43,6 @@ export const useProfileStore = create((set, get) => ({
     const profiles = get().profiles
     const updatedProfiles = [{ ...dummyProfile, id: getNewId() }, ...profiles]
     set({ profiles: updatedProfiles })
-    await storeData(PROFILES, updatedProfiles)
+    storeData(PROFILES, updatedProfiles)
   },
 }))

@@ -12,9 +12,9 @@
 export const dummyProfile = {
   id: 'A',
   personalDetails: {
-    name: 'Austin Bronson',
+    name: 'John Doe',
     address: '13th Street 47 W 13th St, New York',
-    phone: '+9343434323',
+    phone: '+0123456789',
     email: 'useremail@gmail.com',
     subTitle: 'Graphics Designer',
     profileImage: null,
@@ -46,7 +46,7 @@ export const dummyProfile = {
       startDate: '2009',
       endDate: '2012',
       details:
-        'Greeted Customer and made them feel welcome, operated cash registers, stocked and organized the mens department.',
+        "Greeted Customer and made them feel welcome, operated cash registers, stocked and organized the men's department.",
     },
     {
       id: '1',
@@ -63,14 +63,14 @@ export const dummyProfile = {
       id: '0',
       companyName: "Kohl's, Mentor, Ohio",
       jobTitle: 'Sales Associate',
-      phone: '+9343434323',
+      phone: '+0123456789',
       email: 'useremail@gmail.com',
     },
     {
       id: '1',
       companyName: "Kohl's, Mentor, Ohio",
       jobTitle: 'Sales Associate',
-      phone: '+9343434323',
+      phone: '+0123456789',
       email: 'useremail@gmail.com',
     },
   ],

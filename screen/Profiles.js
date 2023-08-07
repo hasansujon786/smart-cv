@@ -1,14 +1,15 @@
 import React, { useCallback, useContext } from 'react'
-import { Alert, FlatList } from 'react-native'
+import { Alert, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 import Animated, { FadeIn } from 'react-native-reanimated'
-import { YStack } from 'tamagui'
+import { Stack, Text, YStack } from 'tamagui'
 import Icon from '../components/Icon'
 import ProfileCard from '../components/ProfileCard'
-import { Center, PrimaryButton } from '../components/atom'
 import { useLazyScreenLoader } from '../composables'
+import { globalColors } from '../constant'
 import { InterstitialAdContext } from '../services'
 import { useProfileStore } from '../store/profiles'
 import { getNewId } from '../util'
+import { Center } from '../components/atom'
 
 const Profiles = ({ navigation }) => {
   const interstitialAd = useContext(InterstitialAdContext)
@@ -42,28 +43,44 @@ const Profiles = ({ navigation }) => {
   }, [])
 
   const { isPageReady } = useLazyScreenLoader()
+  const isProfileEmpty = profiles && profiles.length === 0
+
   return (
     <YStack flex={1} bc='$background'>
-      {isPageReady && (
-        <FlatList
-          initialNumToRender={4}
-          contentContainerStyle={{ paddingBottom: 100 }}
-          data={profiles}
-          renderItem={profileCardItem}
-        />
+      <YStack>
+        {isPageReady && (
+          <FlatList
+            initialNumToRender={4}
+            contentContainerStyle={{ paddingBottom: isProfileEmpty ? 0 : 100 }}
+            data={profiles}
+            renderItem={profileCardItem}
+          />
+        )}
+      </YStack>
+
+      {isProfileEmpty && (
+        <Center flex={1} marginTop={-100}>
+          <Text color='$gray10' fontSize='$6' maxWidth={300} lineHeight='$4' textAlign='center'>
+            Tip: Long press the create '+' button to create a demo profile
+          </Text>
+        </Center>
       )}
 
-      <Center position='absolute' bottom='$4' right='$4'>
-        <PrimaryButton
-          // onPress={createDummyProfile} // TODO: comment this line in production
-          onPress={onCreate}
-          icon={<Icon color='white' name='add' size='md' />}
-          size='$6'
-          circular
-        />
-      </Center>
+      <Stack elevationAndroid={8} bg='$primaryDark' borderRadius={40} position='absolute' bottom='$4' right='$4'>
+        <TouchableOpacity style={styles.createBtn} onPress={onCreate} onLongPress={createDummyProfile}>
+          <Icon color='white' name='add' size='lg' />
+        </TouchableOpacity>
+      </Stack>
     </YStack>
   )
 }
+
+const styles = StyleSheet.create({
+  createBtn: {
+    backgroundColor: globalColors.primary,
+    padding: 18,
+    borderRadius: 40,
+  },
+})
 
 export default Profiles
