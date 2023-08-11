@@ -79,20 +79,3 @@ const ProfileCard = ({ index, profile, onDelete }) => {
 }
 
 export default ProfileCard
-
-// {/* // TODO: add menu */}
-// {/* <Box mr={2} mt={1}> */}
-// {/*   <Menu */}
-// {/*     placement='left' */}
-// {/*     trigger={(triggerProps) => ( */}
-// {/*       <IconButton */}
-// {/*         size={10} */}
-// {/*         colorScheme='light' */}
-// {/*         {...triggerProps} */}
-// {/*         icon={<Icon color='#A0A0A0' name='ellipsis-vertical-outline' />} */}
-// {/*       /> */}
-// {/*     )} */}
-// {/*   > */}
-// {/*     <Menu.Item onPress={() => deleteById(profile.id)}>Delete</Menu.Item> */}
-// {/*   </Menu> */}
-// {/* </Box> */}

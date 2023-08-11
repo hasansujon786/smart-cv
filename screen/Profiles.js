@@ -59,9 +59,9 @@ const Profiles = ({ navigation }) => {
       </YStack>
 
       {isProfileEmpty && (
-        <Center flex={1} marginTop={-100}>
-          <Text color='$gray10' fontSize='$6' maxWidth={300} lineHeight='$4' textAlign='center'>
-            Tip: Long press the create '+' button to create a demo profile
+        <Center flex={1} marginTop={-120}>
+          <Text color='$gray10' fontSize='$5' maxWidth={300} lineHeight='$4' textAlign='center'>
+            Tip: Press the plus '+' button to create a new profile and long press to create a example profile.
           </Text>
         </Center>
       )}
