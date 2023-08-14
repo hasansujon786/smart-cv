@@ -61,7 +61,7 @@ const Profiles = ({ navigation }) => {
       {isProfileEmpty && (
         <Center flex={1} marginTop={-120}>
           <Text color='$gray10' fontSize='$5' maxWidth={300} lineHeight='$4' textAlign='center'>
-            Tip: Press the plus '+' button to create a new profile and long press to create a example profile.
+            Tip: Press the plus '+' button to create a new profile or long press to create a dummy profile.
           </Text>
         </Center>
       )}

@@ -1,5 +1,7 @@
+import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
+import AdBannerBottom from '../components/AdBannerBottom'
 import GradientHeader from '../components/GradientHeader'
 
 import HomeNavigator from './HomeNavigator'
@@ -27,50 +29,57 @@ const Stack = createNativeStackNavigator()
 
 const RootNavigator = () => {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        header: (props) => <GradientHeader {...props} />,
-      }}
-    >
-      <Stack.Screen name='Home' component={HomeNavigator} options={{ title: APP_NAME, headerShown: false }} />
-      <Stack.Screen name='Play' component={Playground} options={{ title: 'Playground' }} />
-      {/* <Stack.Screen name='Logs' component={LogScreen}  /> */}
-
-      <Stack.Screen name='Profiles' component={Profiles} options={{ title: 'Choose Profile' }} />
-      <Stack.Screen
-        name='CreateProfile'
-        component={CreateProfile}
-        options={({ route }) => ({ title: route.params.title || 'Create Profile' })}
-      />
-      <Stack.Screen name='PersonalDetails' component={PersonalDetails} options={{ title: 'Personal Details' }} />
-      <Stack.Screen name='Education' component={Education} />
-      <Stack.Screen name='Experience' component={Experience} />
-      <Stack.Screen name='Objective' component={Objective} />
-      <Stack.Screen name='Skills' component={Skills} />
-      <Stack.Screen name='Interests' component={Interests} />
-      <Stack.Screen name='Achievements' component={Achievements} />
-      <Stack.Screen name='Language' component={Language} />
-      <Stack.Screen
-        name='AdditionalInformation'
-        component={AdditionalInformation}
-        options={{ title: 'Additional Info' }}
-      />
-      <Stack.Screen name='References' component={References} />
-      <Stack.Screen name='Projects' component={Projects} />
-
-      <Stack.Screen name='SelectTemplate' component={SelectTemplateNavigator} options={{ title: 'Select Template' }} />
-      <Stack.Screen name='Template' component={Template} />
-      <Stack.Screen
-        name='ZoomView'
-        component={ZoomView}
-        options={{
-          title: APP_NAME,
-          headerTitleAlign: 'center',
-          headerStyle: { backgroundColor: '#49494a' },
-          headerTintColor: '#aaa',
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          header: (props) => <GradientHeader {...props} />,
         }}
-      />
-    </Stack.Navigator>
+      >
+        <Stack.Screen name='Home' component={HomeNavigator} options={{ title: APP_NAME, headerShown: false }} />
+        <Stack.Screen name='Play' component={Playground} options={{ title: 'Playground' }} />
+        {/* <Stack.Screen name='Logs' component={LogScreen}  /> */}
+
+        <Stack.Screen name='Profiles' component={Profiles} options={{ title: 'Choose Profile' }} />
+        <Stack.Screen
+          name='CreateProfile'
+          component={CreateProfile}
+          options={({ route }) => ({ title: route.params.title || 'Create Profile' })}
+        />
+        <Stack.Screen name='PersonalDetails' component={PersonalDetails} options={{ title: 'Personal Details' }} />
+        <Stack.Screen name='Education' component={Education} />
+        <Stack.Screen name='Experience' component={Experience} />
+        <Stack.Screen name='Objective' component={Objective} />
+        <Stack.Screen name='Skills' component={Skills} />
+        <Stack.Screen name='Interests' component={Interests} />
+        <Stack.Screen name='Achievements' component={Achievements} />
+        <Stack.Screen name='Language' component={Language} />
+        <Stack.Screen
+          name='AdditionalInformation'
+          component={AdditionalInformation}
+          options={{ title: 'Additional Info' }}
+        />
+        <Stack.Screen name='References' component={References} />
+        <Stack.Screen name='Projects' component={Projects} />
+
+        <Stack.Screen
+          name='SelectTemplate'
+          component={SelectTemplateNavigator}
+          options={{ title: 'Select Template' }}
+        />
+        <Stack.Screen name='Template' component={Template} />
+        <Stack.Screen
+          name='ZoomView'
+          component={ZoomView}
+          options={{
+            title: APP_NAME,
+            headerTitleAlign: 'center',
+            headerStyle: { backgroundColor: '#49494a' },
+            headerTintColor: '#aaa',
+          }}
+        />
+      </Stack.Navigator>
+      <AdBannerBottom />
+    </NavigationContainer>
   )
 }
 

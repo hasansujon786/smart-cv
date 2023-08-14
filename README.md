@@ -76,3 +76,7 @@ const TemplateLoader = ({ height = '100%', width = '100%', ...props }) => {
 Note: We've moved @tamagui/theme-base over to @tamagui/themes.
 They are much improved and easier to use. If you really want to keep this package,
 copy and paste the contents into your app as it will be removed eventually
+
+// http://192.168.0.105:19000
+// npx uri-scheme open exp://192.168.0.105:19000/--/app --android
+// npx uri-scheme open smartcv:// --android
