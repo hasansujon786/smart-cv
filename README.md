@@ -2,6 +2,42 @@ https://tamagui.dev/docs/intro/introduction
 com.thinknxtmedia.smartcv
 https://docs.expo.dev/versions/latest/config/app/
 
+const linkPrefix = Linking.createURL('/')
+const universalLink = Linking.createURL('https://smartcv.com')
+const linkingConfig = {
+  screens: {
+    Home: 'home',
+    Profiles: 'profiles',
+  },
+}
+const RootNavigator = () => {
+  return (
+    <NavigationContainer linking={{ prefixes: [linkPrefix, universalLink], config: linkingConfig }}>
+
+"expo-linking": "~4.0.1",
+npx uri-scheme open smartcv:// --android
+
+app.json
+```json
+{
+  "package": "com.thinknxtmedia.smartcv",
+  "intentFilters": [
+    {
+      "action": "VIEW",
+      "autoVerify": true,
+      "data": [
+        {
+          "scheme": "https",
+          "host": "smartcv.com",
+          "pathPrefix": "/hasan"
+        }
+      ],
+      "category": ["BROWSABLE", "DEFAULT"]
+    }
+  ]
+}
+```
+
 npx expo install styled-components styled-system
 "expo-status-bar": "~1.2.0",
 "expo-splash-screen": "~0.14.1",

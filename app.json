@@ -2,6 +2,7 @@
   "expo": {
     "name": "Smart CV",
     "slug": "smart-cv",
+    "scheme": "smartcv",
     "version": "1.6.1",
     "orientation": "portrait",
     "icon": "./assets/appicon.png",
