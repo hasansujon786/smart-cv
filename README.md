@@ -1,23 +1,15 @@
+# info
+old/produuction  "projectId": "cf1a196f-9fcd-410a-baa1-d16de06a0323"
+new/developmemnt "projectId": "60e69d7d-bf68-470c-8457-38f8f6ab67a0"
+
+
+# Code
 https://tamagui.dev/docs/intro/introduction
 com.thinknxtmedia.smartcv
 https://docs.expo.dev/versions/latest/config/app/
 
-const linkPrefix = Linking.createURL('/')
-const universalLink = Linking.createURL('https://smartcv.com')
-const linkingConfig = {
-  screens: {
-    Home: 'home',
-    Profiles: 'profiles',
-  },
-}
-const RootNavigator = () => {
-  return (
-    <NavigationContainer linking={{ prefixes: [linkPrefix, universalLink], config: linkingConfig }}>
-
-"expo-linking": "~4.0.1",
-npx uri-scheme open smartcv:// --android
-
 app.json
+
 ```json
 {
   "package": "com.thinknxtmedia.smartcv",
@@ -79,9 +71,6 @@ expo-ads-admob
 
 expo-intent-launcher expo-print
 
-old "projectId": "cf1a196f-9fcd-410a-baa1-d16de06a0323"
-new "projectId": "60e69d7d-bf68-470c-8457-38f8f6ab67a0"
-
 https://stackoverflow.com/questions/71592608/expo-build-eas-local-sdk-location-not-found
 
 // FIXME: <15.02.23> Perfomance issue, Slow to render Template
@@ -116,3 +105,22 @@ copy and paste the contents into your app as it will be removed eventually
 // http://192.168.0.105:19000
 // npx uri-scheme open exp://192.168.0.105:19000/--/app --android
 // npx uri-scheme open smartcv:// --android
+// npx uri-scheme open "https://example.com" --android
+// npx uri-scheme open smartcv:// --android
+
+```js
+import * as Linking from 'expo-linking'
+// maybe?? const universalLink = Linking.createURL('https://smartcv.com')
+<NavigationContainer
+  linking={{
+    prefixes: [Linking.createURL('/'), 'https://smartcv.example.com'],
+    config: {
+      screens: {
+        Home: 'home',
+        Profiles: 'profiles',
+      },
+    },
+  }}
+>
+
+```
