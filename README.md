@@ -1,126 +1,125 @@
-# info
-old/produuction  "projectId": "cf1a196f-9fcd-410a-baa1-d16de06a0323"
-new/developmemnt "projectId": "60e69d7d-bf68-470c-8457-38f8f6ab67a0"
+# Smart CV – React Native (Freelance Project)
 
+## 🧭 Overview
 
-# Code
-https://tamagui.dev/docs/intro/introduction
-com.thinknxtmedia.smartcv
-https://docs.expo.dev/versions/latest/config/app/
+**Smart CV** is a mobile app that helps users create polished, professional resumes in minutes — no design experience needed.
 
-app.json
+It built with **React Native** and **Expo** that offers customizable templates, smooth UX, offline editing, and export-ready PDF generation. Designed for freelancers, job seekers, and professionals, the app simplifies the resume creation process without requiring design skills.
 
-```json
-{
-  "package": "com.thinknxtmedia.smartcv",
-  "intentFilters": [
-    {
-      "action": "VIEW",
-      "autoVerify": true,
-      "data": [
-        {
-          "scheme": "https",
-          "host": "smartcv.com",
-          "pathPrefix": "/hasan"
-        }
-      ],
-      "category": ["BROWSABLE", "DEFAULT"]
-    }
-  ]
-}
+**[View on Google Play](https://play.google.com/store/apps/details?id=com.thinknxtmedia.smartcv)**
+
+![Smart CV Preview](./design/smart-cv.png)
+
+---
+
+## ✨ Features
+
+- **Create & Edit Resumes**  
+  Users can easily add and organize their skills, experiences, education, and personal details.
+
+- **Beautiful Templates**  
+  Export resumes using professionally designed templates rendered with HTML + CSS.
+
+- **PDF Export**  
+  Generate print-ready, shareable PDFs that look great on any device.
+
+- **Color & Theme Customization**  
+  Choose from multiple color themes and personalize visual settings.
+
+- **Offline Support**  
+  All data is saved locally, with no sign-in or internet required.
+
+- **Ad Integration**  
+  Monetized with Google AdMob using rewarded and interstitial ads.
+
+---
+
+## 🛠 Tech Stack
+
+- **Framework**: React Native (Expo SDK)
+- **PDF Generator**: Custom HTML/CSS templates via `expo-print`
+- **UI Libraries**: Tamagui, Reanimated
+- **Navigation**: React Navigation
+- **State Management**: Zustand
+- **Local Storage**: AsyncStorage
+- **Image & File Handling**: Expo Image Picker, rn-fetch-blob
+- **Ad Support:** Google Mobile Ads (AdMob)
+- **PDF Viewer**: `@bildau/rn-pdf-reader`
+
+---
+
+## 📁 Project Structure
+
+```bash
+smart-cv/
+├── App.js
+├── app.json
+├── assets/
+├── components/               # Reusable UI components
+├── composables/              # Custom hooks and logic
+├── constant/                 # Global styles, settings, data
+├── models/
+├── navigators/               # Navigation structure
+├── pdf-templates/            # Vite-based resume template engine
+│   ├── src/
+│   │   ├── components/
+│   │   └── templates/
+│   ├── vite.config.js
+│   └── index.html
+├── screen/                   # App screens by feature
+├── features/                 # App-wide feature modules and service wrappers
+├── services/                 # Ad services and wrappers
+├── store/                    # Zustand stores
+├── util/                     # Utility functions
+├── tamagui.config.js
+├── theme.js
+└── README.md
 ```
 
-npx expo install styled-components styled-system
-"expo-status-bar": "~1.2.0",
-"expo-splash-screen": "~0.14.1",
-"expo-updates": "~0.11.7",
+---
 
-yarn add tamagui expo-font @tamagui/font-inter @tamagui/theme-base @tamagui/animations-react-native @tamagui/config
-react-native-web react-dom
+## 🚀 Getting Started
 
-react-native-web
+### Prerequisites
 
-react-native-reanimated
-@react-navigation/native
-@react-navigation/stack
-react-native-gesture-handler
-"expo-dev-client": "~0.8.6",
-react-native-safe-area-context
-react-native-screens
-@react-navigation/drawer
-@react-navigation/material-top-tabs
-react-native-tab-view
-react-native-pager-view
+- Node.js ≥ 16
+- Expo CLI (`npm install -g expo-cli`)
 
-native-base
-react-native-svg
-@react-native-async-storage/async-storage
-expo-linear-gradient
+### Installation
 
-zustand
-@bildau/rn-pdf-reader
-react-native-color-picker
-rn-fetch-blob
-react-native-webview
-underscore
-
-npx expo uninstall @react-native-community/netinfo
-expo-image-manipulator ?
-expo-image-picker
-expo-ads-admob
-
-expo-intent-launcher expo-print
-
-https://stackoverflow.com/questions/71592608/expo-build-eas-local-sdk-location-not-found
-
-// FIXME: <15.02.23> Perfomance issue, Slow to render Template
-VirtualizedList: You have a large list that is slow to update - make sure your
-renderItem function renders components that follow React performance best
-practices like PureComponent, shouldComponentUpdate, etc. {"contentLength":
-2418, "dt": 515, "prevDt": 2032}
-
-```js
-const TemplateLoader = ({ height = '100%', width = '100%', ...props }) => {
-  return (
-    <Box position='absolute' top={0} bottom={0} left={0} right={0} flex={1} alignItems='center' {...props}>
-      <Box width={width} height={height} bg='white'>
-        <Center flex={1}>
-          <HStack space={2} alignItems='center'>
-            <Spinner color={globalColors.primary} accessibilityLabel='Loading CV' />
-            <Heading color={globalColors.primary} fontSize='md'>
-              Loading
-            </Heading>
-          </HStack>
-        </Center>
-      </Box>
-    </Box>
-  )
-}
+```bash
+yarn install
+npx expo start
 ```
 
-Note: We've moved @tamagui/theme-base over to @tamagui/themes.
-They are much improved and easier to use. If you really want to keep this package,
-copy and paste the contents into your app as it will be removed eventually
+---
 
-// http://192.168.0.105:19000
-// npx uri-scheme open exp://192.168.0.105:19000/--/app --android
-// npx uri-scheme open smartcv:// --android
-// npx uri-scheme open "https://example.com" --android
-// npx uri-scheme open smartcv:// --android
+## 👤 Role
 
-```js
-import * as Linking from 'expo-linking'
-// maybe?? const universalLink = Linking.createURL('https://smartcv.com')
-<NavigationContainer
-  linking={{
-    prefixes: [Linking.createURL('/'), 'https://smartcv.example.com'],
-    config: {
-      screens: {
-        Home: 'home',
-        Profiles: 'profiles',
-      },
-    },
-  }}
->
+This project was designed and developed by **Hasan Mahmud** as a **solo developer**.
 
-```
+---
+
+## 🧾 Portfolio Note
+
+**Smart CV** is part of my developer portfolio and showcases my ability to design, build, and ship high-quality mobile apps using React Native.
+This project reflects my focus on clean architecture, intuitive UX, and efficient state management.
+
+Feel free to explore the code — and reach out if you're hiring or interested in collaboration!
+
+---
+
+## 📬 Contact
+
+- **Email**: [hasansujon786@gmail.com](mailto:hasansujon786@gmail.com)
+- **GitHub**: [github.com/hasansujon786](https://github.com/hasansujon786)
+- **Portfolio**: [hasansujon786.github.io](https://hasansujon786.github.io)
+
+---
+
+🛡 License
+
+This project is currently not licensed for public use.
+You may view or explore the code, but reproduction, redistribution, or reuse is not permitted without explicit permission from the author.
+
+📩 For inquiries, please contact the author directly.
